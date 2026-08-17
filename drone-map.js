@@ -237,6 +237,26 @@ class DroneMapController {
     if (speedElem) speedElem.textContent = `0.0 m/s`;
   }
 
+  setProjectContext(project) {
+    this.stopFlightTour();
+    if (project.center_coords) {
+      this.centerCoords = project.center_coords;
+    }
+    if (project.flight_tour && project.flight_tour.length) {
+      this.tourWaypoints = project.flight_tour;
+    }
+    if (this.map) {
+      this.map.flyTo({
+        center: this.centerCoords,
+        zoom: project.zoom || 15.5,
+        pitch: project.pitch || 65,
+        bearing: project.bearing || 60,
+        duration: 2500,
+        essential: true
+      });
+    }
+  }
+
   setAltitude(alt) {
     if (!this.map) return;
     // Map altitude 60m ~ 600m to zoom level

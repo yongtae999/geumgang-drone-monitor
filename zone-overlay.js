@@ -20,6 +20,17 @@ class ZoneOverlayManager {
     this.renderZoneCards();
   }
 
+  updateZones(zonesData) {
+    this.zonesGeoJson = zonesData;
+    const source = this.map.getSource('cheonnaeri-zones');
+    if (source) {
+      source.setData(this.zonesGeoJson);
+    } else {
+      this.addZoneLayers();
+    }
+    this.renderZoneCards();
+  }
+
   addZoneLayers() {
     if (this.map.getSource('cheonnaeri-zones')) return;
 

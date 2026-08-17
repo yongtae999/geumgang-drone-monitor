@@ -32,9 +32,26 @@
         <i class="fa-solid fa-drone"></i>
       </div>
       <div class="title-group">
-        <div class="agency-tag"><i class="fa-solid fa-seedling"></i> 금강유역환경청 · (사)야생생물관리협회</div>
-        <h1>천내리습지 생태계교란식물 제거 3D 드론 관제 시스템</h1>
+        <div class="agency-tag" id="header-agency-tag"><i class="fa-solid fa-seedling"></i> 금강유역환경청 · (사)야생생물관리협회</div>
+        <h1 id="header-project-title">생태계교란생물 제거 3D 드론 관제 시스템</h1>
       </div>
+    </div>
+
+    <!-- Project Selector Dropdown & Switcher -->
+    <div class="header-project-switch">
+      <div class="select-wrapper">
+        <i class="fa-solid fa-layer-group text-cyan"></i>
+        <select id="project-selector" class="project-dropdown">
+          <option value="cheonnaeri" selected>🛸 천내리습지 (가시박 등 · 14.5만㎡)</option>
+          <option value="doowoong">🛸 두웅습지 (미국수련·황소개구리 · 6.7만㎡)</option>
+        </select>
+      </div>
+      <a href="assets/templates/일일제거작업일지_표준템플릿.xlsx" download="생태계교란생물_일일작업일지_표준양식.xlsx" class="btn-action secondary btn-sm" title="공통 표준 엑셀 양식 다운로드">
+        <i class="fa-solid fa-file-excel text-emerald"></i> <span>표준양식 받기</span>
+      </a>
+      <button id="btn-open-new-project" class="btn-action accent btn-sm" title="신규 사업 프로젝트 등록">
+        <i class="fa-solid fa-folder-plus"></i> <span>+ 새 사업 등록</span>
+      </button>
     </div>
 
     <!-- Drone Telemetry Status Bar -->
@@ -53,11 +70,6 @@
         <i class="fa-solid fa-battery-three-quarters text-emerald"></i>
         <span class="tele-label">DRONE BATT</span>
         <span class="tele-val">94% (28m)</span>
-      </div>
-      <div class="telemetry-pill">
-        <i class="fa-solid fa-cloud-sun text-amber"></i>
-        <span class="tele-label">현장 기상</span>
-        <span class="tele-val">맑음 29°C / 습도 65%</span>
       </div>
     </div>
 
@@ -500,6 +512,105 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: [새 사업 프로젝트 등록 마법사 (Project Wizard)] -->
+  <div id="new-project-modal" class="modal-overlay hidden">
+    <div class="modal-card new-project-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i class="fa-solid fa-folder-plus text-cyan"></i>
+          <h3>생태계교란생물 제거사업 신규 프로젝트 등록</h3>
+        </div>
+        <button class="modal-close-btn" id="btn-close-new-project"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body new-project-modal-body">
+        <form id="new-project-form" class="wizard-form">
+          <div class="wizard-section">
+            <h4 class="wizard-sec-title"><i class="fa-solid fa-1"></i> 사업 기본 정보</h4>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>사업명 *</label>
+                <input type="text" id="np-name" placeholder="예) 2026년 한강청 소옥천 생태계교란식물 제거사업" required>
+              </div>
+              <div class="form-group">
+                <label>약칭 / 탭 표시명 *</label>
+                <input type="text" id="np-short-name" placeholder="예) 소옥천 (가시박)" required>
+              </div>
+              <div class="form-group">
+                <label>발주기관 (환경청/지자체) *</label>
+                <input type="text" id="np-agency" placeholder="예) 한강유역환경청" required>
+              </div>
+              <div class="form-group">
+                <label>수행기관 (지부/협회) *</label>
+                <input type="text" id="np-contractor" placeholder="예) (사)야생생물관리협회 충북지부" required>
+              </div>
+              <div class="form-group span-2">
+                <label>대상지 위치 / 세부지명 *</label>
+                <input type="text" id="np-location" placeholder="예) 충청북도 옥천군 군북면 소옥천 생태습지 일원" required>
+              </div>
+              <div class="form-group">
+                <label>중심 좌표 위도 (Latitude) *</label>
+                <input type="number" step="0.0001" id="np-lat" placeholder="예) 36.3542" value="36.3542" required>
+              </div>
+              <div class="form-group">
+                <label>중심 좌표 경도 (Longitude) *</label>
+                <input type="number" step="0.0001" id="np-lng" placeholder="예) 127.5621" value="127.5621" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="wizard-section">
+            <h4 class="wizard-sec-title"><i class="fa-solid fa-2"></i> 사업 목표 및 예산</h4>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label>총 목표 면적 (㎡) *</label>
+                <input type="number" id="np-area" placeholder="예) 50000" required>
+              </div>
+              <div class="form-group">
+                <label>예상 제거량 (kg) *</label>
+                <input type="number" id="np-kg" placeholder="예) 10000" required>
+              </div>
+              <div class="form-group">
+                <label>총 사업비 (원) *</label>
+                <input type="number" id="np-budget" placeholder="예) 15000000" required>
+              </div>
+              <div class="form-group span-3">
+                <label>주요 대상 생물종 *</label>
+                <input type="text" id="np-species" placeholder="예) 가시박, 환삼덩굴, 단풍잎돼지풀" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="wizard-section">
+            <h4 class="wizard-sec-title"><i class="fa-solid fa-3"></i> 표준 데이터 파일 업로드</h4>
+            <div class="upload-boxes-grid">
+              <div class="upload-box">
+                <i class="fa-solid fa-file-excel text-emerald"></i>
+                <span class="upload-title">표준 엑셀 작업일지 업로드 (.xlsx)</span>
+                <span class="upload-desc">작성하신 표준 일일작업결과표 엑셀 파일</span>
+                <input type="file" id="np-excel-file" accept=".xlsx, .xls">
+                <div class="upload-status" id="np-excel-status">파일 미선택 (기본 템플릿 사용)</div>
+              </div>
+              <div class="upload-box">
+                <i class="fa-solid fa-camera text-cyan"></i>
+                <span class="upload-title">스마트폰 현장 사진 일괄 업로드 (.jpg)</span>
+                <span class="upload-desc">GPS 위치정보가 포함된 현장 사진 다중 선택</span>
+                <input type="file" id="np-photos-file" accept="image/*" multiple>
+                <div class="upload-status" id="np-photos-status">0개 사진 선택됨</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-submit-footer">
+            <button type="submit" class="btn-action primary large block">
+              <i class="fa-solid fa-rocket"></i> 새 3D 드론 프로젝트 생성 및 즉시 관제 시작
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

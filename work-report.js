@@ -25,6 +25,16 @@ class WorkReportManager {
     this.bindReportModalEvents();
   }
 
+  updateData(workLogsData, kpisData) {
+    this.workLogs = workLogsData;
+    this.kpis = kpisData;
+
+    this.renderKPIs();
+    this.renderCharts();
+    this.renderWorkLogsList();
+    this.renderTimeline();
+  }
+
   renderKPIs() {
     const areaElem = document.getElementById('kpi-cum-area');
     const pctElem = document.getElementById('kpi-area-pct');

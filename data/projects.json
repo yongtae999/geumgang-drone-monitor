@@ -1,0 +1,175 @@
+[
+  {
+    "id": "cheonnaeri",
+    "name": "금강청 천내리습지 생태계교란식물 제거사업",
+    "short_name": "천내리습지 (가시박 등)",
+    "agency": "금강유역환경청",
+    "contractor": "(사)야생생물관리협회 충남지부",
+    "location_name": "충청남도 금산군 천내리습지 일원 (제원대교)",
+    "center_coords": [
+      127.5755,
+      36.1065
+    ],
+    "zoom": 15.2,
+    "pitch": 65,
+    "bearing": 115,
+    "target_species": "가시박, 환삼덩굴, 돼지풀 등",
+    "total_area_sqm": 144806,
+    "total_budget": 15000000,
+    "target_kg": 18830,
+    "target_workers": 45,
+    "zones_file": "data/zones.geojson",
+    "work_logs_file": "data/work_logs.json",
+    "photos_file": "data/photos.json",
+    "kpis": {
+      "total_target_area": 144806,
+      "cum_removed_area": 66000,
+      "progress_pct": 45.6,
+      "cum_removed_kg": 880,
+      "target_kg": 18830,
+      "cum_workers": 10,
+      "target_workers": 45,
+      "total_budget": 15000000,
+      "spent_budget": 1294488,
+      "budget_pct": 8.6
+    },
+    "flight_tour": [
+      {
+        "lng": 127.5676,
+        "lat": 36.1118,
+        "alt": 220,
+        "pitch": 65,
+        "bearing": 135,
+        "speed": 12.0,
+        "name": "1구간 (A) 제원대교 상류"
+      },
+      {
+        "lng": 127.571,
+        "lat": 36.109,
+        "alt": 180,
+        "pitch": 60,
+        "bearing": 125,
+        "speed": 14.5,
+        "name": "1구간 (A) 완충 구역"
+      },
+      {
+        "lng": 127.5741,
+        "lat": 36.1071,
+        "alt": 150,
+        "pitch": 70,
+        "bearing": 110,
+        "speed": 10.0,
+        "name": "2구간 (B) 천내리습지 진입부"
+      },
+      {
+        "lng": 127.5765,
+        "lat": 36.1055,
+        "alt": 130,
+        "pitch": 68,
+        "bearing": 105,
+        "speed": 8.5,
+        "name": "2구간 (B) 가시박 대군락지 중심"
+      },
+      {
+        "lng": 127.5785,
+        "lat": 36.105,
+        "alt": 140,
+        "pitch": 65,
+        "bearing": 95,
+        "speed": 9.0,
+        "name": "2-3구간 경계부"
+      },
+      {
+        "lng": 127.5815,
+        "lat": 36.1038,
+        "alt": 160,
+        "pitch": 62,
+        "bearing": 90,
+        "speed": 11.0,
+        "name": "3구간 (C) 습지 하류부"
+      }
+    ]
+  },
+  {
+    "id": "doowoong",
+    "name": "2026년 두웅습지 외래생물 실태조사 및 확산방지 용역",
+    "short_name": "두웅습지 (미국수련·황소개구리)",
+    "agency": "금강유역환경청 자연환경과",
+    "contractor": "(사)야생생물관리협회 대전·충남·세종지부",
+    "location_name": "충청남도 태안군 원북면 신두리 두웅습지보호지역 (람사르습지)",
+    "center_coords": [
+      126.1955,
+      36.8322
+    ],
+    "zoom": 16.5,
+    "pitch": 62,
+    "bearing": 45,
+    "target_species": "미국수련, 마름, 황소개구리 (금개구리 보호)",
+    "total_area_sqm": 67050,
+    "total_budget": 19500000,
+    "target_kg": 12000,
+    "target_workers": 35,
+    "zones_file": "data/doowoong_zones.geojson",
+    "work_logs_file": "data/doowoong_work_logs.json",
+    "photos_file": "data/doowoong_photos.json",
+    "kpis": {
+      "total_target_area": 67050,
+      "cum_removed_area": 24500,
+      "progress_pct": 36.5,
+      "cum_removed_kg": 3450,
+      "target_kg": 12000,
+      "cum_workers": 12,
+      "target_workers": 35,
+      "total_budget": 19500000,
+      "spent_budget": 5240000,
+      "budget_pct": 26.9
+    },
+    "flight_tour": [
+      {
+        "lng": 126.194,
+        "lat": 36.8308,
+        "alt": 160,
+        "pitch": 60,
+        "bearing": 35,
+        "speed": 9.0,
+        "name": "두웅습지 남측 진입로 및 안내소 상공"
+      },
+      {
+        "lng": 126.1952,
+        "lat": 36.8318,
+        "alt": 110,
+        "pitch": 68,
+        "bearing": 45,
+        "speed": 7.5,
+        "name": "1구간 개방수면부 미국수련 군락지"
+      },
+      {
+        "lng": 126.1962,
+        "lat": 36.8328,
+        "alt": 100,
+        "pitch": 70,
+        "bearing": 55,
+        "speed": 6.5,
+        "name": "2구간 수변 갈대습지 및 황소개구리 포획통발 구역"
+      },
+      {
+        "lng": 126.197,
+        "lat": 36.8335,
+        "alt": 130,
+        "pitch": 65,
+        "bearing": 60,
+        "speed": 8.0,
+        "name": "3구간 신두리 해안사구 배후 완충지대 (금개구리 보호)"
+      },
+      {
+        "lng": 126.1955,
+        "lat": 36.8322,
+        "alt": 200,
+        "pitch": 55,
+        "bearing": 20,
+        "speed": 12.0,
+        "name": "두웅습지보호지역 6.7만㎡ 전체 부감"
+      }
+    ]
+  }
+]

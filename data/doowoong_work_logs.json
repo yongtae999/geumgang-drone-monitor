@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "target_plant": "미국수련 (지하경), 마름",
+    "location": "충남 태안군 두웅습지 개방수면부",
+    "zone": "1구간 (수생식물)",
+    "work_date": "2026-08-12",
+    "is_completed": true,
+    "method": "수거망 사용, 지하경 굴취 육상반출",
+    "stages": [
+      "영양생장",
+      "개화"
+    ],
+    "area_sqm": 1200,
+    "hours": 6,
+    "amount_kg": 1800,
+    "workers": 5
+  },
+  {
+    "id": 2,
+    "target_plant": "황소개구리 (성체 58마리, 유생)",
+    "location": "두웅습지 수변 갈대습지 15개소",
+    "zone": "2구간 (양서류)",
+    "work_date": "2026-08-14",
+    "is_completed": true,
+    "method": "포획통발 15개 설치, 투망·뜰채",
+    "stages": [
+      "개화/성체",
+      "결실/유생"
+    ],
+    "area_sqm": 2500,
+    "hours": 6,
+    "amount_kg": 1650,
+    "workers": 4
+  },
+  {
+    "id": 3,
+    "target_plant": "미국수련, 황소개구리",
+    "location": "두웅습지 목재데크 탐방로 주변",
+    "zone": "1구간 (수생식물)",
+    "work_date": "2026-08-22 (예정)",
+    "is_completed": false,
+    "method": "수거망 및 뜰채",
+    "stages": [
+      "영양생장"
+    ],
+    "area_sqm": 1500,
+    "hours": 6,
+    "amount_kg": 800,
+    "workers": 5
+  }
+]

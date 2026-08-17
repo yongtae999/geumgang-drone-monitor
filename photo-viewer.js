@@ -13,10 +13,16 @@ class PhotoViewerManager {
   }
 
   init(photosData) {
-    this.photos = photosData;
+    this.photos = photosData || [];
     this.renderMarkers();
     this.renderThumbnails();
     this.bindModalEvents();
+  }
+
+  updatePhotos(photosData) {
+    this.photos = photosData || [];
+    this.renderMarkers();
+    this.renderThumbnails();
   }
 
   renderMarkers() {
