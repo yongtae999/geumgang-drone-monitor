@@ -121,5 +121,49 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  console.log("✅ Geumgang Cheonnae-ri Platform Ready!");
+  // 7. Mobile Bottom Nav Tab Switching
+  const mobileTabBtns = document.querySelectorAll('.mobile-tab-btn');
+  const leftSidebar = document.querySelector('.left-sidebar');
+  const rightSidebar = document.querySelector('.right-sidebar');
+
+  mobileTabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+
+      mobileTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (tab === 'map') {
+        if (leftSidebar) leftSidebar.classList.remove('mobile-active');
+        if (rightSidebar) rightSidebar.classList.remove('mobile-active');
+        setTimeout(() => map.resize(), 100);
+      } else if (tab === 'zones') {
+        if (rightSidebar) rightSidebar.classList.remove('mobile-active');
+        if (leftSidebar) leftSidebar.classList.add('mobile-active');
+      } else if (tab === 'stats') {
+        if (leftSidebar) leftSidebar.classList.remove('mobile-active');
+        if (rightSidebar) rightSidebar.classList.add('mobile-active');
+      } else if (tab === 'report') {
+        const reportModal = document.getElementById('report-modal');
+        if (reportModal) reportModal.classList.remove('hidden');
+      }
+    });
+  });
+
+  // Auto-close sidebar on mobile when selecting a flight mode or zone
+  if (window.innerWidth <= 1024) {
+    document.querySelectorAll('.mode-btn, .zone-card, .thumb-item').forEach(el => {
+      el.addEventListener('click', () => {
+        if (leftSidebar) leftSidebar.classList.remove('mobile-active');
+        const mapTab = document.querySelector('.mobile-tab-btn[data-tab="map"]');
+        if (mapTab) {
+          mobileTabBtns.forEach(b => b.classList.remove('active'));
+          mapTab.classList.add('active');
+        }
+        setTimeout(() => map.resize(), 100);
+      });
+    });
+  }
+
+  console.log("✅ Geumgang Cheonnae-ri Platform Ready (Mobile Optimized)!");
 });

@@ -293,11 +293,28 @@
         </div>
         <div class="work-logs-list" id="work-logs-container">
           <!-- Populated from Excel JSON -->
-        </div>
-      </div>
-
     </aside>
   </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-tab-btn active" data-tab="map">
+      <i class="fa-solid fa-drone"></i>
+      <span>3D 드론</span>
+    </button>
+    <button class="mobile-tab-btn" data-tab="zones">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <span>구간·사진</span>
+    </button>
+    <button class="mobile-tab-btn" data-tab="stats">
+      <i class="fa-solid fa-chart-pie"></i>
+      <span>실적 통계</span>
+    </button>
+    <button class="mobile-tab-btn" data-tab="report">
+      <i class="fa-solid fa-file-signature"></i>
+      <span>결과표</span>
+    </button>
+  </nav>
 
   <!-- MODAL 1: High-Resolution Photo Viewer with GPS & Metadata -->
   <div id="photo-modal" class="modal-overlay hidden">
