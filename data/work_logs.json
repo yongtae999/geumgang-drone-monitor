@@ -1,0 +1,223 @@
+[
+  {
+    "id": 1,
+    "target_plant": "가시박, 환삼덩굴 ",
+    "location": "천내리 습지 일대",
+    "zone": "1구간 (A)",
+    "work_date": "2026-07-24",
+    "is_completed": true,
+    "method": "손으로 뿌리뽑기",
+    "stages": [
+      "로제트",
+      "영양생장"
+    ],
+    "width_m": 300,
+    "length_m": 60,
+    "area_sqm": 18000.0,
+    "hours": 6,
+    "amount_kg": 80,
+    "workers": 5
+  },
+  {
+    "id": 2,
+    "target_plant": "가시박, 환삼덩굴 ",
+    "location": "천내리 습지 일대",
+    "zone": "1구간 (A)",
+    "work_date": "2026-08-06",
+    "is_completed": true,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "영양생장"
+    ],
+    "width_m": 800,
+    "length_m": 60,
+    "area_sqm": 48000.0,
+    "hours": 6,
+    "amount_kg": 800,
+    "workers": 5
+  },
+  {
+    "id": 3,
+    "target_plant": "가시박, 환삼덩굴 ",
+    "location": "천내리 습지 일대",
+    "zone": "1구간 (A)",
+    "work_date": "2026-08-07 (예정)",
+    "is_completed": false,
+    "method": "손으로 뿌리뽑기, 낫으로 베기",
+    "stages": [
+      "영양생장"
+    ],
+    "width_m": 700,
+    "length_m": 60,
+    "area_sqm": 42000.0,
+    "hours": 6,
+    "amount_kg": 350,
+    "workers": 5
+  },
+  {
+    "id": 4,
+    "target_plant": "가시박, 환삼덩굴 ",
+    "location": "천내리 습지 일대",
+    "zone": "2구간 (B)",
+    "work_date": "2026-08-08 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기",
+    "stages": [
+      "영양생장"
+    ],
+    "width_m": 300,
+    "length_m": 60,
+    "area_sqm": 18000.0,
+    "hours": 6,
+    "amount_kg": 600,
+    "workers": 5
+  },
+  {
+    "id": 5,
+    "target_plant": "가시박, 환삼덩굴 ",
+    "location": "천내리 습지 일대",
+    "zone": "2구간 (B)",
+    "work_date": "2026-08-09 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "영양생장"
+    ],
+    "width_m": 500,
+    "length_m": 60,
+    "area_sqm": 30000.0,
+    "hours": 6,
+    "amount_kg": 1200,
+    "workers": 5
+  },
+  {
+    "id": 6,
+    "target_plant": "가시박, 환삼덩굴 ",
+    "location": "천내리 습지 일대",
+    "zone": "2구간 (B)",
+    "work_date": "2026-08-10 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "영양생장"
+    ],
+    "width_m": 800,
+    "length_m": 60,
+    "area_sqm": 48000.0,
+    "hours": 6,
+    "amount_kg": 1600,
+    "workers": 5
+  },
+  {
+    "id": 7,
+    "target_plant": "가시박, 환삼덩굴",
+    "location": "천내리 습지 일대",
+    "zone": "2구간 (B)",
+    "work_date": "2026-08-11 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "영양생장",
+      "개화"
+    ],
+    "width_m": 600,
+    "length_m": 60,
+    "area_sqm": 36000.0,
+    "hours": 6,
+    "amount_kg": 2000,
+    "workers": 5
+  },
+  {
+    "id": 8,
+    "target_plant": "가시박, 환삼덩굴",
+    "location": "천내리 습지 일대",
+    "zone": "3구간 (C)",
+    "work_date": "2026-08-12 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "개화"
+    ],
+    "width_m": 500,
+    "length_m": 60,
+    "area_sqm": 30000.0,
+    "hours": 6,
+    "amount_kg": 2400,
+    "workers": 5
+  },
+  {
+    "id": 9,
+    "target_plant": "가시박, 환삼덩굴",
+    "location": "천내리 습지 일대",
+    "zone": "3구간 (C)",
+    "work_date": "2026-08-13 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "개화"
+    ],
+    "width_m": 800,
+    "length_m": 60,
+    "area_sqm": 48000.0,
+    "hours": 6,
+    "amount_kg": 2800,
+    "workers": 5
+  },
+  {
+    "id": 10,
+    "target_plant": "가시박, 환삼덩굴",
+    "location": "천내리 습지 일대",
+    "zone": "3구간 (C)",
+    "work_date": "2026-08-14 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "개화",
+      "결실"
+    ],
+    "width_m": 1000,
+    "length_m": 60,
+    "area_sqm": 60000.0,
+    "hours": 6,
+    "amount_kg": 2600,
+    "workers": 5
+  },
+  {
+    "id": 11,
+    "target_plant": "가시박, 환삼덩굴",
+    "location": "천내리 습지 일대",
+    "zone": "3구간 (C)",
+    "work_date": "2026-08-15 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "개화",
+      "결실"
+    ],
+    "width_m": 1200,
+    "length_m": 60,
+    "area_sqm": 72000.0,
+    "hours": 6,
+    "amount_kg": 2800,
+    "workers": 5
+  },
+  {
+    "id": 12,
+    "target_plant": "가시박, 환삼덩굴",
+    "location": "천내리 습지 일대",
+    "zone": "3구간 (C)",
+    "work_date": "2026-08-16 (예정)",
+    "is_completed": false,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "결실",
+      "고사"
+    ],
+    "width_m": 1000,
+    "length_m": 60,
+    "area_sqm": 60000.0,
+    "hours": 6,
+    "amount_kg": 1600,
+    "workers": 5
+  }
+]

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>금강유역환경청 천내리 생태계교란식물 제거사업 | 3D 드론 모니터링 & 일일작업결과</title>
+  
+  <!-- MapLibre GL JS for 3D Satellite & Terrain -->
+  <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+  
+  <!-- Chart.js for Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts: Pretendard / Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="header-left">
+      <div class="logo-badge">
+        <i class="fa-solid fa-drone"></i>
+      </div>
+      <div class="title-group">
+        <div class="agency-tag"><i class="fa-solid fa-seedling"></i> 금강유역환경청 · (사)야생생물관리협회</div>
+        <h1>천내리습지 생태계교란식물 제거 3D 드론 관제 시스템</h1>
+      </div>
+    </div>
+
+    <!-- Drone Telemetry Status Bar -->
+    <div class="header-center">
+      <div class="telemetry-pill">
+        <span class="rec-dot"></span>
+        <span class="tele-label">DRONE FEED</span>
+        <span class="tele-val highlight">4K 60FPS</span>
+      </div>
+      <div class="telemetry-pill">
+        <i class="fa-solid fa-satellite text-cyan"></i>
+        <span class="tele-label">GPS 3D FIX</span>
+        <span class="tele-val" id="hud-sats">18 SATS</span>
+      </div>
+      <div class="telemetry-pill">
+        <i class="fa-solid fa-battery-three-quarters text-emerald"></i>
+        <span class="tele-label">DRONE BATT</span>
+        <span class="tele-val">94% (28m)</span>
+      </div>
+      <div class="telemetry-pill">
+        <i class="fa-solid fa-cloud-sun text-amber"></i>
+        <span class="tele-label">현장 기상</span>
+        <span class="tele-val">맑음 29°C / 습도 65%</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <button id="btn-open-report" class="btn-action primary">
+        <i class="fa-solid fa-file-signature"></i> [별지서식2] 일일작업결과표 작성
+      </button>
+      <button id="btn-fullscreen" class="btn-action icon-only" title="전체화면 전환">
+        <i class="fa-solid fa-expand"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Viewport Layout -->
+  <main class="main-layout">
+    
+    <!-- LEFT SIDEBAR: Drone Flight Controls & Zone Management -->
+    <aside class="sidebar left-sidebar">
+      <div class="sidebar-section">
+        <div class="section-title">
+          <i class="fa-solid fa-gamepad"></i> 드론 비행 카메라 조종
+        </div>
+        
+        <!-- Flight Tour Modes -->
+        <div class="flight-modes-grid">
+          <button class="mode-btn active" data-mode="tour">
+            <i class="fa-solid fa-plane-departure"></i>
+            <span>강줄기 순회 비행</span>
+            <small>1→2→3구간 자율 비행</small>
+          </button>
+          <button class="mode-btn" data-mode="overview">
+            <i class="fa-solid fa-binoculars"></i>
+            <span>전체 부감 뷰</span>
+            <small>천내리습지 14.5만㎡</small>
+          </button>
+          <button class="mode-btn" data-mode="zone-1">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <span>1구간 (A구간)</span>
+            <small>제원대교 28,836㎡</small>
+          </button>
+          <button class="mode-btn" data-mode="zone-2">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <span>2구간 (B구간)</span>
+            <small>습지 중심 72,803㎡</small>
+          </button>
+          <button class="mode-btn" data-mode="zone-3">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <span>3구간 (C구간)</span>
+            <small>습지 하류 43,167㎡</small>
+          </button>
+        </div>
+
+        <!-- Camera Sliders -->
+        <div class="camera-sliders">
+          <div class="slider-item">
+            <div class="slider-label">
+              <span><i class="fa-solid fa-arrow-up-from-ground-water"></i> 카메라 고도 (ALT)</span>
+              <span id="val-altitude">180m</span>
+            </div>
+            <input type="range" id="slider-altitude" min="60" max="600" value="180" step="10">
+          </div>
+          <div class="slider-item">
+            <div class="slider-label">
+              <span><i class="fa-solid fa-camera-rotate"></i> 드론 틸트 각도 (PITCH)</span>
+              <span id="val-pitch">65°</span>
+            </div>
+            <input type="range" id="slider-pitch" min="0" max="80" value="65" step="5">
+          </div>
+        </div>
+      </div>
+
+      <!-- Zone Information Cards -->
+      <div class="sidebar-section">
+        <div class="section-title">
+          <i class="fa-solid fa-map-location-dot"></i> 구간별 식생 및 작업 현황
+        </div>
+        
+        <div class="zone-cards-list" id="zone-cards-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Photo Layer Filters -->
+      <div class="sidebar-section photo-filters-section">
+        <div class="section-title">
+          <i class="fa-solid fa-camera"></i> 현장 사진 핀포인트 필터 (<span id="photo-count">0</span>장)
+        </div>
+        <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">전체</button>
+          <button class="filter-pill" data-filter="2026-07-24">7월 24일</button>
+          <button class="filter-pill" data-filter="2026-08-06">8월 6일</button>
+          <button class="filter-pill" data-filter="before">작업 전</button>
+          <button class="filter-pill" data-filter="during">작업 중</button>
+          <button class="filter-pill" data-filter="after">작업 후</button>
+        </div>
+        <div class="recent-photos-strip" id="photos-thumbnail-strip">
+          <!-- Thumbnail strip -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER STAGE: 3D Map + Drone HUD Overlay -->
+    <section class="center-stage">
+      <div id="drone-map" class="map-viewport"></div>
+
+      <!-- Tactical Drone HUD Overlay -->
+      <div class="drone-hud-overlay pointer-events-none">
+        <!-- Top Horizon Bar -->
+        <div class="hud-top-bar">
+          <div class="hud-compass" id="hud-compass-display">
+            <span class="compass-marker">N</span>
+            <span class="compass-marker">030</span>
+            <span class="compass-marker">060</span>
+            <span class="compass-marker center-indicator">HDG 085°</span>
+            <span class="compass-marker">120</span>
+            <span class="compass-marker">150</span>
+            <span class="compass-marker">S</span>
+          </div>
+        </div>
+
+        <!-- Center Crosshair & Pitch Ladder -->
+        <div class="hud-center-sight">
+          <div class="crosshair-box">
+            <div class="cross-line top"></div>
+            <div class="cross-line bottom"></div>
+            <div class="cross-line left"></div>
+            <div class="cross-line right"></div>
+            <div class="cross-dot"></div>
+          </div>
+          <div class="hud-horizon-line" id="hud-horizon"></div>
+        </div>
+
+        <!-- Left Telemetry OSD -->
+        <div class="hud-telemetry left-tele">
+          <div class="osd-row"><span class="osd-tag">SPD</span> <span class="osd-val" id="hud-speed">12.4 m/s</span></div>
+          <div class="osd-row"><span class="osd-tag">ALT</span> <span class="osd-val" id="hud-alt-txt">180.5 m</span></div>
+          <div class="osd-row"><span class="osd-tag">DIS</span> <span class="osd-val">0.8 km</span></div>
+        </div>
+
+        <!-- Right Telemetry OSD -->
+        <div class="hud-telemetry right-tele">
+          <div class="osd-row"><span class="osd-tag">LAT</span> <span class="osd-val" id="hud-lat">36.107111° N</span></div>
+          <div class="osd-row"><span class="osd-tag">LON</span> <span class="osd-val" id="hud-lon">127.574139° E</span></div>
+          <div class="osd-row"><span class="osd-tag">FOV</span> <span class="osd-val">84° WIDE</span></div>
+        </div>
+
+        <!-- Bottom Drone Timeline Controller (Interactive) -->
+        <div class="hud-bottom-timeline pointer-events-auto">
+          <div class="timeline-header">
+            <div class="time-title">
+              <i class="fa-solid fa-clock-rotate-left"></i> 작업 일자별 제거 진행 타임라인
+            </div>
+            <div class="time-play-controls">
+              <button id="btn-timeline-play" class="btn-time-play"><i class="fa-solid fa-play"></i> 자동 재생</button>
+            </div>
+          </div>
+          <div class="timeline-steps" id="timeline-steps-container">
+            <!-- Step markers -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDEBAR: Removal Analytics & Daily Results -->
+    <aside class="sidebar right-sidebar">
+      
+      <!-- KPI Stats Grid -->
+      <div class="sidebar-section">
+        <div class="section-title">
+          <i class="fa-solid fa-chart-pie"></i> 사업 총괄 진척 현황
+        </div>
+        
+        <div class="kpi-grid">
+          <div class="kpi-card primary">
+            <div class="kpi-icon"><i class="fa-solid fa-vector-square"></i></div>
+            <div class="kpi-body">
+              <div class="kpi-title">누적 제거 면적</div>
+              <div class="kpi-value"><span id="kpi-cum-area">66,000</span> <small>㎡</small></div>
+              <div class="kpi-sub">목표 144,806 ㎡ 대비 <b id="kpi-area-pct" class="text-cyan">45.6%</b></div>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-fill cyan" id="bar-area-fill" style="width: 45.6%;"></div>
+            </div>
+          </div>
+
+          <div class="kpi-card accent">
+            <div class="kpi-icon"><i class="fa-solid fa-weight-hanging"></i></div>
+            <div class="kpi-body">
+              <div class="kpi-title">누적 제거 중량</div>
+              <div class="kpi-value"><span id="kpi-cum-kg">880</span> <small>kg</small></div>
+              <div class="kpi-sub">총 예상 18,830 kg 기준</div>
+            </div>
+          </div>
+
+          <div class="kpi-card info">
+            <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="kpi-body">
+              <div class="kpi-title">투입 누적 인력</div>
+              <div class="kpi-value"><span id="kpi-cum-workers">10</span> <small>명</small></div>
+              <div class="kpi-sub">계획 연인원 45명 중</div>
+            </div>
+          </div>
+
+          <div class="kpi-card emerald">
+            <div class="kpi-icon"><i class="fa-solid fa-won-sign"></i></div>
+            <div class="kpi-body">
+              <div class="kpi-title">예산 집행률</div>
+              <div class="kpi-value"><span id="kpi-cum-budget">1,294,488</span> <small>원</small></div>
+              <div class="kpi-sub">총 15,000,000원 대비 <b class="text-emerald">8.6%</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="sidebar-section">
+        <div class="section-title">
+          <i class="fa-solid fa-chart-simple"></i> 제거 수종 및 작업 방식 통계
+        </div>
+        <div class="chart-container">
+          <canvas id="speciesChart" height="150"></canvas>
+        </div>
+        <div class="chart-container" style="margin-top: 12px;">
+          <canvas id="methodChart" height="130"></canvas>
+        </div>
+      </div>
+
+      <!-- Daily Work Logs List -->
+      <div class="sidebar-section">
+        <div class="section-title flex-between">
+          <span><i class="fa-solid fa-calendar-check"></i> 일일작업결과표 목록</span>
+          <button id="btn-export-excel" class="btn-xs"><i class="fa-solid fa-file-excel"></i> 엑셀 내보내기</button>
+        </div>
+        <div class="work-logs-list" id="work-logs-container">
+          <!-- Populated from Excel JSON -->
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- MODAL 1: High-Resolution Photo Viewer with GPS & Metadata -->
+  <div id="photo-modal" class="modal-overlay hidden">
+    <div class="modal-card photo-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i class="fa-solid fa-camera text-cyan"></i>
+          <h3 id="modal-photo-title">현장 작업 사진 상세 정보</h3>
+        </div>
+        <button class="modal-close-btn" id="btn-close-photo-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body photo-modal-body">
+        <div class="photo-preview-box">
+          <img id="modal-photo-img" src="" alt="현장 사진">
+          <div class="photo-stage-tag" id="modal-photo-stage">작업 중</div>
+        </div>
+        <div class="photo-meta-sidebar">
+          <h4><i class="fa-solid fa-circle-info"></i> GPS 및 촬영 메타데이터</h4>
+          <table class="meta-table">
+            <tr>
+              <th>파일명</th>
+              <td id="modal-meta-filename">-</td>
+            </tr>
+            <tr>
+              <th>촬영일시</th>
+              <td id="modal-meta-time">-</td>
+            </tr>
+            <tr>
+              <th>위치 좌표</th>
+              <td id="modal-meta-gps">-</td>
+            </tr>
+            <tr>
+              <th>촬영 고도 / 방위</th>
+              <td id="modal-meta-alt-bearing">-</td>
+            </tr>
+            <tr>
+              <th>작업 구간</th>
+              <td id="modal-meta-zone">-</td>
+            </tr>
+          </table>
+
+          <div class="photo-action-buttons">
+            <button id="btn-locate-on-map" class="btn-action primary block">
+              <i class="fa-solid fa-location-arrow"></i> 이 지점으로 드론 이동
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: [별지서식 2] 일일작업결과표 작성 & 인쇄 모달 -->
+  <div id="report-modal" class="modal-overlay hidden">
+    <div class="modal-card report-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i class="fa-solid fa-file-signature text-emerald"></i>
+          <h3>[별지서식 2] 생태계교란식물 제거사업 일일작업결과표 작성</h3>
+        </div>
+        <div class="modal-header-actions">
+          <button id="btn-print-report" class="btn-action secondary"><i class="fa-solid fa-print"></i> 인쇄 / PDF 출력</button>
+          <button class="modal-close-btn" id="btn-close-report-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="modal-body report-modal-body" id="printable-report-area">
+        <!-- Standard Government Form [별지서식 2] -->
+        <div class="gov-form-container">
+          <div class="gov-form-header">
+            <span class="form-tag">[별지서식 2]</span>
+            <h2>생태계교란식물 제거사업 일일작업결과표</h2>
+            <div class="form-sub-info">사업명: 2026년 금강유역환경청 천내리 생태계교란식물 제거사업</div>
+          </div>
+
+          <form id="daily-work-form" class="gov-form-table-wrap">
+            <table class="gov-table">
+              <tr>
+                <th class="req">대상식물</th>
+                <td><input type="text" id="form-plant" value="가시박, 환삼덩굴" required></td>
+                <th class="req">작업 장소</th>
+                <td><input type="text" id="form-location" value="충청남도 금산군 천내리습지 일대" required></td>
+              </tr>
+              <tr>
+                <th>작업 좌표</th>
+                <td><input type="text" id="form-coords" value="N 36°06′25.6″  E 127°34′26.9″"></td>
+                <th class="req">작업 일자</th>
+                <td><input type="date" id="form-date" value="2026-08-18" required></td>
+              </tr>
+              <tr>
+                <th>날 씨</th>
+                <td>
+                  <select id="form-weather">
+                    <option value="맑음" selected>맑음</option>
+                    <option value="흐림">흐림</option>
+                    <option value="비">비</option>
+                  </select>
+                </td>
+                <th>토양습도</th>
+                <td>
+                  <select id="form-soil">
+                    <option value="건조">건조</option>
+                    <option value="반건조" selected>반건조</option>
+                    <option value="습윤">습윤</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>생육 단계</th>
+                <td colspan="3">
+                  <div class="checkbox-group">
+                    <label><input type="checkbox" name="stage" value="로제트"> 로제트</label>
+                    <label><input type="checkbox" name="stage" value="영양생장" checked> 영양생장</label>
+                    <label><input type="checkbox" name="stage" value="개화"> 개화</label>
+                    <label><input type="checkbox" name="stage" value="결실"> 결실</label>
+                    <label><input type="checkbox" name="stage" value="고사"> 고사</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>제거 방법</th>
+                <td colspan="3">
+                  <div class="checkbox-group">
+                    <label><input type="checkbox" name="method" value="손으로 뿌리 뽑기"> 손으로 뿌리 뽑기</label>
+                    <label><input type="checkbox" name="method" value="낫으로 베기" checked> 낫으로 베기</label>
+                    <label><input type="checkbox" name="method" value="예초기 사용" checked> 예초기 사용</label>
+                    <label><input type="checkbox" name="method" value="기타"> 기타</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="req">제거 면적 (㎡)</th>
+                <td><input type="number" id="form-area" value="800" step="10" required></td>
+                <th class="req">제거량 (kg)</th>
+                <td><input type="number" id="form-kg" value="800" step="10" required></td>
+              </tr>
+              <tr>
+                <th class="req">투입 인력</th>
+                <td><input type="number" id="form-workers" value="5" min="1" required> 명</td>
+                <th class="req">소요 시간</th>
+                <td><input type="number" id="form-hours" value="6" min="1" required> 시간</td>
+              </tr>
+              <tr>
+                <th>제거 후 처리방법</th>
+                <td colspan="3"><input type="text" id="form-disposal" value="현장 건조 및 비닐 피복 처리"></td>
+              </tr>
+              <tr>
+                <th>작업 세부 사항</th>
+                <td colspan="3"><textarea id="form-notes" rows="2">제2구간 중심부 가시박 대군락지 예초 및 뿌리 제거 작업 실시. 안전교육 완료 후 작업 진행.</textarea></td>
+              </tr>
+            </table>
+
+            <div class="photo-attachment-preview">
+              <div class="photo-attach-title">작업 전·중·후 사진 첨부</div>
+              <div class="photo-grid-3">
+                <div class="photo-box">
+                  <span class="photo-box-tag">작업 전</span>
+                  <div class="photo-box-img-wrap" id="box-img-before">
+                    <i class="fa-solid fa-image"></i>
+                    <span>사진 선택</span>
+                  </div>
+                </div>
+                <div class="photo-box">
+                  <span class="photo-box-tag">작업 중</span>
+                  <div class="photo-box-img-wrap" id="box-img-during">
+                    <i class="fa-solid fa-image"></i>
+                    <span>사진 선택</span>
+                  </div>
+                </div>
+                <div class="photo-box">
+                  <span class="photo-box-tag">작업 후</span>
+                  <div class="photo-box-img-wrap" id="box-img-after">
+                    <i class="fa-solid fa-image"></i>
+                    <span>사진 선택</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-submit-footer">
+              <button type="submit" class="btn-action primary large">
+                <i class="fa-solid fa-floppy-disk"></i> 결과표 등록 및 데이터 저장
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Scripts -->
+  <script src="drone-map.js"></script>
+  <script src="zone-overlay.js"></script>
+  <script src="photo-viewer.js"></script>
+  <script src="work-report.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
