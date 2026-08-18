@@ -23,15 +23,9 @@
     "photos_file": "data/photos.json",
     "kpis": {
       "total_target_area": 144806,
-      "cum_removed_area": 66000,
-      "progress_pct": 45.6,
-      "cum_removed_kg": 880,
-      "target_kg": 18830,
-      "cum_workers": 10,
-      "target_workers": 45,
+      "planned_rounds": 8,
       "total_budget": 15000000,
-      "spent_budget": 1294488,
-      "budget_pct": 8.6
+      "target_workers": 45
     },
     "flight_tour": [
       {
@@ -114,15 +108,9 @@
     "photos_file": "data/doowoong_photos.json",
     "kpis": {
       "total_target_area": 67050,
-      "cum_removed_area": 24500,
-      "progress_pct": 36.5,
-      "cum_removed_kg": 3450,
-      "target_kg": 12000,
-      "cum_workers": 12,
-      "target_workers": 35,
+      "planned_rounds": 4,
       "total_budget": 19500000,
-      "spent_budget": 5240000,
-      "budget_pct": 26.9
+      "target_workers": 35
     },
     "flight_tour": [
       {

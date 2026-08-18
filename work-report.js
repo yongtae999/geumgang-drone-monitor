@@ -42,13 +42,32 @@ class WorkReportManager {
     const kgElem = document.getElementById('kpi-cum-kg');
     const workersElem = document.getElementById('kpi-cum-workers');
     const budgetElem = document.getElementById('kpi-cum-budget');
+    const targetAreaTxt = document.getElementById('kpi-target-area-txt');
 
-    if (areaElem) areaElem.textContent = Number(this.kpis.cum_removed_area || 66000).toLocaleString();
-    if (pctElem) pctElem.textContent = `${this.kpis.progress_pct || 45.6}%`;
-    if (fillElem) fillElem.style.width = `${this.kpis.progress_pct || 45.6}%`;
-    if (kgElem) kgElem.textContent = Number(this.kpis.cum_removed_kg || 880).toLocaleString();
-    if (workersElem) workersElem.textContent = this.kpis.cum_workers || 10;
-    if (budgetElem) budgetElem.textContent = Number(this.kpis.spent_budget || 1294488).toLocaleString();
+    // Calculate actual cumulative stats from completed work logs
+    const completedLogs = this.workLogs.filter(log => log.is_completed === true);
+    
+    const cumArea = completedLogs.reduce((sum, l) => sum + (parseFloat(l.area_sqm) || 0), 0);
+    const cumKg = completedLogs.reduce((sum, l) => sum + (parseFloat(l.amount_kg) || 0), 0);
+    const cumWorkers = completedLogs.reduce((sum, l) => sum + (parseInt(l.workers) || 0), 0);
+    const completedRounds = completedLogs.length;
+    const plannedRounds = this.kpis.planned_rounds || 8;
+    const progressPct = ((completedRounds / plannedRounds) * 100).toFixed(1);
+
+    // Calculate budget: labor cost (daily wage ~226,122 KRW per worker)
+    const spentBudget = cumWorkers > 0 ? cumWorkers * 226122 : (this.kpis.spent_budget || 0);
+    const totalBudget = this.kpis.total_budget || 15000000;
+    const budgetPct = ((spentBudget / totalBudget) * 100).toFixed(1);
+
+    if (areaElem) areaElem.textContent = cumArea.toLocaleString();
+    if (pctElem) pctElem.textContent = `계획 ${plannedRounds}회 중 ${completedRounds}회 완료 (${progressPct}%)`;
+    if (fillElem) fillElem.style.width = `${progressPct}%`;
+    if (kgElem) kgElem.textContent = cumKg.toLocaleString();
+    if (workersElem) workersElem.textContent = cumWorkers;
+    if (budgetElem) budgetElem.textContent = spentBudget.toLocaleString();
+    if (targetAreaTxt && this.kpis.total_target_area) {
+      targetAreaTxt.textContent = `${(this.kpis.total_target_area / 10000).toFixed(1)}만 ㎡`;
+    }
   }
 
   renderCharts() {
