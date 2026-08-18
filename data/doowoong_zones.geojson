@@ -5,15 +5,15 @@
       "type": "Feature",
       "properties": {
         "id": "zone-1",
-        "name": "1구간 (수생식물 제거구역)",
-        "subname": "두웅습지 중심 수면부",
+        "name": "미국수련 제거구역",
+        "subname": "두웅습지 개방수면부",
         "area_sqm": 18500,
         "target_species": [
           "미국수련",
           "마름"
         ],
         "density": "수면 피도 65%",
-        "priority": "지하경 굴취 제거",
+        "priority": "지하경(뿌리줄기) 집중 굴취",
         "color": "#38bdf8",
         "completed_area": 12000,
         "progress_pct": 64.9
@@ -54,15 +54,14 @@
       "type": "Feature",
       "properties": {
         "id": "zone-2",
-        "name": "2구간 (양서류 포획구역)",
-        "subname": "수변 갈대·데크 탐방로 주변",
+        "name": "황소개구리 포획구역",
+        "subname": "수변 갈대·부들 군락지",
         "area_sqm": 26500,
         "target_species": [
-          "황소개구리(성체·유생·난괴)",
-          "마름"
+          "황소개구리(성체·유생·난괴)"
         ],
-        "density": "포획통발 15개소 가동",
-        "priority": "성체·난괴 집중 수거",
+        "density": "포획통발 15개소 설치 가동",
+        "priority": "성체·난괴 집중 수거 (금개구리 혼획방지)",
         "color": "#ef4444",
         "completed_area": 12500,
         "progress_pct": 47.2
@@ -107,17 +106,18 @@
       "type": "Feature",
       "properties": {
         "id": "zone-3",
-        "name": "3구간 (보호종 완충구역)",
-        "subname": "신두리 사구 배후 금개구리 서식지",
+        "name": "기타 정비구역",
+        "subname": "탐방로 데크변 및 완충지대",
         "area_sqm": 22050,
         "target_species": [
-          "금개구리(Ⅱ급 보호)"
+          "고사목·수생 잔재물 정리",
+          "금개구리 보호"
         ],
-        "density": "혼획방지 정밀 모니터링",
-        "priority": "생태계 훼손 방지",
+        "density": "환경정비 및 안내판 관리",
+        "priority": "생태계 환경 정비 및 피복 처리",
         "color": "#10b981",
-        "completed_area": 0,
-        "progress_pct": 0.0
+        "completed_area": 6500,
+        "progress_pct": 29.5
       },
       "geometry": {
         "type": "Polygon",

@@ -107,6 +107,47 @@ document.addEventListener('DOMContentLoaded', async () => {
       photoMgr.updatePhotos(photosData);
       reportMgr.updateData(workLogsData, kpisData);
     }
+
+    // 5. Update Flight Mode Button Labels
+    const labels = currentProject.button_labels;
+    const bTour = document.querySelector('.mode-btn[data-mode="tour"]');
+    const bOver = document.querySelector('.mode-btn[data-mode="overview"]');
+    const bZ1 = document.querySelector('.mode-btn[data-mode="zone-1"]');
+    const bZ2 = document.querySelector('.mode-btn[data-mode="zone-2"]');
+    const bZ3 = document.querySelector('.mode-btn[data-mode="zone-3"]');
+
+    if (labels) {
+      if (bTour && labels["tour"]) bTour.querySelector('span').textContent = labels["tour"];
+      if (bOver && labels["overview"]) bOver.querySelector('span').textContent = labels["overview"];
+      if (bZ1 && labels["zone-1"]) {
+        bZ1.querySelector('span').textContent = labels["zone-1"];
+        bZ1.querySelector('small').textContent = labels["zone-1-sub"] || '';
+      }
+      if (bZ2 && labels["zone-2"]) {
+        bZ2.querySelector('span').textContent = labels["zone-2"];
+        bZ2.querySelector('small').textContent = labels["zone-2-sub"] || '';
+      }
+      if (bZ3 && labels["zone-3"]) {
+        bZ3.querySelector('span').textContent = labels["zone-3"];
+        bZ3.querySelector('small').textContent = labels["zone-3-sub"] || '';
+      }
+    } else {
+      // Default Cheonnaeri Labels
+      if (bTour) bTour.querySelector('span').textContent = "강줄기 순회 비행";
+      if (bOver) bOver.querySelector('span').textContent = "전체 부감 뷰";
+      if (bZ1) {
+        bZ1.querySelector('span').textContent = "1구간 (A구간)";
+        bZ1.querySelector('small').textContent = "제원대교 28,836㎡";
+      }
+      if (bZ2) {
+        bZ2.querySelector('span').textContent = "2구간 (B구간)";
+        bZ2.querySelector('small').textContent = "습지 중심 72,803㎡";
+      }
+      if (bZ3) {
+        bZ3.querySelector('span').textContent = "3구간 (C구간)";
+        bZ3.querySelector('small').textContent = "습지 하류 43,167㎡";
+      }
+    }
   }
 
   // Map Loaded Event
