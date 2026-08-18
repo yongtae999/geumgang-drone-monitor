@@ -2,8 +2,7 @@
   {
     "id": 1,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 중심부 (2구간)",
-    "zone": "2구간 (B구간)",
+    "location": "천내리 습지 일대",
     "work_date": "2026-07-24",
     "is_completed": true,
     "method": "손으로 뿌리뽑기",
@@ -21,8 +20,7 @@
   {
     "id": 2,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 중심부 (2구간)",
-    "zone": "2구간 (B구간)",
+    "location": "천내리 습지 일대",
     "work_date": "2026-08-06",
     "is_completed": true,
     "method": "낫으로 베기, 예초기 사용",
@@ -39,8 +37,7 @@
   {
     "id": 3,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 2구간",
-    "zone": "2구간 (B구간)",
+    "location": "천내리 습지 일대",
     "work_date": "2026-08-20 (예정)",
     "is_completed": false,
     "method": "손으로 뿌리뽑기, 낫으로 베기",
@@ -57,8 +54,7 @@
   {
     "id": 4,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 1구간",
-    "zone": "1구간 (A구간)",
+    "location": "천내리 습지 일대",
     "work_date": "2026-09-05 (예정)",
     "is_completed": false,
     "method": "낫으로 베기",
@@ -75,8 +71,7 @@
   {
     "id": 5,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 1구간",
-    "zone": "1구간 (A구간)",
+    "location": "천내리 습지 일대",
     "work_date": "2026-09-20 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",
@@ -93,8 +88,7 @@
   {
     "id": 6,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 3구간",
-    "zone": "3구간 (C구간)",
+    "location": "천내리 습지 일대",
     "work_date": "2026-10-10 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",
@@ -111,8 +105,7 @@
   {
     "id": 7,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 3구간",
-    "zone": "3구간 (C구간)",
+    "location": "천내리 습지 일대",
     "work_date": "2026-10-25 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",
@@ -130,8 +123,7 @@
   {
     "id": 8,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "천내리습지 하류 및 전체",
-    "zone": "3구간 (C구간)",
+    "location": "천내리 습지 일대",
     "work_date": "2026-11-15 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",

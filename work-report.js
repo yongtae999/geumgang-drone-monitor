@@ -175,10 +175,12 @@ class WorkReportManager {
       const item = document.createElement('div');
       item.className = 'work-log-item';
 
+      const locName = log.location ? log.location.split(' ').slice(-2).join(' ') : '천내리 습지 일대';
+
       item.innerHTML = `
         <div>
           <div class="log-date">${log.id}회차 · ${log.work_date}</div>
-          <div class="log-info">${log.zone} (${Number(log.area_sqm).toLocaleString()}㎡ / ${log.amount_kg}kg)</div>
+          <div class="log-info">${log.location || '사업 대상지 일원'} · <b>${Number(log.area_sqm).toLocaleString()}㎡</b> (${log.amount_kg}kg)</div>
         </div>
         <div>
           <span class="log-status-tag done">완료</span>
@@ -201,23 +203,23 @@ class WorkReportManager {
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
 
     const timelineData = isDoowoong ? [
-      { step: 1, date: '08.10 (착수)', label: '착수 및 사전교육', completed: true, focus: 'overview' },
-      { step: 2, date: '08.15 (1차)', label: '식물·양서류 실태조사', completed: false, focus: 'zone-1' },
-      { step: 3, date: '08.20 (2차)', label: '포획통발 15개소 설치', completed: false, focus: 'zone-2' },
+      { step: 1, date: '08.10 (착수)', label: '착수 및 사전 안전교육', completed: true, focus: 'overview' },
+      { step: 2, date: '08.15 (1차)', label: '생물종 실태 정밀조사', completed: false, focus: 'zone-1' },
+      { step: 3, date: '08.20 (2차)', label: '황소개구리 통발 가동', completed: false, focus: 'zone-2' },
       { step: 4, date: '09.05 (3차)', label: '미국수련 지하경 굴취', completed: false, focus: 'zone-1' },
-      { step: 5, date: '09.25 (4차)', label: '황소개구리 집중포획', completed: false, focus: 'zone-2' },
+      { step: 5, date: '09.25 (4차)', label: '성체·유생 집중 포획', completed: false, focus: 'zone-2' },
       { step: 6, date: '10.15 (5차)', label: '2차 실태조사/중간보고', completed: false, focus: 'overview' },
-      { step: 7, date: '11.10 (6차)', label: '수생식물 잔재물 수거', completed: false, focus: 'zone-3' },
-      { step: 8, date: '11.30 (완료)', label: '종합 사업완료보고', completed: false, focus: 'overview' }
+      { step: 7, date: '11.10 (6차)', label: '수생 잔재물 수거정비', completed: false, focus: 'zone-3' },
+      { step: 8, date: '11.30 (완료)', label: '사업 종합완료보고', completed: false, focus: 'overview' }
     ] : [
-      { step: 1, date: '07.24 (1차)', label: '2구간 (B구간) 발아기', completed: true, focus: 'zone-2' },
-      { step: 2, date: '08.06 (2차)', label: '2구간 (B구간) 성장기', completed: true, focus: 'zone-2' },
-      { step: 3, date: '08.20 (3차)', label: '2구간 (B구간) 집중예초', completed: false, focus: 'zone-2' },
-      { step: 4, date: '09.05 (4차)', label: '1구간 (A구간) 개화전', completed: false, focus: 'zone-1' },
-      { step: 5, date: '09.20 (5차)', label: '3구간 (C구간) 1차제거', completed: false, focus: 'zone-3' },
-      { step: 6, date: '10.10 (6차)', label: '2구간 (B구간) 결실방지', completed: false, focus: 'zone-2' },
-      { step: 7, date: '10.25 (7차)', label: '3구간 (C구간) 결실제거', completed: false, focus: 'zone-3' },
-      { step: 8, date: '11.15 (8차)', label: '천내리 종합 피복/보고', completed: false, focus: 'overview' }
+      { step: 1, date: '07.24 (1차)', label: '발아기 (손 뿌리뽑기)', completed: true, focus: 'overview' },
+      { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
+      { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초', completed: false, focus: 'overview' },
+      { step: 4, date: '09.05 (4차)', label: '개화전 집중 차단', completed: false, focus: 'overview' },
+      { step: 5, date: '09.20 (5차)', label: '개화기 2차 제거', completed: false, focus: 'overview' },
+      { step: 6, date: '10.10 (6차)', label: '결실방지 집중 작업', completed: false, focus: 'overview' },
+      { step: 7, date: '10.25 (7차)', label: '결실제거 및 잔재정리', completed: false, focus: 'overview' },
+      { step: 8, date: '11.15 (8차)', label: '최종 피복 및 결과보고', completed: false, focus: 'overview' }
     ];
 
     timelineData.forEach((node, idx) => {
