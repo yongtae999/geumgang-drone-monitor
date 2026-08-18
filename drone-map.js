@@ -155,7 +155,7 @@ class DroneMapController {
       case 'zone-1':
         // Zone 1
         this.map.flyTo({
-          center: isDoowoong ? [126.1955, 36.8276] : [127.5705, 36.1095],
+          center: isDoowoong ? [126.1957, 36.8358] : [127.5705, 36.1095],
           zoom: isDoowoong ? 17.5 : 16.2,
           pitch: 68,
           bearing: isDoowoong ? 45 : 130,
@@ -167,7 +167,7 @@ class DroneMapController {
       case 'zone-2':
         // Zone 2
         this.map.flyTo({
-          center: isDoowoong ? [126.1962, 36.8282] : [127.5760, 36.1055],
+          center: isDoowoong ? [126.1965, 36.8364] : [127.5760, 36.1055],
           zoom: isDoowoong ? 17.5 : 16.4,
           pitch: 70,
           bearing: isDoowoong ? 55 : 110,
@@ -179,7 +179,7 @@ class DroneMapController {
       case 'zone-3':
         // Zone 3
         this.map.flyTo({
-          center: isDoowoong ? [126.1968, 36.8288] : [127.5805, 36.1040],
+          center: isDoowoong ? [126.1970, 36.8370] : [127.5805, 36.1040],
           zoom: isDoowoong ? 17.0 : 16.0,
           pitch: 65,
           bearing: isDoowoong ? 60 : 90,
