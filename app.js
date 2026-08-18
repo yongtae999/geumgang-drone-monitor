@@ -136,16 +136,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (bTour) bTour.querySelector('span').textContent = "강줄기 순회 비행";
       if (bOver) bOver.querySelector('span').textContent = "전체 부감 뷰";
       if (bZ1) {
-        bZ1.querySelector('span').textContent = "1구간 (A구간)";
-        bZ1.querySelector('small').textContent = "제원대교 28,836㎡";
+        bZ1.querySelector('span').textContent = "제원대교 상류";
+        bZ1.querySelector('small').textContent = "상류 진입부 28,836㎡";
       }
       if (bZ2) {
-        bZ2.querySelector('span').textContent = "2구간 (B구간)";
-        bZ2.querySelector('small').textContent = "습지 중심 72,803㎡";
+        bZ2.querySelector('span').textContent = "습지 중심부";
+        bZ2.querySelector('small').textContent = "가시박 대군락 72,803㎡";
       }
       if (bZ3) {
-        bZ3.querySelector('span').textContent = "3구간 (C구간)";
-        bZ3.querySelector('small').textContent = "습지 하류 43,167㎡";
+        bZ3.querySelector('span').textContent = "습지 하류부";
+        bZ3.querySelector('small').textContent = "하류 차단구역 43,167㎡";
       }
     }
   }
