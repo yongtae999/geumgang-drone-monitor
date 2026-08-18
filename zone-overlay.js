@@ -1,6 +1,6 @@
 /**
  * Zone Overlay Module
- * Manages 1, 2, 3 Cheonnae-ri Zones & Removal Progression Heatmaps
+ * Manages 1, 2, 3 Cheonnae-ri Zones & Removal Progression Status
  */
 
 class ZoneOverlayManager {
@@ -92,6 +92,8 @@ class ZoneOverlayManager {
       const props = e.features[0].properties;
       const coordinates = e.lngLat;
 
+      const hasWork = props.completed_area > 0;
+
       const popupHtml = `
         <div class="drone-popup">
           <div class="popup-header" style="border-left: 3px solid ${props.color}">
@@ -99,10 +101,11 @@ class ZoneOverlayManager {
             <span class="popup-sub">${props.subname}</span>
           </div>
           <div class="popup-body">
-            <p><b>총 면적:</b> ${Number(props.area_sqm).toLocaleString()} ㎡</p>
-            <p><b>교란식물:</b> ${props.target_species}</p>
+            <p><b>구간 면적:</b> ${Number(props.area_sqm).toLocaleString()} ㎡</p>
+            <p><b>교란 생물:</b> ${props.target_species}</p>
             <p><b>식생 밀도:</b> <span class="badge-density">${props.density}</span></p>
-            <p><b>제거 진척률:</b> <b>${props.progress_pct}%</b> (${Number(props.completed_area).toLocaleString()}㎡ 완료)</p>
+            <p><b>작업 현황:</b> <b style="color: ${hasWork ? '#38bdf8' : '#94a3b8'};">${props.status_label || (hasWork ? '작업 완료 (지속관리)' : '작업 대기')}</b></p>
+            ${hasWork ? `<p><b>누적 실적:</b> 1차·2차 누적 ${Number(props.completed_area).toLocaleString()}㎡ (수거 ${props.removed_kg || 880}kg)</p>` : '<p><b>작업 계획:</b> 향후 회차 투입 예정</p>'}
           </div>
         </div>
       `;
@@ -135,21 +138,23 @@ class ZoneOverlayManager {
       card.style.borderLeftColor = p.color;
       card.dataset.zoneId = p.id;
 
+      const hasWork = p.completed_area > 0;
+      const statusText = p.status_label || (hasWork ? '1·2차 작업 (지속관리)' : '작업 대기 (미착수)');
+      const summaryText = p.work_summary || (hasWork ? `누적 ${Number(p.completed_area).toLocaleString()}㎡ 작업 (880kg)` : '향후 회차 투입 예정');
+
       card.innerHTML = `
         <div class="zone-card-header">
           <span class="zone-card-title">${p.name}</span>
-          <span class="zone-badge" style="color: ${p.color}; border: 1px solid ${p.color}40">${p.priority}</span>
+          <span class="zone-badge" style="color: ${hasWork ? '#38bdf8' : '#94a3b8'}; border: 1px solid ${hasWork ? '#38bdf840' : '#ffffff20'}; background: ${hasWork ? 'rgba(56, 189, 248, 0.1)' : 'rgba(255,255,255,0.05)'}">
+            ${statusText}
+          </span>
         </div>
         <div class="zone-card-meta">
           <span>${p.subname}</span>
           <span><b>${Number(p.area_sqm).toLocaleString()}</b> ㎡</span>
         </div>
-        <div class="zone-card-meta">
-          <span>식생: ${p.target_species[0]}</span>
-          <span class="text-cyan"><b>${p.progress_pct}%</b> 완료</span>
-        </div>
-        <div class="zone-progress-wrap">
-          <div class="zone-progress-fill" style="width: ${p.progress_pct}%; background: ${p.color}"></div>
+        <div class="zone-card-meta" style="margin-top: 4px; font-size: 0.72rem; color: ${hasWork ? '#38bdf8' : 'var(--text-muted)'};">
+          <span><i class="fa-solid fa-clipboard-check"></i> ${summaryText}</span>
         </div>
       `;
 
