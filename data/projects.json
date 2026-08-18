@@ -102,15 +102,15 @@
     "total_area_sqm": 67050,
     "total_budget": 19500000,
     "target_kg": 12000,
-    "target_workers": 35,
+    "target_workers": 58,
     "zones_file": "data/doowoong_zones.geojson",
     "work_logs_file": "data/doowoong_work_logs.json",
     "photos_file": "data/doowoong_photos.json",
     "kpis": {
       "total_target_area": 67050,
-      "planned_rounds": 4,
+      "planned_rounds": 26,
       "total_budget": 19500000,
-      "target_workers": 35
+      "target_workers": 58
     },
     "flight_tour": [
       {
