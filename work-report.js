@@ -79,10 +79,10 @@ class WorkReportManager {
       if (this.speciesChart) this.speciesChart.destroy();
 
       const chartLabels = isDoowoong 
-        ? ['미국수련 (수생식물)', '황소개구리 (양서류)', '마름/기타']
+        ? ['황소개구리', '미국수련', '기타 (마름 등)']
         : ['가시박 (68%)', '환삼덩굴 (22%)', '돼지풀 (10%)'];
-      const chartData = isDoowoong ? [50, 35, 15] : [68, 22, 10];
-      const chartColors = isDoowoong ? ['#38bdf8', '#ef4444', '#10b981'] : ['#ef4444', '#f59e0b', '#06b6d4'];
+      const chartData = isDoowoong ? [45, 40, 15] : [68, 22, 10];
+      const chartColors = isDoowoong ? ['#ef4444', '#38bdf8', '#10b981'] : ['#ef4444', '#f59e0b', '#06b6d4'];
 
       this.speciesChart = new Chart(ctx1, {
         type: 'doughnut',
@@ -293,10 +293,10 @@ class WorkReportManager {
     const formNotes = document.getElementById('form-notes');
 
     if (isDoowoong) {
-      if (formPlant) formPlant.value = '미국수련, 황소개구리';
+      if (formPlant) formPlant.value = '황소개구리, 미국수련, 기타 (마름 등)';
       if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두해변길 291-30 (두웅습지)';
       if (formCoords) formCoords.value = 'N 36°50′11.1″  E 126°11′45.8″';
-      if (formNotes) formNotes.value = '두웅습지 미국수련 뿌리줄기(지하경) 굴취 및 황소개구리 포획통발 가동. 금개구리 혼획 방지 안전 수칙 준수.';
+      if (formNotes) formNotes.value = '두웅습지 황소개구리 포획통발 가동 및 미국수련 뿌리줄기(지하경) 굴취. 금개구리 혼획 방지 안전 수칙 준수.';
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
       if (formLoc) formLoc.value = '충청남도 금산군 제원면 천내리습지 일대';
