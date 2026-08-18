@@ -18,8 +18,8 @@
         "start_coords": "N 36°06′42.8″ E 127°34′03.6″",
         "end_coords": "N 36°06′25.6″ E 127°34′26.9″",
         "color": "#38bdf8",
-        "completed_area": 18000,
-        "progress_pct": 62.4
+        "completed_area": 0,
+        "progress_pct": 0.0
       },
       "geometry": {
         "type": "Polygon",
@@ -77,8 +77,8 @@
         "start_coords": "N 36°06′25.6″ E 127°34′26.9″",
         "end_coords": "N 36°06′18.2″ E 127°34′42.9″",
         "color": "#f87171",
-        "completed_area": 48000,
-        "progress_pct": 65.9
+        "completed_area": 66000,
+        "progress_pct": 90.7
       },
       "geometry": {
         "type": "Polygon",

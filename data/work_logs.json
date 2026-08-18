@@ -2,8 +2,8 @@
   {
     "id": 1,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 제원대교 상류",
-    "zone": "1구간 (A구간)",
+    "location": "충남 금산군 천내리습지 중심부 (2구간)",
+    "zone": "2구간 (B구간)",
     "work_date": "2026-07-24",
     "is_completed": true,
     "method": "손으로 뿌리뽑기",
@@ -21,7 +21,7 @@
   {
     "id": 2,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 중심부",
+    "location": "충남 금산군 천내리습지 중심부 (2구간)",
     "zone": "2구간 (B구간)",
     "work_date": "2026-08-06",
     "is_completed": true,
@@ -57,8 +57,8 @@
   {
     "id": 4,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "충남 금산군 천내리습지 2구간",
-    "zone": "2구간 (B구간)",
+    "location": "충남 금산군 천내리습지 1구간",
+    "zone": "1구간 (A구간)",
     "work_date": "2026-09-05 (예정)",
     "is_completed": false,
     "method": "낫으로 베기",

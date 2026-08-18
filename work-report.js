@@ -210,11 +210,11 @@ class WorkReportManager {
       { step: 7, date: '11.10 (6차)', label: '수생식물 잔재물 수거', completed: false, focus: 'zone-3' },
       { step: 8, date: '11.30 (완료)', label: '종합 사업완료보고', completed: false, focus: 'overview' }
     ] : [
-      { step: 1, date: '07.24 (1차)', label: '1구간 (A구간) 발아기', completed: true, focus: 'zone-1' },
+      { step: 1, date: '07.24 (1차)', label: '2구간 (B구간) 발아기', completed: true, focus: 'zone-2' },
       { step: 2, date: '08.06 (2차)', label: '2구간 (B구간) 성장기', completed: true, focus: 'zone-2' },
       { step: 3, date: '08.20 (3차)', label: '2구간 (B구간) 집중예초', completed: false, focus: 'zone-2' },
-      { step: 4, date: '09.05 (4차)', label: '3구간 (C구간) 개화전', completed: false, focus: 'zone-3' },
-      { step: 5, date: '09.20 (5차)', label: '1구간 (A구간) 2차제거', completed: false, focus: 'zone-1' },
+      { step: 4, date: '09.05 (4차)', label: '1구간 (A구간) 개화전', completed: false, focus: 'zone-1' },
+      { step: 5, date: '09.20 (5차)', label: '3구간 (C구간) 1차제거', completed: false, focus: 'zone-3' },
       { step: 6, date: '10.10 (6차)', label: '2구간 (B구간) 결실방지', completed: false, focus: 'zone-2' },
       { step: 7, date: '10.25 (7차)', label: '3구간 (C구간) 결실제거', completed: false, focus: 'zone-3' },
       { step: 8, date: '11.15 (8차)', label: '천내리 종합 피복/보고', completed: false, focus: 'overview' }
