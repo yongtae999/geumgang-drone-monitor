@@ -29,16 +29,29 @@ class DroneMapController {
   }
 
   init() {
-    // MapLibre Style with Esri High-Resolution World Imagery
+    // MapLibre Style with Ultra High-Resolution Global Satellite Imagery (Up to Zoom 22)
     const style = {
       version: 8,
       sources: {
+        'satellite-tiles': {
+          type: 'raster',
+          tiles: [
+            'https://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+            'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+            'https://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+            'https://mt3.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
+          ],
+          tileSize: 256,
+          maxzoom: 22,
+          attribution: 'Google Satellite, Maxar Technologies'
+        },
         'esri-satellite': {
           type: 'raster',
           tiles: [
             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
           ],
           tileSize: 256,
+          maxzoom: 18,
           attribution: 'Esri, Maxar, Earthstar Geographics'
         },
         'terrain-dem': {
@@ -47,16 +60,21 @@ class DroneMapController {
             'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'
           ],
           encoding: 'terrarium',
-          tileSize: 256
+          tileSize: 256,
+          maxzoom: 15
         }
       },
       layers: [
         {
           id: 'satellite-layer',
           type: 'raster',
-          source: 'esri-satellite',
+          source: 'satellite-tiles',
           minzoom: 0,
-          maxzoom: 20
+          maxzoom: 22,
+          paint: {
+            'raster-resampling': 'linear',
+            'raster-fade-duration': 100
+          }
         }
       ],
       sky: {
@@ -72,6 +90,8 @@ class DroneMapController {
       style: style,
       center: this.centerCoords,
       zoom: 15.2,
+      minZoom: 4,
+      maxZoom: 22,
       pitch: 65,
       bearing: 115,
       antialias: true,

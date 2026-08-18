@@ -64,22 +64,25 @@ class ZoneOverlayManager {
       }
     });
 
-    // 3. Zone Center Label Layer
+    // 3. Zone Center Label Layer (Always visible up to high zooms)
     this.map.addLayer({
       id: 'zones-labels',
       type: 'symbol',
       source: 'cheonnaeri-zones',
+      minzoom: 12,
+      maxzoom: 24,
       layout: {
         'text-field': ['concat', ['get', 'name'], '\n(', ['to-string', ['get', 'area_sqm']], '㎡)'],
         'text-size': 13,
-        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold', 'sans-serif'],
         'text-anchor': 'center',
-        'text-allow-overlap': true
+        'text-allow-overlap': true,
+        'text-ignore-placement': true
       },
       paint: {
         'text-color': '#ffffff',
         'text-halo-color': '#000000',
-        'text-halo-width': 2
+        'text-halo-width': 2.5
       }
     });
 
