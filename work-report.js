@@ -43,6 +43,8 @@ class WorkReportManager {
     const workersElem = document.getElementById('kpi-cum-workers');
     const budgetElem = document.getElementById('kpi-cum-budget');
     const targetAreaTxt = document.getElementById('kpi-target-area-txt');
+    const workersSubElem = document.getElementById('kpi-workers-sub');
+    const budgetSubElem = document.getElementById('kpi-budget-sub');
 
     // Calculate actual cumulative stats from completed work logs
     const completedLogs = this.workLogs.filter(log => log.is_completed === true);
@@ -51,22 +53,30 @@ class WorkReportManager {
     const cumKg = completedLogs.reduce((sum, l) => sum + (parseFloat(l.amount_kg) || 0), 0);
     const cumWorkers = completedLogs.reduce((sum, l) => sum + (parseInt(l.workers) || 0), 0);
     const completedRounds = completedLogs.length;
-    const plannedRounds = this.kpis.planned_rounds || 8;
-    const progressPct = ((completedRounds / plannedRounds) * 100).toFixed(1);
 
-    // Calculate budget: labor cost (daily wage ~226,122 KRW per worker)
-    const spentBudget = cumWorkers > 0 ? cumWorkers * 226122 : (this.kpis.spent_budget || 0);
+    // Total Planned Man-Days (연인원) & Budget
+    const targetWorkers = this.kpis.target_workers || 45;
+    const workerProgressPct = targetWorkers > 0 ? ((cumWorkers / targetWorkers) * 100).toFixed(1) : 0.0;
+
+    // Labor Cost (Daily wage 226,122 KRW per worker)
+    const spentBudget = cumWorkers > 0 ? cumWorkers * 226122 : 0;
     const totalBudget = this.kpis.total_budget || 15000000;
-    const budgetPct = ((spentBudget / totalBudget) * 100).toFixed(1);
+    const budgetPct = totalBudget > 0 ? ((spentBudget / totalBudget) * 100).toFixed(1) : 0.0;
 
     if (areaElem) areaElem.textContent = cumArea.toLocaleString();
-    if (pctElem) pctElem.textContent = `계획 ${plannedRounds}회 중 ${completedRounds}회 완료 (${progressPct}%)`;
-    if (fillElem) fillElem.style.width = `${progressPct}%`;
+    if (pctElem) pctElem.textContent = `현재까지 ${completedRounds}회차 작업 진행 (인력 진척 ${workerProgressPct}%)`;
+    if (fillElem) fillElem.style.width = `${workerProgressPct}%`;
     if (kgElem) kgElem.textContent = cumKg.toLocaleString();
     if (workersElem) workersElem.textContent = cumWorkers;
     if (budgetElem) budgetElem.textContent = spentBudget.toLocaleString();
     if (targetAreaTxt && this.kpis.total_target_area) {
       targetAreaTxt.textContent = `${(this.kpis.total_target_area / 10000).toFixed(1)}만 ㎡`;
+    }
+    if (workersSubElem) {
+      workersSubElem.textContent = `계획 연인원 ${targetWorkers}명 중 (${workerProgressPct}%)`;
+    }
+    if (budgetSubElem) {
+      budgetSubElem.textContent = `총 ${totalBudget.toLocaleString()}원 대비 ${budgetPct}%`;
     }
   }
 

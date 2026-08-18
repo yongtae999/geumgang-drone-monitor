@@ -21,7 +21,6 @@
     "photos_file": "data/photos.json",
     "kpis": {
       "total_target_area": 144806,
-      "planned_rounds": 8,
       "total_budget": 15000000,
       "target_workers": 45
     },
@@ -104,7 +103,6 @@
     "photos_file": "data/doowoong_photos.json",
     "kpis": {
       "total_target_area": 67050,
-      "planned_rounds": 26,
       "total_budget": 19500000,
       "target_workers": 58
     },
