@@ -153,6 +153,11 @@ class DroneMapController {
         centerIndicator.textContent = `HDG ${normBearing.toString().padStart(3, '0')}°`;
       }
     }
+
+    const horizonElem = document.getElementById('hud-horizon');
+    if (horizonElem) {
+      horizonElem.style.transform = `translateY(${Math.round((pitch - 60) * 0.4)}px)`;
+    }
   }
 
   flyToPreset(presetId) {

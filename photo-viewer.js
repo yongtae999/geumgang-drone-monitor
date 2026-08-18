@@ -17,12 +17,33 @@ class PhotoViewerManager {
     this.renderMarkers();
     this.renderThumbnails();
     this.bindModalEvents();
+    this.bindMapRotationEvents();
   }
 
   updatePhotos(photosData) {
     this.photos = photosData || [];
     this.renderMarkers();
     this.renderThumbnails();
+  }
+
+  bindMapRotationEvents() {
+    if (!this.map) return;
+    this.map.on('rotate', () => this.updateMarkerOrientations());
+    this.map.on('move', () => this.updateMarkerOrientations());
+  }
+
+  updateMarkerOrientations() {
+    if (!this.map || !this.markers) return;
+    const mapBearing = this.map.getBearing();
+
+    this.markers.forEach(({ el, photo }) => {
+      const arrow = el.querySelector('.pin-cone-arrow');
+      if (arrow) {
+        const photoBearing = typeof photo.bearing === 'number' ? photo.bearing : 110;
+        // Compensate for map rotation so the arrow maintains true physical orientation
+        arrow.style.transform = `rotate(${photoBearing - mapBearing}deg)`;
+      }
+    });
   }
 
   renderMarkers() {
@@ -40,15 +61,21 @@ class PhotoViewerManager {
     const countElem = document.getElementById('photo-count');
     if (countElem) countElem.textContent = validPhotos.length;
 
+    const currentMapBearing = this.map ? this.map.getBearing() : 0;
+
     validPhotos.forEach((photo) => {
-      // Create tactical camera pin element
+      // Create tactical camera pin element with directional cone arrow
       const el = document.createElement('div');
       el.className = 'photo-marker-pin';
       el.dataset.date = photo.date_group;
       
+      const photoBearing = typeof photo.bearing === 'number' ? photo.bearing : 110;
+      const initialRot = photoBearing - currentMapBearing;
+
       el.innerHTML = `
         <div class="pin-pulse"></div>
-        <div class="pin-icon">
+        <div class="pin-cone-arrow" style="transform: rotate(${initialRot}deg);"></div>
+        <div class="pin-icon" title="${photo.filename} (${photoBearing}°)">
           <i class="fa-solid fa-camera"></i>
         </div>
       `;
@@ -66,6 +93,7 @@ class PhotoViewerManager {
     });
 
     this.applyFilter(this.activeFilter);
+    this.updateMarkerOrientations();
   }
 
   renderThumbnails() {

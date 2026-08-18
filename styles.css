@@ -1255,20 +1255,19 @@ input[type="range"] {
    7. Photo Markers & MapLibre Popups
    ========================================================= */
 .photo-marker-pin {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translate(-50%, -50%);
 }
 
 .pin-icon {
   width: 26px;
   height: 26px;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.92);
   border: 2px solid var(--hud-cyan);
   border-radius: 50%;
   display: flex;
@@ -1276,9 +1275,9 @@ input[type="range"] {
   justify-content: center;
   color: var(--hud-cyan);
   font-size: 0.75rem;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
   transition: transform 0.2s ease, border-color 0.2s ease;
-  z-index: 2;
+  z-index: 3;
 }
 
 .photo-marker-pin:hover .pin-icon {
@@ -1286,6 +1285,23 @@ input[type="range"] {
   border-color: #fff;
   background: var(--hud-cyan);
   color: #000;
+}
+
+/* Real-time Geographic Camera Heading Indicator */
+.pin-cone-arrow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid var(--hud-cyan);
+  transform-origin: 50% 25px;
+  filter: drop-shadow(0 0 5px var(--hud-cyan));
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.05s linear;
 }
 
 .pin-pulse {
