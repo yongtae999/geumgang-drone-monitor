@@ -5,8 +5,8 @@
       "type": "Feature",
       "properties": {
         "id": "zone-1",
-        "name": "제원대교 상류부",
-        "subname": "가시박·환삼덩굴 산재구역",
+        "name": "1구간",
+        "subname": "상류 제원대교 진입구역 (28,836㎡)",
         "area_sqm": 28836,
         "target_species": [
           "가시박",
@@ -65,8 +65,8 @@
       "type": "Feature",
       "properties": {
         "id": "zone-2",
-        "name": "천내리습지 중심부",
-        "subname": "가시박 대군락 집중방제구역",
+        "name": "2구간",
+        "subname": "가시박 대군락지 중심부 (72,803㎡)",
         "area_sqm": 72803,
         "target_species": [
           "가시박(대군락)",
@@ -129,8 +129,8 @@
       "type": "Feature",
       "properties": {
         "id": "zone-3",
-        "name": "천내리습지 하류부",
-        "subname": "하류 확산방지 차단구역",
+        "name": "3구간",
+        "subname": "하류 확산 차단구역 (43,167㎡)",
         "area_sqm": 43167,
         "target_species": [
           "가시박(대군락)",
