@@ -73,12 +73,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         fetch(currentProject.work_logs_file)
       ]);
 
-      if (zRes.ok) zonesData = await zRes.json();
-      if (pRes.ok) photosData = await pRes.json();
-      if (wRes.ok) workLogsData = await wRes.json();
+      if (zRes && zRes.ok) zonesData = await zRes.json();
+      if (pRes && pRes.ok) photosData = await pRes.json();
+      if (wRes && wRes.ok) workLogsData = await wRes.json();
     } catch (err) {
       console.warn("Project data fetch fallback:", err);
     }
+
+    // Safety fallback for photos if empty
+    if (!photosData || photosData.length === 0) {
+      try {
+        const pFallback = await fetch('data/photos.json');
+        if (pFallback.ok) photosData = await pFallback.json();
+      } catch (e) {}
+    }
+
+    console.log(`Loaded ${photosData ? photosData.length : 0} photos for ${projectId}`);
 
     // 3. Update 3D Camera & Context
     mapCtrl.setProjectContext(currentProject);

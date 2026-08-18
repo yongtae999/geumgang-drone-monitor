@@ -27,7 +27,13 @@ class PhotoViewerManager {
 
   renderMarkers() {
     // Clear existing markers
-    this.markers.forEach(m => m.remove());
+    if (this.markers && this.markers.length) {
+      this.markers.forEach(m => {
+        if (m && m.marker) {
+          m.marker.remove();
+        }
+      });
+    }
     this.markers = [];
 
     const validPhotos = this.photos.filter(p => p.lat && p.lng);
@@ -67,7 +73,7 @@ class PhotoViewerManager {
     if (!strip) return;
 
     strip.innerHTML = '';
-    const displayPhotos = this.getFilteredPhotos().slice(0, 16);
+    const displayPhotos = this.getFilteredPhotos();
 
     displayPhotos.forEach((photo) => {
       const item = document.createElement('div');
