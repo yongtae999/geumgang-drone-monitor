@@ -138,49 +138,51 @@ class DroneMapController {
   flyToPreset(presetId) {
     this.stopFlightTour();
 
+    const isDoowoong = this.activeProject && this.activeProject.id === 'doowoong';
+
     switch (presetId) {
       case 'overview':
         this.map.flyTo({
-          center: [127.5755, 36.1065],
-          zoom: 14.6,
-          pitch: 55,
-          bearing: 110,
+          center: this.centerCoords,
+          zoom: this.activeProject ? this.activeProject.zoom || 15.5 : 15.2,
+          pitch: 58,
+          bearing: this.activeProject ? this.activeProject.bearing || 60 : 110,
           duration: 2500,
           essential: true
         });
         break;
 
       case 'zone-1':
-        // Zone A: Jewon Bridge
+        // Zone 1
         this.map.flyTo({
-          center: [127.5705, 36.1095],
-          zoom: 16.2,
+          center: isDoowoong ? [126.1955, 36.8276] : [127.5705, 36.1095],
+          zoom: isDoowoong ? 17.5 : 16.2,
           pitch: 68,
-          bearing: 130,
+          bearing: isDoowoong ? 45 : 130,
           duration: 2500,
           essential: true
         });
         break;
 
       case 'zone-2':
-        // Zone B: Central Wetland (Highest infestation)
+        // Zone 2
         this.map.flyTo({
-          center: [127.5760, 36.1055],
-          zoom: 16.4,
+          center: isDoowoong ? [126.1962, 36.8282] : [127.5760, 36.1055],
+          zoom: isDoowoong ? 17.5 : 16.4,
           pitch: 70,
-          bearing: 110,
+          bearing: isDoowoong ? 55 : 110,
           duration: 2500,
           essential: true
         });
         break;
 
       case 'zone-3':
-        // Zone C: Downstream Wetland
+        // Zone 3
         this.map.flyTo({
-          center: [127.5805, 36.1040],
-          zoom: 16.0,
+          center: isDoowoong ? [126.1968, 36.8288] : [127.5805, 36.1040],
+          zoom: isDoowoong ? 17.0 : 16.0,
           pitch: 65,
-          bearing: 90,
+          bearing: isDoowoong ? 60 : 90,
           duration: 2500,
           essential: true
         });
@@ -239,6 +241,7 @@ class DroneMapController {
 
   setProjectContext(project) {
     this.stopFlightTour();
+    this.activeProject = project;
     if (project.center_coords) {
       this.centerCoords = project.center_coords;
     }
