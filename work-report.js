@@ -80,8 +80,8 @@ class WorkReportManager {
 
       const chartLabels = isDoowoong 
         ? ['황소개구리', '미국수련', '기타 (마름 등)']
-        : ['가시박 (68%)', '환삼덩굴 (22%)', '돼지풀 (10%)'];
-      const chartData = isDoowoong ? [45, 40, 15] : [68, 22, 10];
+        : ['가시박 (70%)', '환삼덩굴 (25%)', '기타 (5%)'];
+      const chartData = isDoowoong ? [45, 40, 15] : [70, 25, 5];
       const chartColors = isDoowoong ? ['#ef4444', '#38bdf8', '#10b981'] : ['#ef4444', '#f59e0b', '#06b6d4'];
 
       this.speciesChart = new Chart(ctx1, {
