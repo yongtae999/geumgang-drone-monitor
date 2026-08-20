@@ -14,6 +14,7 @@ class PhotoViewerManager {
 
   init(photosData) {
     this.photos = photosData || [];
+    this.renderFilterPills();
     this.renderMarkers();
     this.renderThumbnails();
     this.bindModalEvents();
@@ -22,6 +23,7 @@ class PhotoViewerManager {
 
   updatePhotos(photosData) {
     this.photos = photosData || [];
+    this.renderFilterPills();
     this.renderMarkers();
     this.renderThumbnails();
   }
@@ -40,7 +42,6 @@ class PhotoViewerManager {
       const arrow = el.querySelector('.pin-cone-arrow');
       if (arrow) {
         const photoBearing = typeof photo.bearing === 'number' ? photo.bearing : 110;
-        // Compensate for map rotation so the arrow maintains true physical orientation
         arrow.style.transform = `rotate(${photoBearing - mapBearing}deg)`;
       }
     });
@@ -64,7 +65,6 @@ class PhotoViewerManager {
     const currentMapBearing = this.map ? this.map.getBearing() : 0;
 
     validPhotos.forEach((photo) => {
-      // Create tactical camera pin element with directional cone arrow
       const el = document.createElement('div');
       el.className = 'photo-marker-pin';
       el.dataset.date = photo.date_group;
@@ -126,8 +126,56 @@ class PhotoViewerManager {
     });
   }
 
+  renderFilterPills() {
+    const container = document.getElementById('photo-filter-pills') || document.querySelector('.filter-pills');
+    if (!container) return;
+
+    // Collect all unique date_groups
+    const dates = Array.from(new Set(this.photos.map(p => p.date_group).filter(Boolean))).sort();
+
+    const roundLabels = {
+      '2026-07-24': '7월 24일 (1차)',
+      '2026-08-06': '8월 6일 (2차)',
+      '2026-08-20': '8월 20일 (3차)'
+    };
+
+    let html = `<button class="filter-pill ${this.activeFilter === 'all' ? 'active' : ''}" data-filter="all">전체</button>`;
+
+    dates.forEach(d => {
+      let label = roundLabels[d];
+      if (!label) {
+        const parts = d.split('-');
+        const month = parseInt(parts[1], 10);
+        const day = parseInt(parts[2], 10);
+        label = `${month}월 ${day}일`;
+      }
+      const isActive = this.activeFilter === d;
+      html += `<button class="filter-pill ${isActive ? 'active' : ''}" data-filter="${d}">${label}</button>`;
+    });
+
+    html += `
+      <button class="filter-pill ${this.activeFilter === 'before' ? 'active' : ''}" data-filter="before">작업 전</button>
+      <button class="filter-pill ${this.activeFilter === 'during' ? 'active' : ''}" data-filter="during">작업 중</button>
+      <button class="filter-pill ${this.activeFilter === 'after' ? 'active' : ''}" data-filter="after">작업 후</button>
+    `;
+
+    container.innerHTML = html;
+
+    // Bind click events
+    container.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.applyFilter(btn.dataset.filter);
+      });
+    });
+  }
+
   getFilteredPhotos() {
     if (this.activeFilter === 'all') return this.photos;
+    if (this.activeFilter === 'before') return this.photos.filter(p => p.stage === '작업 전');
+    if (this.activeFilter === 'during') return this.photos.filter(p => p.stage === '작업 중');
+    if (this.activeFilter === 'after') return this.photos.filter(p => p.stage === '작업 후');
     return this.photos.filter(p => p.date_group === this.activeFilter);
   }
 
@@ -136,11 +184,20 @@ class PhotoViewerManager {
 
     // Filter Map Markers
     this.markers.forEach(({ el, photo }) => {
-      if (filterKey === 'all' || photo.date_group === filterKey) {
-        el.style.display = 'block';
+      let match = false;
+      if (filterKey === 'all') {
+        match = true;
+      } else if (filterKey === 'before') {
+        match = (photo.stage === '작업 전');
+      } else if (filterKey === 'during') {
+        match = (photo.stage === '작업 중');
+      } else if (filterKey === 'after') {
+        match = (photo.stage === '작업 후');
       } else {
-        el.style.display = 'none';
+        match = (photo.date_group === filterKey);
       }
+
+      el.style.display = match ? 'block' : 'none';
     });
 
     this.renderThumbnails();
@@ -180,7 +237,15 @@ class PhotoViewerManager {
     else if (photo.lng > 127.5790) zoneName = "3구간 (C) 습지 하류부";
     zoneElem.textContent = zoneName;
 
-    stageElem.textContent = photo.date_group === '2026-07-24' ? '1차 발아기 제거' : '2차 성장기 제거';
+    if (photo.date_group === '2026-07-24') {
+      stageElem.textContent = '1차 발아기 제거 (손 뿌리뽑기)';
+    } else if (photo.date_group === '2026-08-06') {
+      stageElem.textContent = '2차 성장기 제거 (예초·낫베기)';
+    } else if (photo.date_group === '2026-08-20') {
+      stageElem.textContent = '3차 성장기 집중 예초 (B·A구간)';
+    } else {
+      stageElem.textContent = photo.stage || '현장 작업 모니터링';
+    }
 
     // Locate button action
     const locateBtn = document.getElementById('btn-locate-on-map');
@@ -209,15 +274,6 @@ class PhotoViewerManager {
         if (e.target === modal) modal.classList.add('hidden');
       });
     }
-
-    // Filter pills event
-    document.querySelectorAll('.filter-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        this.applyFilter(btn.dataset.filter);
-      });
-    });
   }
 }
 
