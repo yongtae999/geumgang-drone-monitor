@@ -9,7 +9,7 @@
     "altitude": 130.5,
     "bearing": 34.4,
     "timestamp": "2026:07:24 07:16:37",
-    "stage": "작업 중"
+    "stage": "작업 전"
   },
   {
     "filename": "P20260724_072110391_F42A976E-448C-45C0-8D79-F22A0FE2812C.JPG",
@@ -21,7 +21,7 @@
     "altitude": 130.9,
     "bearing": 175.0,
     "timestamp": "2026:07:24 07:21:10",
-    "stage": "작업 중"
+    "stage": "작업 전"
   },
   {
     "filename": "P20260724_072119443_9828A27C-805B-436E-B600-993D21F7F065.JPG",
@@ -33,7 +33,7 @@
     "altitude": 131.7,
     "bearing": 40.2,
     "timestamp": "2026:07:24 07:21:19",
-    "stage": "작업 중"
+    "stage": "작업 전"
   },
   {
     "filename": "P20260724_072122109_CE1093C4-1193-4217-AB5E-25F1FAB88575.JPG",
@@ -45,7 +45,7 @@
     "altitude": 131.6,
     "bearing": 123.6,
     "timestamp": "2026:07:24 07:21:22",
-    "stage": "작업 중"
+    "stage": "작업 전"
   },
   {
     "filename": "P20260724_072131643_A12C4F9A-DE86-452B-B88B-D4D87D211B02.JPG",
@@ -333,7 +333,7 @@
     "altitude": 132.4,
     "bearing": 215.2,
     "timestamp": "2026:07:24 10:03:38",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260724_110543402_96122A59-7526-4846-BBF3-7ABE56B2BA6B.JPG",
@@ -345,7 +345,7 @@
     "altitude": 132.2,
     "bearing": 191.7,
     "timestamp": "2026:07:24 11:05:43",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260724_110610808_71377E38-72C6-408D-B503-FF8644D9132A.JPG",
@@ -357,7 +357,7 @@
     "altitude": 133.7,
     "bearing": 129.5,
     "timestamp": "2026:07:24 11:06:10",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260724_110911424_684EB6E2-C2B0-4F30-8F44-1D2EDE9F65AC.JPG",
@@ -369,7 +369,7 @@
     "altitude": 135.5,
     "bearing": 159.6,
     "timestamp": "2026:07:24 11:09:11",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260724_124205971_53CB70DA-A4E4-45EC-8733-A812D576783E.JPG",
@@ -381,7 +381,7 @@
     "altitude": 128.5,
     "bearing": 323.3,
     "timestamp": "2026:07:24 12:42:05",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260806_055340517_4AADA171-3DA5-44CD-BC17-5EDDE42FA044.JPG",
@@ -393,7 +393,7 @@
     "altitude": 134.6,
     "bearing": 281.3,
     "timestamp": "2026:08:06 05:53:40",
-    "stage": "작업 중"
+    "stage": "작업 전"
   },
   {
     "filename": "P20260806_055439315_6A204D7C-22C9-49EE-B391-B5AC6BEC277A.JPG",
@@ -405,7 +405,7 @@
     "altitude": 133.9,
     "bearing": 134.9,
     "timestamp": "2026:08:06 05:54:39",
-    "stage": "작업 중"
+    "stage": "작업 전"
   },
   {
     "filename": "P20260806_055624322_3971DAEF-997D-4348-8F85-E65F4920D70A.JPG",
@@ -417,7 +417,7 @@
     "altitude": 134.3,
     "bearing": 235.1,
     "timestamp": "2026:08:06 05:56:24",
-    "stage": "작업 중"
+    "stage": "작업 전"
   },
   {
     "filename": "P20260806_055658088_30E3FCAF-FE39-4343-B8FB-473486978082.JPG",
@@ -429,7 +429,7 @@
     "altitude": 132.4,
     "bearing": 38.8,
     "timestamp": "2026:08:06 05:56:58",
-    "stage": "작업 중"
+    "stage": "작업 전"
   },
   {
     "filename": "P20260806_055706719_4022E6B9-8BD0-47B4-9A94-F8E9C997778F.JPG",
@@ -729,7 +729,7 @@
     "altitude": 131.3,
     "bearing": 234.4,
     "timestamp": "2026:08:06 10:19:03",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260806_102220680_366C897F-2B62-4C1F-9325-355F8776253A.JPG",
@@ -741,7 +741,7 @@
     "altitude": 137.5,
     "bearing": 338.9,
     "timestamp": "2026:08:06 10:22:20",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260806_102226264_F5812ED7-A264-4419-A8BB-36A9BC8453EC.JPG",
@@ -753,7 +753,7 @@
     "altitude": 140.4,
     "bearing": 288.5,
     "timestamp": "2026:08:06 10:22:26",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260806_120408861_996C7FC9-3262-4E9A-878E-98C42CF3993F.JPG",
@@ -765,7 +765,7 @@
     "altitude": 138.3,
     "bearing": 248.8,
     "timestamp": "2026:08:06 12:04:08",
-    "stage": "작업 중"
+    "stage": "작업 후"
   },
   {
     "filename": "P20260806_120415689_D08E9C11-8BF3-4607-ACA8-91A2D677CE77.JPG",
@@ -777,6 +777,678 @@
     "altitude": 134.7,
     "bearing": 255.1,
     "timestamp": "2026:08:06 12:04:15",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260813_082555636_38B2F3CB-46FD-45D6-AC2A-C1B48D278201.JPG",
+    "rel_url": "assets/photos/P20260813_082555636_38B2F3CB-46FD-45D6-AC2A-C1B48D278201.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.3552861,
+    "lng": 127.4968639,
+    "altitude": 80.6,
+    "bearing": 319.5,
+    "timestamp": "2026:08:13 08:25:55",
+    "stage": "작업 전"
+  },
+  {
+    "filename": "P20260820_062635988_DCB6BAB5-8077-4EEA-A71D-50CFA60CC6B2.JPG",
+    "rel_url": "assets/photos/P20260820_062635988_DCB6BAB5-8077-4EEA-A71D-50CFA60CC6B2.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.10495,
+    "lng": 127.5785889,
+    "altitude": 133.8,
+    "bearing": 265.9,
+    "timestamp": "2026:08:20 06:26:35",
+    "stage": "작업 전"
+  },
+  {
+    "filename": "P20260820_063025654_726D8AE1-E361-42AD-8581-E0BD7CEE57EA.JPG",
+    "rel_url": "assets/photos/P20260820_063025654_726D8AE1-E361-42AD-8581-E0BD7CEE57EA.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049278,
+    "lng": 127.5786361,
+    "altitude": 136.6,
+    "bearing": 137.9,
+    "timestamp": "2026:08:20 06:30:25",
+    "stage": "작업 전"
+  },
+  {
+    "filename": "P20260820_063139928_104FAB7B-4A17-4A8F-8268-ECFC5E7CE7BD.JPG",
+    "rel_url": "assets/photos/P20260820_063139928_104FAB7B-4A17-4A8F-8268-ECFC5E7CE7BD.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049083,
+    "lng": 127.5786806,
+    "altitude": 128.7,
+    "bearing": 225.0,
+    "timestamp": "2026:08:20 06:31:39",
+    "stage": "작업 전"
+  },
+  {
+    "filename": "P20260820_063143868_2473F58E-333C-435E-BC62-6F4D4E9CA117.JPG",
+    "rel_url": "assets/photos/P20260820_063143868_2473F58E-333C-435E-BC62-6F4D4E9CA117.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1048917,
+    "lng": 127.5786583,
+    "altitude": 134.0,
+    "bearing": 229.5,
+    "timestamp": "2026:08:20 06:31:43",
+    "stage": "작업 전"
+  },
+  {
+    "filename": "P20260820_063457211_51F4762F-7289-4644-865D-FD0B50AEFCED.JPG",
+    "rel_url": "assets/photos/P20260820_063457211_51F4762F-7289-4644-865D-FD0B50AEFCED.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1048806,
+    "lng": 127.5788417,
+    "altitude": null,
+    "bearing": 237.1,
+    "timestamp": "2026:08:20 06:34:57",
+    "stage": "작업 전"
+  },
+  {
+    "filename": "P20260820_063749076_1370C578-A8F2-4BCB-B6DD-494E2E45424C.JPG",
+    "rel_url": "assets/photos/P20260820_063749076_1370C578-A8F2-4BCB-B6DD-494E2E45424C.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049167,
+    "lng": 127.5784917,
+    "altitude": 142.8,
+    "bearing": 47.5,
+    "timestamp": "2026:08:20 06:37:49",
+    "stage": "작업 전"
+  },
+  {
+    "filename": "P20260820_063749420_0A99C52F-BB17-485D-8B74-DDDF1997FC14.JPG",
+    "rel_url": "assets/photos/P20260820_063749420_0A99C52F-BB17-485D-8B74-DDDF1997FC14.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049167,
+    "lng": 127.5784917,
+    "altitude": 142.8,
+    "bearing": 45.4,
+    "timestamp": "2026:08:20 06:37:49",
+    "stage": "작업 전"
+  },
+  {
+    "filename": "P20260820_063809659_3DE1A644-636A-4D63-BA28-AFE7DE5BB8CB.JPG",
+    "rel_url": "assets/photos/P20260820_063809659_3DE1A644-636A-4D63-BA28-AFE7DE5BB8CB.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049917,
+    "lng": 127.5785528,
+    "altitude": 137.5,
+    "bearing": 308.5,
+    "timestamp": "2026:08:20 06:38:09",
     "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_063815696_06B75694-61DB-4CBD-B2D1-3D4AC94D9703.JPG",
+    "rel_url": "assets/photos/P20260820_063815696_06B75694-61DB-4CBD-B2D1-3D4AC94D9703.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049889,
+    "lng": 127.5785611,
+    "altitude": 137.0,
+    "bearing": 16.1,
+    "timestamp": "2026:08:20 06:38:15",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_063855836_5019CF78-781C-407A-986C-F2645C3DFA38.JPG",
+    "rel_url": "assets/photos/P20260820_063855836_5019CF78-781C-407A-986C-F2645C3DFA38.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.105075,
+    "lng": 127.5781556,
+    "altitude": 141.5,
+    "bearing": 291.6,
+    "timestamp": "2026:08:20 06:38:55",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_063911772_0F3F8A76-4BFC-4729-96B5-AF981B5C76BE.JPG",
+    "rel_url": "assets/photos/P20260820_063911772_0F3F8A76-4BFC-4729-96B5-AF981B5C76BE.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1051278,
+    "lng": 127.5780861,
+    "altitude": 138.5,
+    "bearing": 266.3,
+    "timestamp": "2026:08:20 06:39:11",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_063954906_23A4E9BE-BC7B-43D7-AE97-91D135B7E675.JPG",
+    "rel_url": "assets/photos/P20260820_063954906_23A4E9BE-BC7B-43D7-AE97-91D135B7E675.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1051333,
+    "lng": 127.5781028,
+    "altitude": 135.1,
+    "bearing": 254.3,
+    "timestamp": "2026:08:20 06:39:54",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_074114237_33F4CFB5-447D-460B-B2C0-547FBE9DC2E4.JPG",
+    "rel_url": "assets/photos/P20260820_074114237_33F4CFB5-447D-460B-B2C0-547FBE9DC2E4.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.105075,
+    "lng": 127.5779889,
+    "altitude": 130.5,
+    "bearing": 247.4,
+    "timestamp": "2026:08:20 07:41:14",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_074257768_0AA5AE35-6465-4597-9B72-1EACD9E87B2C.JPG",
+    "rel_url": "assets/photos/P20260820_074257768_0AA5AE35-6465-4597-9B72-1EACD9E87B2C.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1051528,
+    "lng": 127.5781111,
+    "altitude": 135.9,
+    "bearing": 272.5,
+    "timestamp": "2026:08:20 07:42:57",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_074317742_AFCB08E7-F363-4471-88DA-7EFF3BE2A978.JPG",
+    "rel_url": "assets/photos/P20260820_074317742_AFCB08E7-F363-4471-88DA-7EFF3BE2A978.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1051056,
+    "lng": 127.5780806,
+    "altitude": 136.1,
+    "bearing": 243.7,
+    "timestamp": "2026:08:20 07:43:17",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_074331150_38CFC66A-4BB1-4E6B-BD61-75FB81295678.JPG",
+    "rel_url": "assets/photos/P20260820_074331150_38CFC66A-4BB1-4E6B-BD61-75FB81295678.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1051028,
+    "lng": 127.5780806,
+    "altitude": 133.9,
+    "bearing": 204.0,
+    "timestamp": "2026:08:20 07:43:31",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_074517410_E61FE46F-D788-4F1B-B73C-930DBABBEB12.JPG",
+    "rel_url": "assets/photos/P20260820_074517410_E61FE46F-D788-4F1B-B73C-930DBABBEB12.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1051278,
+    "lng": 127.5780861,
+    "altitude": 135.6,
+    "bearing": 208.2,
+    "timestamp": "2026:08:20 07:45:17",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_075007000_9C9B3CA9-6623-4877-8775-E3F373DD25C0.PNG",
+    "rel_url": "assets/photos/P20260820_075007000_9C9B3CA9-6623-4877-8775-E3F373DD25C0.PNG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": null,
+    "lng": null,
+    "altitude": null,
+    "bearing": null,
+    "timestamp": "2026:08:20 07:50:07",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_075124455_99AA58AF-6238-4779-A6D2-32DC323883EA.JPG",
+    "rel_url": "assets/photos/P20260820_075124455_99AA58AF-6238-4779-A6D2-32DC323883EA.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1051278,
+    "lng": 127.5780806,
+    "altitude": 135.2,
+    "bearing": 261.5,
+    "timestamp": "2026:08:20 07:51:24",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_075159774_9FD8F13C-B34F-4AC7-AA4F-AA4BB5215B7E.JPG",
+    "rel_url": "assets/photos/P20260820_075159774_9FD8F13C-B34F-4AC7-AA4F-AA4BB5215B7E.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049806,
+    "lng": 127.5779722,
+    "altitude": 133.5,
+    "bearing": 199.4,
+    "timestamp": "2026:08:20 07:51:59",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_075223703_C6FF7780-FE2F-44E9-BA01-69D9383319A7.JPG",
+    "rel_url": "assets/photos/P20260820_075223703_C6FF7780-FE2F-44E9-BA01-69D9383319A7.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1050306,
+    "lng": 127.5779944,
+    "altitude": 134.6,
+    "bearing": 284.1,
+    "timestamp": "2026:08:20 07:52:23",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_075627913_05542AFD-D69A-42DF-9362-8D9AD5EC9133.JPG",
+    "rel_url": "assets/photos/P20260820_075627913_05542AFD-D69A-42DF-9362-8D9AD5EC9133.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.10495,
+    "lng": 127.5780028,
+    "altitude": 134.7,
+    "bearing": 192.0,
+    "timestamp": "2026:08:20 07:56:27",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_075637165_09097BC4-1A67-4C55-A44E-F2A7BD299566.JPG",
+    "rel_url": "assets/photos/P20260820_075637165_09097BC4-1A67-4C55-A44E-F2A7BD299566.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049611,
+    "lng": 127.5780194,
+    "altitude": 135.4,
+    "bearing": 146.4,
+    "timestamp": "2026:08:20 07:56:37",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_085811479_8026DD0D-0B11-4BD4-A69F-A6F8BFA5C447.JPG",
+    "rel_url": "assets/photos/P20260820_085811479_8026DD0D-0B11-4BD4-A69F-A6F8BFA5C447.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049278,
+    "lng": 127.5779944,
+    "altitude": 134.1,
+    "bearing": 239.3,
+    "timestamp": "2026:08:20 08:58:11",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_090034068_43D98C7B-8959-4862-9833-9D7CEAE2BF6C.JPG",
+    "rel_url": "assets/photos/P20260820_090034068_43D98C7B-8959-4862-9833-9D7CEAE2BF6C.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049639,
+    "lng": 127.5780028,
+    "altitude": 134.0,
+    "bearing": 238.9,
+    "timestamp": "2026:08:20 09:00:34",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_090055380_0BF94394-B624-4524-B459-B2EB99B4DC35.JPG",
+    "rel_url": "assets/photos/P20260820_090055380_0BF94394-B624-4524-B459-B2EB99B4DC35.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049583,
+    "lng": 127.5780028,
+    "altitude": 134.2,
+    "bearing": 220.3,
+    "timestamp": "2026:08:20 09:00:55",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_092554958_083BD62F-EEDB-4A7C-A91D-7F7E9970D4A0.JPG",
+    "rel_url": "assets/photos/P20260820_092554958_083BD62F-EEDB-4A7C-A91D-7F7E9970D4A0.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049389,
+    "lng": 127.5781556,
+    "altitude": 101.7,
+    "bearing": 294.8,
+    "timestamp": "2026:08:20 09:25:54",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_094015369_5B82E642-7AA5-49DB-B5CE-6D51EC8AF16B.JPG",
+    "rel_url": "assets/photos/P20260820_094015369_5B82E642-7AA5-49DB-B5CE-6D51EC8AF16B.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049222,
+    "lng": 127.5779889,
+    "altitude": 135.3,
+    "bearing": 263.2,
+    "timestamp": "2026:08:20 09:40:15",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_094237743_4521D182-8E75-41F0-9F0D-E7381243D105.JPG",
+    "rel_url": "assets/photos/P20260820_094237743_4521D182-8E75-41F0-9F0D-E7381243D105.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049639,
+    "lng": 127.5780111,
+    "altitude": 134.6,
+    "bearing": 191.1,
+    "timestamp": "2026:08:20 09:42:37",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_094451545_FAF6B398-5D6A-4C60-A03B-061F03131752.JPG",
+    "rel_url": "assets/photos/P20260820_094451545_FAF6B398-5D6A-4C60-A03B-061F03131752.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049833,
+    "lng": 127.5781861,
+    "altitude": 98.4,
+    "bearing": 177.1,
+    "timestamp": "2026:08:20 09:44:51",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_104646728_C1DA80AE-432B-4161-8DC9-B081F401E211.JPG",
+    "rel_url": "assets/photos/P20260820_104646728_C1DA80AE-432B-4161-8DC9-B081F401E211.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049111,
+    "lng": 127.578025,
+    "altitude": 132.4,
+    "bearing": 183.8,
+    "timestamp": "2026:08:20 10:46:46",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_105026365_4594AC79-02E5-4BE1-BF65-912A0CA9F81C.JPG",
+    "rel_url": "assets/photos/P20260820_105026365_4594AC79-02E5-4BE1-BF65-912A0CA9F81C.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.10485,
+    "lng": 127.578125,
+    "altitude": 146.2,
+    "bearing": 2.5,
+    "timestamp": "2026:08:20 10:50:26",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_105423168_55ECF5D6-EEE9-42C6-8063-B9E2A546FDA5.JPG",
+    "rel_url": "assets/photos/P20260820_105423168_55ECF5D6-EEE9-42C6-8063-B9E2A546FDA5.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1048806,
+    "lng": 127.5781556,
+    "altitude": 134.3,
+    "bearing": 15.4,
+    "timestamp": "2026:08:20 10:54:23",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_105833363_6AF406D6-CDC5-442D-A524-7449229FBF6F.JPG",
+    "rel_url": "assets/photos/P20260820_105833363_6AF406D6-CDC5-442D-A524-7449229FBF6F.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.101025,
+    "lng": 127.5804278,
+    "altitude": 144.2,
+    "bearing": 110.5,
+    "timestamp": "2026:08:20 10:58:33",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_105838250_851CAC8D-CFA7-4547-A724-A37E665BAC5E.JPG",
+    "rel_url": "assets/photos/P20260820_105838250_851CAC8D-CFA7-4547-A724-A37E665BAC5E.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.104825,
+    "lng": 127.578225,
+    "altitude": 127.8,
+    "bearing": 50.0,
+    "timestamp": "2026:08:20 10:58:38",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_105959948_4B18ECF9-E9F1-4033-87F4-FF9CC2E8077D.JPG",
+    "rel_url": "assets/photos/P20260820_105959948_4B18ECF9-E9F1-4033-87F4-FF9CC2E8077D.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049583,
+    "lng": 127.5784917,
+    "altitude": 134.2,
+    "bearing": 72.6,
+    "timestamp": "2026:08:20 10:59:59",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_110050639_5774B6C7-FAE6-4465-9B38-09A6757798CA.JPG",
+    "rel_url": "assets/photos/P20260820_110050639_5774B6C7-FAE6-4465-9B38-09A6757798CA.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1048611,
+    "lng": 127.5782556,
+    "altitude": 132.8,
+    "bearing": 169.5,
+    "timestamp": "2026:08:20 11:00:50",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_110118283_77528844-91F3-4C06-8201-04A754423316.JPG",
+    "rel_url": "assets/photos/P20260820_110118283_77528844-91F3-4C06-8201-04A754423316.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1048667,
+    "lng": 127.5782861,
+    "altitude": 132.9,
+    "bearing": 28.6,
+    "timestamp": "2026:08:20 11:01:18",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_110839256_AB307B96-36C4-45AE-9BF4-BE24E5646E6C.JPG",
+    "rel_url": "assets/photos/P20260820_110839256_AB307B96-36C4-45AE-9BF4-BE24E5646E6C.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1047583,
+    "lng": 127.5782556,
+    "altitude": 133.6,
+    "bearing": 155.3,
+    "timestamp": "2026:08:20 11:08:39",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_110949914_2FB7D1E8-1355-4FB6-9C79-71D7074391C3.JPG",
+    "rel_url": "assets/photos/P20260820_110949914_2FB7D1E8-1355-4FB6-9C79-71D7074391C3.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1047889,
+    "lng": 127.5782861,
+    "altitude": 134.8,
+    "bearing": 167.9,
+    "timestamp": "2026:08:20 11:09:49",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_114745082_13165673-4E35-4547-9576-CEEB1AAE9627.JPG",
+    "rel_url": "assets/photos/P20260820_114745082_13165673-4E35-4547-9576-CEEB1AAE9627.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1048778,
+    "lng": 127.5781639,
+    "altitude": 131.5,
+    "bearing": 218.8,
+    "timestamp": "2026:08:20 11:47:45",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_115252899_64A9E8D7-ACBF-4EC1-972C-ACEA06DDB996.JPG",
+    "rel_url": "assets/photos/P20260820_115252899_64A9E8D7-ACBF-4EC1-972C-ACEA06DDB996.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1007417,
+    "lng": 127.5816889,
+    "altitude": 144.2,
+    "bearing": 112.9,
+    "timestamp": "2026:08:20 11:52:52",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_115301033_E1A2C6FD-14F2-40E3-92C2-E2ED3B4FF1F2.JPG",
+    "rel_url": "assets/photos/P20260820_115301033_E1A2C6FD-14F2-40E3-92C2-E2ED3B4FF1F2.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1048472,
+    "lng": 127.5782694,
+    "altitude": 132.5,
+    "bearing": 307.6,
+    "timestamp": "2026:08:20 11:53:01",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_115522457_32A5A778-3F2B-43E2-96C2-CC1D61785F05.JPG",
+    "rel_url": "assets/photos/P20260820_115522457_32A5A778-3F2B-43E2-96C2-CC1D61785F05.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049639,
+    "lng": 127.5785694,
+    "altitude": 133.9,
+    "bearing": 186.7,
+    "timestamp": "2026:08:20 11:55:22",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_120128039_16DB6547-E3F8-4CE2-8E6C-BF5552407C3A.JPG",
+    "rel_url": "assets/photos/P20260820_120128039_16DB6547-E3F8-4CE2-8E6C-BF5552407C3A.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049917,
+    "lng": 127.5785611,
+    "altitude": 130.6,
+    "bearing": 211.7,
+    "timestamp": "2026:08:20 12:01:28",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_131107051_AAA240A5-EDB2-4550-8798-55D39A9129C7.JPG",
+    "rel_url": "assets/photos/P20260820_131107051_AAA240A5-EDB2-4550-8798-55D39A9129C7.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049917,
+    "lng": 127.5785833,
+    "altitude": 132.8,
+    "bearing": 256.6,
+    "timestamp": "2026:08:20 13:11:07",
+    "stage": "작업 중"
+  },
+  {
+    "filename": "P20260820_131110673_0BD030EB-8F1F-47B8-9073-DFE55362D961.JPG",
+    "rel_url": "assets/photos/P20260820_131110673_0BD030EB-8F1F-47B8-9073-DFE55362D961.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1049944,
+    "lng": 127.5785972,
+    "altitude": 132.5,
+    "bearing": 262.0,
+    "timestamp": "2026:08:20 13:11:10",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260820_132012552_6C36C72E-F9EA-4A4B-82DA-B1F94CBA53FE.JPG",
+    "rel_url": "assets/photos/P20260820_132012552_6C36C72E-F9EA-4A4B-82DA-B1F94CBA53FE.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1070222,
+    "lng": 127.5743472,
+    "altitude": 132.6,
+    "bearing": 40.8,
+    "timestamp": "2026:08:20 13:20:12",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260820_132223693_1F09B6CD-12BA-4C18-8D21-2538FECF1790.JPG",
+    "rel_url": "assets/photos/P20260820_132223693_1F09B6CD-12BA-4C18-8D21-2538FECF1790.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1069806,
+    "lng": 127.5744028,
+    "altitude": 132.6,
+    "bearing": 240.9,
+    "timestamp": "2026:08:20 13:22:23",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260820_132245989_B9888131-BC05-444F-980B-4D133B6DB4F0.JPG",
+    "rel_url": "assets/photos/P20260820_132245989_B9888131-BC05-444F-980B-4D133B6DB4F0.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1069806,
+    "lng": 127.5744111,
+    "altitude": 133.2,
+    "bearing": 249.9,
+    "timestamp": "2026:08:20 13:22:45",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260820_132537422_323372C1-FA8B-4A25-8872-58FDBE660F42.JPG",
+    "rel_url": "assets/photos/P20260820_132537422_323372C1-FA8B-4A25-8872-58FDBE660F42.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1069833,
+    "lng": 127.5744111,
+    "altitude": 130.3,
+    "bearing": 29.0,
+    "timestamp": "2026:08:20 13:25:37",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260820_132640500_46B59DF6-0653-45DC-981F-929F37C7130A.JPG",
+    "rel_url": "assets/photos/P20260820_132640500_46B59DF6-0653-45DC-981F-929F37C7130A.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1069722,
+    "lng": 127.5744472,
+    "altitude": 133.2,
+    "bearing": 92.7,
+    "timestamp": "2026:08:20 13:26:40",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260820_133307732_442455F2-8B4C-4543-A87A-262217E0196A.JPG",
+    "rel_url": "assets/photos/P20260820_133307732_442455F2-8B4C-4543-A87A-262217E0196A.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1070278,
+    "lng": 127.5743472,
+    "altitude": 132.7,
+    "bearing": 41.5,
+    "timestamp": "2026:08:20 13:33:07",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260820_133400803_EFC42544-66E0-43CC-9618-56E62FF04E1D.JPG",
+    "rel_url": "assets/photos/P20260820_133400803_EFC42544-66E0-43CC-9618-56E62FF04E1D.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.107025,
+    "lng": 127.5743722,
+    "altitude": 133.1,
+    "bearing": 5.6,
+    "timestamp": "2026:08:20 13:34:00",
+    "stage": "작업 후"
+  },
+  {
+    "filename": "P20260820_133820999_72B8B5EC-C006-4959-B7C6-6E23D5A41089.JPG",
+    "rel_url": "assets/photos/P20260820_133820999_72B8B5EC-C006-4959-B7C6-6E23D5A41089.JPG",
+    "folder": "천내리260820",
+    "date_group": "2026-08-20",
+    "lat": 36.1070139,
+    "lng": 127.5743861,
+    "altitude": 137.6,
+    "bearing": 37.8,
+    "timestamp": "2026:08:20 13:38:20",
+    "stage": "작업 후"
   }
 ]

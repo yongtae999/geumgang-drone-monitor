@@ -37,19 +37,25 @@
   {
     "id": 3,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "천내리 습지 일대",
-    "work_date": "2026-08-20 (예정)",
-    "is_completed": false,
-    "method": "손으로 뿌리뽑기, 낫으로 베기",
+    "location": "천내리 습지 일대 (2구간 B 70% · 1구간 A 30%)",
+    "work_date": "2026-08-20",
+    "is_completed": true,
+    "method": "낫으로 베기, 예초기 사용",
     "stages": [
       "영양생장"
     ],
-    "width_m": 700,
+    "width_m": 600,
     "length_m": 60,
-    "area_sqm": 42000.0,
+    "area_sqm": 36000.0,
     "hours": 6,
-    "amount_kg": 350,
-    "workers": 5
+    "amount_kg": 1200,
+    "workers": 6,
+    "section_breakdown": {
+      "zone_2_b_kg": 840,
+      "zone_2_b_sqm": 25200,
+      "zone_1_a_kg": 360,
+      "zone_1_a_sqm": 10800
+    }
   },
   {
     "id": 4,

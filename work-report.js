@@ -224,7 +224,7 @@ class WorkReportManager {
     ] : [
       { step: 1, date: '07.24 (1차)', label: '발아기 (손 뿌리뽑기)', completed: true, focus: 'overview' },
       { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
-      { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초', completed: false, focus: 'overview' },
+      { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초 (B·A구간)', completed: true, focus: 'zone-2' },
       { step: 4, date: '09.05 (4차)', label: '개화전 집중 차단', completed: false, focus: 'overview' },
       { step: 5, date: '09.20 (5차)', label: '개화기 2차 제거', completed: false, focus: 'overview' },
       { step: 6, date: '10.10 (6차)', label: '결실방지 집중 작업', completed: false, focus: 'overview' },
