@@ -115,9 +115,15 @@ class WorkReportManager {
             },
             title: {
               display: true,
-              text: isDoowoong ? '관리 대상종 비중' : '교란식물 제거 비중',
+              text: isDoowoong ? '관리 대상종 비중 (조사 기준)' : '현장 식생 우점도(피도) 기준 비중',
               color: '#cbd5e1',
               font: { size: 11, weight: 'bold' }
+            },
+            subtitle: {
+              display: true,
+              text: isDoowoong ? '실태조사 결과 기반' : '※ 실무상 전종 통합 제거 (개별 분리계량 불가)',
+              color: '#64748b',
+              font: { size: 9, style: 'italic' }
             }
           }
         }
