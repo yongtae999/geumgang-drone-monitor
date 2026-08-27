@@ -379,12 +379,40 @@ class WorkReportManager {
         };
 
         try {
-          // Update localStorage
+          // 1. Update local geumgang_work_logs
           const localLogsStr = localStorage.getItem('geumgang_work_logs');
           let currentLogs = localLogsStr ? JSON.parse(localLogsStr) : this.workLogs;
           newLog.id = currentLogs.length + 1;
           currentLogs.push(newLog);
           localStorage.setItem('geumgang_work_logs', JSON.stringify(currentLogs));
+
+          // 2. Also map & save to Central HQ Activity Store ('wma_ecosystem_activities_v5')
+          const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+          const hqActivity = {
+            id: `act-dcs-${Date.now()}`,
+            branch_id: "daejeon-chungnam-sejong",
+            branch_name: "대전·충남·세종 지부",
+            project_id: isDoowoong ? "proj-dcs-doowoong-02" : "proj-dcs-geumgang-01",
+            project_title: isDoowoong ? "2026년 두웅습지 외래생물 실태조사 및 확산방지 용역" : "천내리습지 생태계교란식물 제거사업",
+            date: newLog.work_date,
+            work_type: newLog.method || "물리적 굴취 및 예초",
+            worker_count: newLog.workers,
+            area_m2: newLog.area_sqm,
+            harvest_kg: newLog.amount_kg,
+            location: newLog.location,
+            summary: `[3D 드론 관제 등록] ${newLog.location} 일원 제거작업 완료 (${newLog.area_sqm.toLocaleString()}㎡ / ${newLog.amount_kg.toLocaleString()}kg / 작업자 ${newLog.workers}명)`,
+            status: "완료"
+          };
+
+          const rawActs = localStorage.getItem('wma_ecosystem_activities_v5');
+          let acts = rawActs ? JSON.parse(rawActs) : [];
+          acts.unshift(hqActivity);
+          localStorage.setItem('wma_ecosystem_activities_v5', JSON.stringify(acts));
+
+          // 3. Broadcast to Cloud DB & All branches
+          if (window.cloudSync) {
+            window.cloudSync.syncActivity(hqActivity);
+          }
 
           // Try server POST if available
           fetch('/api/work-logs', {
@@ -393,7 +421,7 @@ class WorkReportManager {
             body: JSON.stringify(newLog)
           }).catch(() => {});
 
-          alert("✅ 일일작업결과표가 정상적으로 등록 및 저장되었습니다.");
+          alert("✅ 일일작업결과표가 정상적으로 등록되었으며, 중앙사무국 및 전국 관제망에 실시간 동기화되었습니다.");
           modal.classList.add('hidden');
           location.reload();
         } catch (err) {

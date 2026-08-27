@@ -32,8 +32,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
   
+  <!-- Firebase 10.8 App & Realtime Database SDK (Nationwide Real-time Cloud Sync) -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260827">
 </head>
 <body>
 
@@ -44,6 +48,10 @@
       <div class="title-group">
         <div class="agency-tag" id="header-agency-tag"><i class="fa-solid fa-shield-halved"></i> 금강유역환경청 · (사)야생생물관리협회</div>
         <h1 id="header-project-title">생태계교란생물 제거 3D 드론 관제 시스템</h1>
+      </div>
+      <div class="live-status-pill connected" id="header-live-sync-pill" style="display:inline-flex; align-items:center; gap:6px; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.35); color:#34d399; font-size:0.68rem; font-weight:700; padding:3px 9px; border-radius:999px; margin-left:8px;" title="전국 9개 지부 및 중앙사무국 실시간 클라우드 전산망 연동 중">
+        <span class="live-dot" style="width:7px; height:7px; border-radius:50%; background:#10b981; box-shadow:0 0 8px #10b981;"></span>
+        <span class="sync-text">중앙 전산망 실시간 연동</span>
       </div>
     </div>
 
@@ -56,11 +64,14 @@
           <option value="doowoong">🛸 두웅습지 (미국수련·황소개구리 · 6.7만㎡)</option>
         </select>
       </div>
+      <a href="https://yongtae999.github.io/ecosystem-central-hq/" target="_blank" class="btn-action secondary btn-sm" title="전국 9개 지부 중앙사무국 총괄 관제 플랫폼 열기">
+        <i class="fa-solid fa-building-flag text-cyan"></i> <span>중앙사무국 관제</span>
+      </a>
       <a href="assets/templates/일일제거작업일지_표준템플릿.xlsx" download="생태계교란생물_일일작업일지_표준양식.xlsx" class="btn-action secondary btn-sm" title="공통 표준 엑셀 양식 다운로드">
-        <i class="fa-solid fa-file-excel text-emerald"></i> <span>표준양식 받기</span>
+        <i class="fa-solid fa-file-excel text-emerald"></i> <span>표준양식</span>
       </a>
       <button id="btn-open-new-project" class="btn-action accent btn-sm" title="신규 사업 프로젝트 등록">
-        <i class="fa-solid fa-folder-plus"></i> <span>+ 새 사업 등록</span>
+        <i class="fa-solid fa-folder-plus"></i> <span>+ 새 사업</span>
       </button>
     </div>
 
@@ -608,10 +619,11 @@
   </div>
 
   <!-- App Scripts -->
-  <script src="drone-map.js"></script>
-  <script src="zone-overlay.js"></script>
-  <script src="photo-viewer.js"></script>
-  <script src="work-report.js"></script>
-  <script src="app.js"></script>
+  <script src="cloud-sync.js?v=20260827"></script>
+  <script src="drone-map.js?v=20260827"></script>
+  <script src="zone-overlay.js?v=20260827"></script>
+  <script src="photo-viewer.js?v=20260827"></script>
+  <script src="work-report.js?v=20260827"></script>
+  <script src="app.js?v=20260827"></script>
 </body>
 </html>

@@ -48,6 +48,110 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
+  // Dynamic Work Logs Merger for Real-time HQ Cloud Sync
+  function getMergedWorkLogs(projectId, baseWorkLogs) {
+    let merged = Array.isArray(baseWorkLogs) ? [...baseWorkLogs] : [];
+
+    // 1. Check dynamic activities in localStorage ('wma_ecosystem_activities_v5')
+    const localActivitiesStr = localStorage.getItem('wma_ecosystem_activities_v5');
+    let centralActivities = [];
+    if (localActivitiesStr) {
+      try {
+        centralActivities = JSON.parse(localActivitiesStr);
+      } catch (e) {}
+    }
+
+    // Also check geumgang_work_logs for backward compatibility
+    const geumgangLocal = localStorage.getItem('geumgang_work_logs');
+    if (geumgangLocal) {
+      try {
+        const gLogs = JSON.parse(geumgangLocal);
+        gLogs.forEach(gl => {
+          if (!merged.some(m => m.work_date === gl.work_date)) {
+            merged.push(gl);
+          }
+        });
+      } catch (e) {}
+    }
+
+    // 2. Filter activities relevant to this project
+    const isCheonnaeri = projectId === 'cheonnaeri';
+    const isDoowoong = projectId === 'doowoong';
+
+    const relevantActivities = centralActivities.filter(act => {
+      if (isCheonnaeri) {
+        return act.project_id === 'proj-dcs-geumgang-01' ||
+               (act.project_title && act.project_title.includes('천내리')) ||
+               (act.location && act.location.includes('천내리'));
+      }
+      if (isDoowoong) {
+        return act.project_id === 'proj-dcs-doowoong-02' ||
+               (act.project_title && act.project_title.includes('두웅')) ||
+               (act.location && act.location.includes('두웅'));
+      }
+      return act.project_id === projectId;
+    });
+
+    console.log(`📡 [Sync] Found ${relevantActivities.length} dynamic activities from Central HQ for ${projectId}`);
+
+    // 3. Map activities to work_logs format and merge
+    relevantActivities.forEach((act, actIdx) => {
+      const actDate = act.date || '2026-08-27';
+      const actArea = Number(act.area_m2) || 0;
+      const actKg = Number(act.harvest_kg) || 0;
+      const actWorkers = Number(act.worker_count) || 0;
+
+      // Check if this date/id already exists in completed logs
+      const existingIdx = merged.findIndex(log => 
+        (log.id && log.id === act.id) || 
+        (log.work_date === actDate && log.is_completed)
+      );
+
+      const mappedLog = {
+        id: act.id || (merged.length + 1),
+        target_plant: isDoowoong ? '황소개구리, 미국수련' : '가시박, 환삼덩굴',
+        location: act.location || (isDoowoong ? '두웅습지 람사르보호지역' : '천내리 습지 일대'),
+        work_date: actDate,
+        is_completed: true,
+        method: act.work_type || (isDoowoong ? '포획통발 및 뿌리 굴취' : '낫으로 베기, 예초기 사용'),
+        stages: ['영양생장'],
+        width_m: 600,
+        length_m: 60,
+        area_sqm: actArea,
+        hours: 6,
+        amount_kg: actKg,
+        workers: actWorkers,
+        summary: act.summary || ''
+      };
+
+      if (existingIdx >= 0) {
+        merged[existingIdx] = Object.assign({}, merged[existingIdx], mappedLog);
+      } else {
+        // Find if there is an uncompleted planned log for this month or append
+        const plannedIdx = merged.findIndex(log => log.is_completed === false && log.work_date && log.work_date.startsWith(actDate.slice(0, 7)));
+        if (plannedIdx >= 0 && actArea > 0) {
+          merged[plannedIdx] = Object.assign({}, merged[plannedIdx], mappedLog);
+        } else {
+          // Insert right after last completed item
+          let insertIdx = -1;
+          for (let i = merged.length - 1; i >= 0; i--) {
+            if (merged[i].is_completed) {
+              insertIdx = i + 1;
+              break;
+            }
+          }
+          if (insertIdx >= 0) {
+            merged.splice(insertIdx, 0, mappedLog);
+          } else {
+            merged.unshift(mappedLog);
+          }
+        }
+      }
+    });
+
+    return merged;
+  }
+
   // Project Switcher Engine
   async function loadProject(projectId) {
     console.log(`🔄 Switching to project: ${projectId}`);
@@ -68,9 +172,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
       const [zRes, pRes, wRes] = await Promise.all([
-        fetch(currentProject.zones_file),
-        fetch(currentProject.photos_file),
-        fetch(currentProject.work_logs_file)
+        fetch(currentProject.zones_file + `?t=${Date.now()}`),
+        fetch(currentProject.photos_file + `?t=${Date.now()}`),
+        fetch(currentProject.work_logs_file + `?t=${Date.now()}`)
       ]);
 
       if (zRes && zRes.ok) zonesData = await zRes.json();
@@ -88,12 +192,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       } catch (e) {}
     }
 
-    console.log(`Loaded ${photosData ? photosData.length : 0} photos for ${projectId}`);
+    // 3. Merge Dynamic Real-time Activities from Central HQ
+    workLogsData = getMergedWorkLogs(projectId, workLogsData);
 
-    // 3. Update 3D Camera & Context
+    console.log(`Loaded ${photosData ? photosData.length : 0} photos and ${workLogsData.length} work logs for ${projectId}`);
+
+    // 4. Update 3D Camera & Context
     mapCtrl.setProjectContext(currentProject);
 
-    // 4. Update Sub-Managers
+    // 5. Update Sub-Managers
     if (!zoneMgr) {
       zoneMgr = new ZoneOverlayManager(mapCtrl);
       photoMgr = new PhotoViewerManager(mapCtrl);
@@ -362,5 +469,61 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  console.log("✅ Universal Ecosystem Drone Monitoring Platform Ready!");
+  // 8. Initialize Nationwide Real-time Cloud Synchronization
+  if (window.cloudSync) {
+    window.cloudSync.init().then(() => {
+      window.cloudSync.subscribeToCloudData((remoteData) => {
+        console.log("☁️ [CloudSync] Nationwide data sync received in 3D Drone Monitor!");
+        if (remoteData && remoteData.activities) {
+          localStorage.setItem('wma_ecosystem_activities_v5', JSON.stringify(remoteData.activities));
+        }
+        if (currentProject) {
+          loadProject(currentProject.id);
+        }
+      });
+    });
+
+    const syncPill = document.getElementById('header-live-sync-pill');
+    window.cloudSync.onStatusChange((status) => {
+      if (!syncPill) return;
+      if (status === 'connected') {
+        syncPill.className = 'live-status-pill connected';
+        syncPill.innerHTML = '<span class="live-dot" style="width:7px; height:7px; border-radius:50%; background:#10b981; box-shadow:0 0 8px #10b981;"></span><span class="sync-text">중앙 전산망 실시간 연동</span>';
+      } else {
+        syncPill.className = 'live-status-pill offline';
+        syncPill.innerHTML = '<span class="live-dot" style="width:7px; height:7px; border-radius:50%; background:#38bdf8; box-shadow:0 0 8px #38bdf8;"></span><span class="sync-text">전산망 동기화 가동 중</span>';
+      }
+    });
+  }
+
+  // 9. Inter-Tab & Window Live BroadcastChannel Listener
+  if (typeof BroadcastChannel !== 'undefined') {
+    const bc = new BroadcastChannel('wma_ecosystem_national_channel');
+    bc.onmessage = (e) => {
+      const { type, payload, sender } = e.data || {};
+      console.log(`📡 [BroadcastChannel] Received [${type}] from ${sender}`);
+      if (type === 'ACTIVITY_ADDED' || type === 'SYNC_ALL') {
+        if (payload && payload.newActivity) {
+          const raw = localStorage.getItem('wma_ecosystem_activities_v5');
+          let acts = raw ? JSON.parse(raw) : [];
+          if (!acts.some(a => a.id === payload.newActivity.id)) {
+            acts.push(payload.newActivity);
+            localStorage.setItem('wma_ecosystem_activities_v5', JSON.stringify(acts));
+          }
+        }
+        if (currentProject) {
+          loadProject(currentProject.id);
+        }
+      }
+    };
+  }
+
+  // Listen to custom local data sync events
+  window.addEventListener('wma_data_synced', () => {
+    if (currentProject) {
+      loadProject(currentProject.id);
+    }
+  });
+
+  console.log("✅ Universal Ecosystem Drone Monitoring Platform Ready with Nationwide Cloud Sync!");
 });
