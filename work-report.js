@@ -64,13 +64,21 @@ class WorkReportManager {
     const budgetPct = totalBudget > 0 ? ((spentBudget / totalBudget) * 100).toFixed(1) : 0.0;
 
     if (areaElem) areaElem.textContent = cumArea.toLocaleString();
-    if (pctElem) pctElem.textContent = `현재까지 ${completedRounds}회차 작업 진행 (인력 진척 ${workerProgressPct}%)`;
+    if (pctElem) pctElem.textContent = `현재까지 ${completedRounds}회차 작업 완료 (인력 진척 ${workerProgressPct}%)`;
     if (fillElem) fillElem.style.width = `${workerProgressPct}%`;
     if (kgElem) kgElem.textContent = cumKg.toLocaleString();
     if (workersElem) workersElem.textContent = cumWorkers;
     if (budgetElem) budgetElem.textContent = spentBudget.toLocaleString();
-    if (targetAreaTxt && this.kpis.total_target_area) {
-      targetAreaTxt.textContent = `${(this.kpis.total_target_area / 10000).toFixed(1)}만 ㎡`;
+    
+    if (targetAreaTxt) {
+      const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+      if (isDoowoong) {
+        targetAreaTxt.textContent = `대상구역 6.7만 ㎡ (실태조사 완료)`;
+      } else {
+        const targetKg = this.kpis.target_kg || 18830;
+        const kgPct = targetKg > 0 ? ((cumKg / targetKg) * 100).toFixed(1) : 0;
+        targetAreaTxt.textContent = `목표 ${targetKg.toLocaleString()}kg 중 (${kgPct}%)`;
+      }
     }
     if (workersSubElem) {
       workersSubElem.textContent = `계획 연인원 ${targetWorkers}명 중 (${workerProgressPct}%)`;
