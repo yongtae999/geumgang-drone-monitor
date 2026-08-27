@@ -37,7 +37,7 @@
   {
     "id": 3,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "천내리 습지 일대 (2구간 B 70% · 1구간 A 30%)",
+    "location": "천내리 습지 1·2구간 (2구간 B 70% · 1구간 A 30%)",
     "work_date": "2026-08-20",
     "is_completed": true,
     "method": "낫으로 베기, 예초기 사용",
@@ -59,30 +59,39 @@
   },
   {
     "id": 4,
-    "target_plant": "가시박, 환삼덩굴",
-    "location": "천내리 습지 일대",
-    "work_date": "2026-09-05 (예정)",
-    "is_completed": false,
-    "method": "낫으로 베기",
+    "target_plant": "환삼덩굴 (70%), 가시박 (30%)",
+    "location": "천내리 습지 2·3구간 (환삼덩굴 70% · 가시박 30%)",
+    "work_date": "2026-08-27",
+    "is_completed": true,
+    "method": "낫으로 베기, 예초기 사용, 뿌리뽑기",
     "stages": [
-      "영양생장"
+      "영양생장",
+      "개화전 차단"
     ],
-    "width_m": 300,
+    "width_m": 500,
     "length_m": 60,
-    "area_sqm": 18000.0,
+    "area_sqm": 30000.0,
     "hours": 6,
-    "amount_kg": 600,
-    "workers": 5
+    "amount_kg": 1000,
+    "workers": 5,
+    "section_breakdown": {
+      "humulus_japonicus_pct": 70,
+      "sicyos_angulatus_pct": 30,
+      "humulus_kg": 700,
+      "sicyos_kg": 300,
+      "humulus_sqm": 21000,
+      "sicyos_sqm": 9000
+    }
   },
   {
     "id": 5,
     "target_plant": "가시박, 환삼덩굴",
     "location": "천내리 습지 일대",
-    "work_date": "2026-09-20 (예정)",
+    "work_date": "2026-09-10 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",
     "stages": [
-      "영양생장"
+      "개화기 집중 차단"
     ],
     "width_m": 500,
     "length_m": 60,
@@ -95,11 +104,11 @@
     "id": 6,
     "target_plant": "가시박, 환삼덩굴",
     "location": "천내리 습지 일대",
-    "work_date": "2026-10-10 (예정)",
+    "work_date": "2026-09-25 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",
     "stages": [
-      "영양생장"
+      "개화기 2차 제거"
     ],
     "width_m": 800,
     "length_m": 60,
@@ -112,12 +121,11 @@
     "id": 7,
     "target_plant": "가시박, 환삼덩굴",
     "location": "천내리 습지 일대",
-    "work_date": "2026-10-25 (예정)",
+    "work_date": "2026-10-15 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",
     "stages": [
-      "영양생장",
-      "개화"
+      "결실방지 집중 작업"
     ],
     "width_m": 600,
     "length_m": 60,
@@ -130,12 +138,11 @@
     "id": 8,
     "target_plant": "가시박, 환삼덩굴",
     "location": "천내리 습지 일대",
-    "work_date": "2026-11-15 (예정)",
+    "work_date": "2026-11-10 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",
     "stages": [
-      "개화",
-      "결실"
+      "결실제거 및 잔재정리"
     ],
     "width_m": 500,
     "length_m": 60,

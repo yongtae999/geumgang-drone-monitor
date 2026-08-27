@@ -90,9 +90,9 @@ class WorkReportManager {
 
       const chartLabels = isDoowoong 
         ? ['황소개구리', '미국수련', '기타 (마름 등)']
-        : ['가시박 (70%)', '환삼덩굴 (25%)', '기타 (5%)'];
-      const chartData = isDoowoong ? [45, 40, 15] : [70, 25, 5];
-      const chartColors = isDoowoong ? ['#ef4444', '#38bdf8', '#10b981'] : ['#ef4444', '#f59e0b', '#06b6d4'];
+        : ['가시박 (58%)', '환삼덩굴 (42%)'];
+      const chartData = isDoowoong ? [45, 40, 15] : [58, 42];
+      const chartColors = isDoowoong ? ['#ef4444', '#38bdf8', '#10b981'] : ['#ef4444', '#f59e0b'];
 
       this.speciesChart = new Chart(ctx1, {
         type: 'doughnut',
@@ -115,13 +115,13 @@ class WorkReportManager {
             },
             title: {
               display: true,
-              text: isDoowoong ? '관리 대상종 비중 (조사 기준)' : '현장 식생 우점도(피도) 기준 비중',
+              text: isDoowoong ? '관리 대상종 비중 (조사 기준)' : '현장 누적 제거 식생 비중 (4차 반영)',
               color: '#cbd5e1',
               font: { size: 11, weight: 'bold' }
             },
             subtitle: {
               display: true,
-              text: isDoowoong ? '실태조사 결과 기반' : '※ 실무상 전종 통합 제거 (개별 분리계량 불가)',
+              text: isDoowoong ? '실태조사 결과 기반' : '※ 4차: 환삼덩굴 70%(700kg) · 가시박 30%(300kg)',
               color: '#64748b',
               font: { size: 9, style: 'italic' }
             }
@@ -138,7 +138,7 @@ class WorkReportManager {
       const methodLabels = isDoowoong
         ? ['포획통발 설치', '뿌리 굴취수거', '투망·뜰채 포획']
         : ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
-      const methodData = isDoowoong ? [0, 0, 0] : [48000, 18000, 12000];
+      const methodData = isDoowoong ? [0, 0, 0] : [78000, 36000, 18000];
 
       this.methodChart = new Chart(ctx2, {
         type: 'bar',
@@ -159,7 +159,7 @@ class WorkReportManager {
             legend: { display: false },
             title: {
               display: true,
-              text: isDoowoong ? '공정별 작업 실적 (착수 대기)' : '제거 방식별 실적',
+              text: isDoowoong ? '공정별 작업 실적 (착수 대기)' : '제거 방식별 누적 실적 (㎡)',
               color: '#cbd5e1',
               font: { size: 11, weight: 'bold' }
             }
@@ -187,16 +187,19 @@ class WorkReportManager {
       return;
     }
 
-    completedLogs.forEach((log) => {
+    completedLogs.forEach((log, idx) => {
       const item = document.createElement('div');
       item.className = 'work-log-item';
 
-      const locName = log.location ? log.location.split(' ').slice(-2).join(' ') : '천내리 습지 일대';
+      const roundNum = idx + 1;
+      const targetPlant = log.target_plant || '가시박, 환삼덩굴';
+      const locText = log.location ? log.location.replace('충청남도 금산군 제원면 ', '').replace('충청남도 태안군 원북면 ', '') : '사업 대상지 일원';
 
       item.innerHTML = `
         <div>
-          <div class="log-date">${log.id}회차 · ${log.work_date}</div>
-          <div class="log-info">${log.location || '사업 대상지 일원'} · <b>${Number(log.area_sqm).toLocaleString()}㎡</b> (${log.amount_kg}kg)</div>
+          <div class="log-date">제 ${roundNum}회차 · ${log.work_date}</div>
+          <div class="log-info">${locText} · <b>${Number(log.area_sqm).toLocaleString()}㎡</b> (${Number(log.amount_kg).toLocaleString()}kg)</div>
+          <div style="font-size: 0.68rem; color: #38bdf8; margin-top: 2px;">🌿 ${targetPlant}</div>
         </div>
         <div>
           <span class="log-status-tag done">완료</span>
@@ -230,12 +233,12 @@ class WorkReportManager {
     ] : [
       { step: 1, date: '07.24 (1차)', label: '발아기 (손 뿌리뽑기)', completed: true, focus: 'overview' },
       { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
-      { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초 (B·A구간)', completed: true, focus: 'zone-2' },
-      { step: 4, date: '09.05 (4차)', label: '개화전 집중 차단', completed: false, focus: 'overview' },
-      { step: 5, date: '09.20 (5차)', label: '개화기 2차 제거', completed: false, focus: 'overview' },
-      { step: 6, date: '10.10 (6차)', label: '결실방지 집중 작업', completed: false, focus: 'overview' },
-      { step: 7, date: '10.25 (7차)', label: '결실제거 및 잔재정리', completed: false, focus: 'overview' },
-      { step: 8, date: '11.15 (8차)', label: '최종 피복 및 결과보고', completed: false, focus: 'overview' }
+      { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초 (B·A)', completed: true, focus: 'zone-2' },
+      { step: 4, date: '08.27 (4차)', label: '개화전 집중 (환삼70%·가시30%)', completed: true, focus: 'zone-2' },
+      { step: 5, date: '09.10 (5차)', label: '개화기 집중 차단 (예정)', completed: false, focus: 'overview' },
+      { step: 6, date: '09.25 (6차)', label: '개화기 2차 제거 (예정)', completed: false, focus: 'overview' },
+      { step: 7, date: '10.15 (7차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
+      { step: 8, date: '11.10 (8차)', label: '결실제거 및 완료 (예정)', completed: false, focus: 'overview' }
     ];
 
     timelineData.forEach((node, idx) => {

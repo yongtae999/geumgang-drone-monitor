@@ -152,6 +152,66 @@ document.addEventListener('DOMContentLoaded', async () => {
     return merged;
   }
 
+  // Dynamic Photos Merger for Real-time Uploads
+  function getMergedPhotos(projectId, basePhotos) {
+    let merged = Array.isArray(basePhotos) ? [...basePhotos] : [];
+
+    const localActivitiesStr = localStorage.getItem('wma_ecosystem_activities_v5');
+    let centralActivities = [];
+    if (localActivitiesStr) {
+      try {
+        centralActivities = JSON.parse(localActivitiesStr);
+      } catch (e) {}
+    }
+
+    const isCheonnaeri = projectId === 'cheonnaeri';
+    const isDoowoong = projectId === 'doowoong';
+
+    const relevantActivities = centralActivities.filter(act => {
+      if (isCheonnaeri) {
+        return act.project_id === 'proj-dcs-geumgang-01' ||
+               (act.project_title && act.project_title.includes('천내리')) ||
+               (act.location && act.location.includes('천내리'));
+      }
+      if (isDoowoong) {
+        return act.project_id === 'proj-dcs-doowoong-02' ||
+               (act.project_title && act.project_title.includes('두웅')) ||
+               (act.location && act.location.includes('두웅'));
+      }
+      return act.project_id === projectId;
+    });
+
+    relevantActivities.forEach(act => {
+      if (act.photos && Array.isArray(act.photos)) {
+        act.photos.forEach((p, pIdx) => {
+          const photoId = `${act.id || act.date}-photo-${pIdx}`;
+          if (!merged.some(existing => existing.id === photoId || existing.filename === p.name)) {
+            const lat = isDoowoong ? 36.8364 : (36.1050 + (pIdx * 0.0004));
+            const lng = isDoowoong ? 126.1960 : (127.5780 + (pIdx * 0.0004));
+
+            merged.unshift({
+              id: photoId,
+              filename: p.name || `현장사진_${act.date}_#${pIdx + 1}`,
+              rel_url: p.dataUrl,
+              dataUrl: p.dataUrl,
+              folder: `천내리${(act.date || '').replace(/-/g, '').slice(2)}`,
+              date_group: act.date || '2026-08-27',
+              lat: lat,
+              lng: lng,
+              altitude: 130.0,
+              bearing: 220 + (pIdx * 30),
+              timestamp: `${act.date} 10:${String(pIdx * 15).padStart(2, '0')}:00`,
+              stage: pIdx === 0 ? '작업 전' : (pIdx === act.photos.length - 1 ? '작업 후' : '작업 중'),
+              note: act.summary || `${act.work_type || '제거작업'} 현장 사진`
+            });
+          }
+        });
+      }
+    });
+
+    return merged;
+  }
+
   // Project Switcher Engine
   async function loadProject(projectId) {
     console.log(`🔄 Switching to project: ${projectId}`);
@@ -192,8 +252,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       } catch (e) {}
     }
 
-    // 3. Merge Dynamic Real-time Activities from Central HQ
+    // 3. Merge Dynamic Real-time Activities and Photos from Central HQ
     workLogsData = getMergedWorkLogs(projectId, workLogsData);
+    photosData = getMergedPhotos(projectId, photosData);
 
     console.log(`Loaded ${photosData ? photosData.length : 0} photos and ${workLogsData.length} work logs for ${projectId}`);
 

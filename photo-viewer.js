@@ -107,7 +107,7 @@ class PhotoViewerManager {
       const item = document.createElement('div');
       item.className = 'thumb-item';
       
-      const photoUrl = photo.rel_url || `assets/photos/${photo.filename}`;
+      const photoUrl = photo.dataUrl || photo.rel_url || (photo.filename && photo.filename.startsWith('data:') ? photo.filename : `assets/photos/${photo.filename}`);
       item.innerHTML = `<img src="${photoUrl}" alt="${photo.filename}" loading="lazy">`;
 
       item.addEventListener('click', () => {
@@ -136,7 +136,8 @@ class PhotoViewerManager {
     const roundLabels = {
       '2026-07-24': '7월 24일 (1차)',
       '2026-08-06': '8월 6일 (2차)',
-      '2026-08-20': '8월 20일 (3차)'
+      '2026-08-20': '8월 20일 (3차)',
+      '2026-08-27': '8월 27일 (4차)'
     };
 
     let html = `<button class="filter-pill ${this.activeFilter === 'all' ? 'active' : ''}" data-filter="all">전체</button>`;
@@ -215,7 +216,7 @@ class PhotoViewerManager {
     const zoneElem = document.getElementById('modal-meta-zone');
     const stageElem = document.getElementById('modal-photo-stage');
 
-    const photoUrl = photo.rel_url || `assets/photos/${photo.filename}`;
+    const photoUrl = photo.dataUrl || photo.rel_url || (photo.filename && photo.filename.startsWith('data:') ? photo.filename : `assets/photos/${photo.filename}`);
     img.src = photoUrl;
 
     filenameElem.textContent = photo.filename;
@@ -243,6 +244,8 @@ class PhotoViewerManager {
       stageElem.textContent = '2차 성장기 제거 (예초·낫베기)';
     } else if (photo.date_group === '2026-08-20') {
       stageElem.textContent = '3차 성장기 집중 예초 (B·A구간)';
+    } else if (photo.date_group === '2026-08-27') {
+      stageElem.textContent = '4차 개화전 집중 차단 (환삼70%·가시30%)';
     } else {
       stageElem.textContent = photo.stage || '현장 작업 모니터링';
     }
