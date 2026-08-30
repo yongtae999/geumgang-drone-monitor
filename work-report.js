@@ -64,7 +64,13 @@ class WorkReportManager {
     const budgetPct = totalBudget > 0 ? ((spentBudget / totalBudget) * 100).toFixed(1) : 0.0;
 
     if (areaElem) areaElem.textContent = cumArea.toLocaleString();
-    if (pctElem) pctElem.textContent = `현재까지 ${completedRounds}회차 작업 완료 (인력 진척 ${workerProgressPct}%)`;
+    if (pctElem) {
+      if (completedRounds === 0) {
+        pctElem.textContent = `작업 준비 단계 (미실시 / 0회차)`;
+      } else {
+        pctElem.textContent = `현재까지 ${completedRounds}회차 작업 완료 (인력 진척 ${workerProgressPct}%)`;
+      }
+    }
     if (fillElem) fillElem.style.width = `${workerProgressPct}%`;
     if (kgElem) kgElem.textContent = cumKg.toLocaleString();
     if (workersElem) workersElem.textContent = cumWorkers;
@@ -72,8 +78,11 @@ class WorkReportManager {
     
     if (targetAreaTxt) {
       const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+      const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
       if (isDoowoong) {
         targetAreaTxt.textContent = `대상구역 6.7만 ㎡ (실태조사 완료)`;
+      } else if (isChunpo) {
+        targetAreaTxt.textContent = `목표 15,000kg (작업 대기 / 0%)`;
       } else {
         const targetKg = this.kpis.target_kg || 18830;
         const kgPct = targetKg > 0 ? ((cumKg / targetKg) * 100).toFixed(1) : 0;
@@ -90,17 +99,32 @@ class WorkReportManager {
 
   renderCharts() {
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+    const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
 
     // 1. Plant Species Doughnut Chart
     const ctx1 = document.getElementById('speciesChart');
     if (ctx1) {
       if (this.speciesChart) this.speciesChart.destroy();
 
-      const chartLabels = isDoowoong 
-        ? ['황소개구리', '미국수련', '기타 (마름 등)']
-        : ['가시박 (58%)', '환삼덩굴 (42%)'];
-      const chartData = isDoowoong ? [45, 40, 15] : [58, 42];
-      const chartColors = isDoowoong ? ['#ef4444', '#38bdf8', '#10b981'] : ['#ef4444', '#f59e0b'];
+      let chartLabels = ['가시박 (58%)', '환삼덩굴 (42%)'];
+      let chartData = [58, 42];
+      let chartColors = ['#ef4444', '#f59e0b'];
+      let titleTxt = '현장 누적 제거 식생 비중 (4차 반영)';
+      let subTxt = '※ 4차: 환삼덩굴 70%(700kg) · 가시박 30%(300kg)';
+
+      if (isDoowoong) {
+        chartLabels = ['황소개구리', '미국수련', '기타 (마름 등)'];
+        chartData = [45, 40, 15];
+        chartColors = ['#ef4444', '#38bdf8', '#10b981'];
+        titleTxt = '관리 대상종 비중 (조사 기준)';
+        subTxt = '실태조사 결과 기반';
+      } else if (isChunpo) {
+        chartLabels = ['양미역취 (70%)', '가시박 (20%)', '환삼덩굴 (10%)'];
+        chartData = [70, 20, 10];
+        chartColors = ['#10b981', '#f59e0b', '#38bdf8'];
+        titleTxt = '제거 대상 교란식물 비중 (예찰 기준)';
+        subTxt = '※ 사업 착수 준비 중 (미실시)';
+      }
 
       this.speciesChart = new Chart(ctx1, {
         type: 'doughnut',
@@ -123,13 +147,13 @@ class WorkReportManager {
             },
             title: {
               display: true,
-              text: isDoowoong ? '관리 대상종 비중 (조사 기준)' : '현장 누적 제거 식생 비중 (4차 반영)',
+              text: titleTxt,
               color: '#cbd5e1',
               font: { size: 11, weight: 'bold' }
             },
             subtitle: {
               display: true,
-              text: isDoowoong ? '실태조사 결과 기반' : '※ 4차: 환삼덩굴 70%(700kg) · 가시박 30%(300kg)',
+              text: subTxt,
               color: '#64748b',
               font: { size: 9, style: 'italic' }
             }
@@ -143,10 +167,17 @@ class WorkReportManager {
     if (ctx2) {
       if (this.methodChart) this.methodChart.destroy();
 
-      const methodLabels = isDoowoong
-        ? ['포획통발 설치', '뿌리 굴취수거', '투망·뜰채 포획']
-        : ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
-      const methodData = isDoowoong ? [0, 0, 0] : [78000, 36000, 18000];
+      const methodLabels = ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
+      let methodData = [65800, 48200, 18000];
+      let barTitle = '제거 방식별 누적 실적 (㎡)';
+
+      if (isDoowoong) {
+        barTitle = '공정별 작업 실적 (착수 대기)';
+        methodData = [0, 0, 0];
+      } else if (isChunpo) {
+        barTitle = '공정별 작업 실적 (작업 대기 / 미실시)';
+        methodData = [0, 0, 0];
+      }
 
       this.methodChart = new Chart(ctx2, {
         type: 'bar',
@@ -167,7 +198,7 @@ class WorkReportManager {
             legend: { display: false },
             title: {
               display: true,
-              text: isDoowoong ? '공정별 작업 실적 (착수 대기)' : '제거 방식별 누적 실적 (㎡)',
+              text: barTitle,
               color: '#cbd5e1',
               font: { size: 11, weight: 'bold' }
             }

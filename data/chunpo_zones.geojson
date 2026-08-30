@@ -16,8 +16,10 @@
         "density": "생태계교란식물 대군락 (피도 70%)",
         "priority": "드론 M3T 정사영상 예찰 및 뿌리 굴취",
         "color": "#10b981",
-        "completed_area": 24000,
-        "progress_pct": 20.8
+        "completed_area": 0,
+        "progress_pct": 0.0,
+        "status_label": "미실시 (작업 준비)",
+        "work_summary": "작업 준비 중 / 미실시"
       },
       "geometry": {
         "type": "Polygon",
