@@ -259,26 +259,41 @@ class WorkReportManager {
 
     container.innerHTML = '';
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+    const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
 
-    const timelineData = isDoowoong ? [
-      { step: 1, date: '08.10 (착수)', label: '착수 및 사전 안전교육', completed: true, focus: 'overview' },
-      { step: 2, date: '08.15 (1차)', label: '생물종 실태 정밀조사', completed: false, focus: 'zone-1' },
-      { step: 3, date: '08.20 (2차)', label: '황소개구리 통발 가동', completed: false, focus: 'zone-2' },
-      { step: 4, date: '09.05 (3차)', label: '미국수련 지하경 굴취', completed: false, focus: 'zone-1' },
-      { step: 5, date: '09.25 (4차)', label: '성체·유생 집중 포획', completed: false, focus: 'zone-2' },
-      { step: 6, date: '10.15 (5차)', label: '2차 실태조사/중간보고', completed: false, focus: 'overview' },
-      { step: 7, date: '11.10 (6차)', label: '수생 잔재물 수거정비', completed: false, focus: 'zone-3' },
-      { step: 8, date: '11.30 (완료)', label: '사업 종합완료보고', completed: false, focus: 'overview' }
-    ] : [
-      { step: 1, date: '07.24 (1차)', label: '발아기 (손 뿌리뽑기)', completed: true, focus: 'overview' },
-      { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
-      { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초 (B·A)', completed: true, focus: 'zone-2' },
-      { step: 4, date: '08.27 (4차)', label: '개화전 집중 (환삼70%·가시30%)', completed: true, focus: 'zone-2' },
-      { step: 5, date: '09.10 (5차)', label: '개화기 집중 차단 (예정)', completed: false, focus: 'overview' },
-      { step: 6, date: '09.25 (6차)', label: '개화기 2차 제거 (예정)', completed: false, focus: 'overview' },
-      { step: 7, date: '10.15 (7차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
-      { step: 8, date: '11.10 (8차)', label: '결실제거 및 완료 (예정)', completed: false, focus: 'overview' }
-    ];
+    let timelineData = [];
+    if (isDoowoong) {
+      timelineData = [
+        { step: 1, date: '08.10 (착수)', label: '착수 및 사전 안전교육', completed: true, focus: 'overview' },
+        { step: 2, date: '08.15 (1차)', label: '생물종 실태 정밀조사', completed: false, focus: 'zone-1' },
+        { step: 3, date: '08.20 (2차)', label: '황소개구리 통발 가동', completed: false, focus: 'zone-2' },
+        { step: 4, date: '09.05 (3차)', label: '미국수련 지하경 굴취', completed: false, focus: 'zone-1' },
+        { step: 5, date: '09.25 (4차)', label: '성체·유생 집중 포획', completed: false, focus: 'zone-2' },
+        { step: 6, date: '10.15 (5차)', label: '2차 실태조사/중간보고', completed: false, focus: 'overview' },
+        { step: 7, date: '11.10 (6차)', label: '수생 잔재물 수거정비', completed: false, focus: 'zone-3' },
+        { step: 8, date: '11.30 (완료)', label: '사업 종합완료보고', completed: false, focus: 'overview' }
+      ];
+    } else if (isChunpo) {
+      timelineData = [
+        { step: 1, date: '08.30 (준비)', label: '드론 M3T 정사영상 비행 및 예찰 (예정)', completed: false, focus: 'overview' },
+        { step: 2, date: '09.05 (1차)', label: '양미역취 군락 집중 예초 (예정)', completed: false, focus: 'overview' },
+        { step: 3, date: '09.15 (2차)', label: '만경강 수변부 2차 굴취 (예정)', completed: false, focus: 'overview' },
+        { step: 4, date: '09.30 (3차)', label: '개화기 확산 차단 (예정)', completed: false, focus: 'overview' },
+        { step: 5, date: '10.15 (4차)', label: '만경강 북안 잔재물 수거 (예정)', completed: false, focus: 'overview' },
+        { step: 6, date: '11.10 (완료)', label: '사업 완료 검수 및 보고 (예정)', completed: false, focus: 'overview' }
+      ];
+    } else {
+      timelineData = [
+        { step: 1, date: '07.24 (1차)', label: '발아기 (손 뿌리뽑기)', completed: true, focus: 'overview' },
+        { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
+        { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초 (B·A)', completed: true, focus: 'zone-2' },
+        { step: 4, date: '08.27 (4차)', label: '개화전 집중 (환삼70%·가시30%)', completed: true, focus: 'zone-2' },
+        { step: 5, date: '09.10 (5차)', label: '개화기 집중 차단 (예정)', completed: false, focus: 'overview' },
+        { step: 6, date: '09.25 (6차)', label: '개화기 2차 제거 (예정)', completed: false, focus: 'overview' },
+        { step: 7, date: '10.15 (7차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
+        { step: 8, date: '11.10 (8차)', label: '결실제거 및 완료 (예정)', completed: false, focus: 'overview' }
+      ];
+    }
 
     timelineData.forEach((node, idx) => {
       const nodeEl = document.createElement('div');
