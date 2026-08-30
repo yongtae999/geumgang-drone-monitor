@@ -173,5 +173,88 @@
       "zone-3": "기타 정비구역",
       "zone-3-sub": "데크변·완충지 22,050㎡"
     }
+  },
+  {
+    "id": "chunpo",
+    "name": "2026년 만경강 춘포지구 생태계교란식물(양미역취 등) 제거사업",
+    "short_name": "만경강 춘포 (양미역취 등)",
+    "agency": "전북지방환경청 자연환경과",
+    "contractor": "(사)야생생물관리협회 전북지부",
+    "location_name": "전북특별자치도 익산시 춘포면 만경강 일원 (익산 춘포역사 ~ 벨라비스 인근)",
+    "center_coords": [
+      126.993717,
+      35.895567
+    ],
+    "zoom": 15.2,
+    "pitch": 62,
+    "target_species": "양미역취, 가시박, 환삼덩굴",
+    "total_budget": 18000000,
+    "target_kg": 15000,
+    "target_workers": 40,
+    "zones_file": "data/chunpo_zones.geojson",
+    "work_logs_file": "data/chunpo_work_logs.json",
+    "photos_file": "data/chunpo_photos.json",
+    "kpis": {
+      "total_target_area": 115000,
+      "total_budget": 18000000,
+      "target_workers": 40
+    },
+    "flight_tour": [
+      {
+        "lng": 126.982307,
+        "lat": 35.898378,
+        "alt": 70,
+        "pitch": 65,
+        "bearing": 115,
+        "speed": 9.9,
+        "name": "홈포인트(H) 이륙 및 1구간(서측 수변부) 진입"
+      },
+      {
+        "lng": 126.987000,
+        "lat": 35.897000,
+        "alt": 68,
+        "pitch": 68,
+        "bearing": 110,
+        "speed": 10.0,
+        "name": "2구간 만경강 북안 양미역취 대군락지 상공"
+      },
+      {
+        "lng": 126.993717,
+        "lat": 35.895567,
+        "alt": 65,
+        "pitch": 70,
+        "bearing": 105,
+        "speed": 9.5,
+        "name": "중심 작업구역(위경도 35.895567, 126.993717) 정밀 관제"
+      },
+      {
+        "lng": 126.998500,
+        "lat": 35.894500,
+        "alt": 75,
+        "pitch": 60,
+        "bearing": 95,
+        "speed": 11.0,
+        "name": "3구간 벨라비스 요양병원 남측 수변 차단구역"
+      },
+      {
+        "lng": 126.991000,
+        "lat": 35.896500,
+        "alt": 160,
+        "pitch": 55,
+        "bearing": 240,
+        "speed": 14.0,
+        "name": "만경강 춘포지구 11.5만㎡ 전체 부감"
+      }
+    ],
+    "button_labels": {
+      "tour": "만경강 순회 비행",
+      "overview": "춘포면 전체 부감",
+      "zone-1": "1구간 (서측)",
+      "zone-1-sub": "백구교회~춘포 3.2만㎡",
+      "zone-2": "2구간 (중심)",
+      "zone-2-sub": "양미역취 군락 4.8만㎡",
+      "zone-3": "3구간 (동측)",
+      "zone-3-sub": "벨라비스 수변 3.5만㎡"
+    }
   }
 ]

@@ -1,0 +1,141 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "zone-1",
+        "name": "1구간 (서측 수변부)",
+        "subname": "백구교회~춘포 서측 수변대 (32,000㎡)",
+        "area_sqm": 32000,
+        "target_species": [
+          "양미역취",
+          "가시박"
+        ],
+        "density": "피도 45% (수변 완충대)",
+        "priority": "예초 및 뿌리 굴취",
+        "color": "#38bdf8",
+        "completed_area": 0,
+        "progress_pct": 0.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              126.981,
+              35.8992
+            ],
+            [
+              126.9865,
+              35.8978
+            ],
+            [
+              126.9868,
+              35.8966
+            ],
+            [
+              126.9815,
+              35.8979
+            ],
+            [
+              126.981,
+              35.8992
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "zone-2",
+        "name": "2구간 (양미역취 대군락지)",
+        "subname": "만경강 북안 수변부 (48,000㎡)",
+        "area_sqm": 48000,
+        "target_species": [
+          "양미역취",
+          "환삼덩굴",
+          "가시박"
+        ],
+        "density": "고밀도 대군락 (피도 75%)",
+        "priority": "드론 M3T 정사영상 집중 구역",
+        "color": "#10b981",
+        "completed_area": 0,
+        "progress_pct": 0.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              126.9865,
+              35.8978
+            ],
+            [
+              126.9945,
+              35.8958
+            ],
+            [
+              126.9948,
+              35.8946
+            ],
+            [
+              126.9868,
+              35.8966
+            ],
+            [
+              126.9865,
+              35.8978
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "zone-3",
+        "name": "3구간 (벨라비스 남측)",
+        "subname": "춘포역사~벨라비스 수변 차단 (35,000㎡)",
+        "area_sqm": 35000,
+        "target_species": [
+          "양미역취",
+          "가시박"
+        ],
+        "density": "확산 경계대 (피도 50%)",
+        "priority": "하류 확산 차단 모니터링",
+        "color": "#f59e0b",
+        "completed_area": 0,
+        "progress_pct": 0.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              126.9945,
+              35.8958
+            ],
+            [
+              127.002,
+              35.8942
+            ],
+            [
+              127.0025,
+              35.893
+            ],
+            [
+              126.9948,
+              35.8946
+            ],
+            [
+              126.9945,
+              35.8958
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

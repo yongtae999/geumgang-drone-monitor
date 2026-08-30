@@ -1,0 +1,32 @@
+[
+  {
+    "id": "chunpo-photo-01",
+    "filename": "춘포_드론_조종기_비행경로_M3T.jpg",
+    "rel_url": "assets/photos/chunpo_m3t_controller.jpg",
+    "dataUrl": "assets/photos/chunpo_m3t_controller.jpg",
+    "folder": "춘포드론관제",
+    "date_group": "2026-08-30",
+    "lat": 35.898378,
+    "lng": 126.982307,
+    "altitude": 69.8,
+    "bearing": 115,
+    "timestamp": "2026-08-30 11:22:00",
+    "stage": "드론 관제",
+    "note": "DJI M3T 비행 경로 수행 중 (고도 69.8m, 속도 9.9m/s, 익산 춘포역사 및 벨라비스 요양병원 인근 수변 격자 비행)"
+  },
+  {
+    "id": "chunpo-photo-02",
+    "filename": "춘포_만경강_양미역취_군락지_전경.jpg",
+    "rel_url": "assets/photos/chunpo_m3t_controller.jpg",
+    "dataUrl": "assets/photos/chunpo_m3t_controller.jpg",
+    "folder": "춘포드론관제",
+    "date_group": "2026-08-30",
+    "lat": 35.895567,
+    "lng": 126.993717,
+    "altitude": 70.0,
+    "bearing": 105,
+    "timestamp": "2026-08-30 11:35:00",
+    "stage": "작업 전",
+    "note": "위경도 35.895567, 126.993717 만경강 북안 수변부 양미역취 대군락지"
+  }
+]

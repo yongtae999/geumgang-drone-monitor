@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Populate Project Dropdown
+  // Read URL search param for initial project
+  const urlParams = new URLSearchParams(window.location.search);
+  const targetProjParam = urlParams.get('project') || urlParams.get('p') || urlParams.get('id');
+
+  // Populate Project Dropdown
   const selector = document.getElementById('project-selector');
   if (selector && projects.length) {
     selector.innerHTML = '';
@@ -44,6 +49,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       const opt = document.createElement('option');
       opt.value = p.id;
       opt.textContent = `🛸 ${p.short_name || p.name}`;
+      if (targetProjParam && (targetProjParam === p.id || targetProjParam.includes(p.id) || p.id.includes(targetProjParam))) {
+        opt.selected = true;
+      }
       selector.appendChild(opt);
     });
   }
@@ -77,6 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 2. Filter activities relevant to this project
     const isCheonnaeri = projectId === 'cheonnaeri';
     const isDoowoong = projectId === 'doowoong';
+    const isChunpo = projectId === 'chunpo';
 
     const relevantActivities = centralActivities.filter(act => {
       if (isCheonnaeri) {
@@ -89,6 +98,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                (act.project_title && act.project_title.includes('두웅')) ||
                (act.location && act.location.includes('두웅'));
       }
+      if (isChunpo) {
+        return act.project_id === 'proj-jb-goldenrod-02' ||
+               act.project_id === 'chunpo' ||
+               (act.project_title && (act.project_title.includes('춘포') || act.project_title.includes('양미역취'))) ||
+               (act.location && (act.location.includes('춘포') || act.location.includes('익산')));
+      }
       return act.project_id === projectId;
     });
 
@@ -96,7 +111,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 3. Map activities to work_logs format and merge
     relevantActivities.forEach((act, actIdx) => {
-      const actDate = act.date || '2026-08-27';
+      const actDate = act.date || '2026-08-30';
       const actArea = Number(act.area_m2) || 0;
       const actKg = Number(act.harvest_kg) || 0;
       const actWorkers = Number(act.worker_count) || 0;
@@ -107,16 +122,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         (log.work_date === actDate && log.is_completed)
       );
 
+      let targetPlant = '가시박, 환삼덩굴';
+      let loc = '천내리 습지 일대';
+      let meth = '낫으로 베기, 예초기 사용';
+      if (isDoowoong) {
+        targetPlant = '황소개구리, 미국수련';
+        loc = '두웅습지 람사르보호지역';
+        meth = '포획통발 및 뿌리 굴취';
+      } else if (isChunpo) {
+        targetPlant = '양미역취, 가시박, 환삼덩굴';
+        loc = '익산시 춘포면 만경강 일원';
+        meth = '드론 M3T 정밀 예찰, 예초기 및 뿌리 굴취';
+      }
+
       const mappedLog = {
         id: act.id || (merged.length + 1),
-        target_plant: isDoowoong ? '황소개구리, 미국수련' : '가시박, 환삼덩굴',
-        location: act.location || (isDoowoong ? '두웅습지 람사르보호지역' : '천내리 습지 일대'),
+        target_plant: targetPlant,
+        location: act.location || loc,
         work_date: actDate,
         is_completed: true,
-        method: act.work_type || (isDoowoong ? '포획통발 및 뿌리 굴취' : '낫으로 베기, 예초기 사용'),
+        method: act.work_type || meth,
         stages: ['영양생장'],
-        width_m: 600,
-        length_m: 60,
+        width_m: isChunpo ? 1200 : 600,
+        length_m: isChunpo ? 80 : 60,
         area_sqm: actArea,
         hours: 6,
         amount_kg: actKg,
@@ -166,6 +194,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const isCheonnaeri = projectId === 'cheonnaeri';
     const isDoowoong = projectId === 'doowoong';
+    const isChunpo = projectId === 'chunpo';
 
     const relevantActivities = centralActivities.filter(act => {
       if (isCheonnaeri) {
@@ -178,6 +207,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                (act.project_title && act.project_title.includes('두웅')) ||
                (act.location && act.location.includes('두웅'));
       }
+      if (isChunpo) {
+        return act.project_id === 'proj-jb-goldenrod-02' ||
+               act.project_id === 'chunpo' ||
+               (act.project_title && (act.project_title.includes('춘포') || act.project_title.includes('양미역취'))) ||
+               (act.location && (act.location.includes('춘포') || act.location.includes('익산')));
+      }
       return act.project_id === projectId;
     });
 
@@ -186,19 +221,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         act.photos.forEach((p, pIdx) => {
           const photoId = `${act.id || act.date}-photo-${pIdx}`;
           if (!merged.some(existing => existing.id === photoId || existing.filename === p.name)) {
-            const lat = isDoowoong ? 36.8364 : (36.1050 + (pIdx * 0.0004));
-            const lng = isDoowoong ? 126.1960 : (127.5780 + (pIdx * 0.0004));
+            let lat = 36.1050 + (pIdx * 0.0004);
+            let lng = 127.5780 + (pIdx * 0.0004);
+            let folderName = `천내리${(act.date || '').replace(/-/g, '').slice(2)}`;
+            if (isDoowoong) {
+              lat = 36.8364;
+              lng = 126.1960;
+              folderName = `두웅습지${(act.date || '').replace(/-/g, '').slice(2)}`;
+            } else if (isChunpo) {
+              lat = 35.895567 + (pIdx * 0.0003);
+              lng = 126.993717 + (pIdx * 0.0003);
+              folderName = `만경강춘포${(act.date || '').replace(/-/g, '').slice(2)}`;
+            }
 
             merged.unshift({
               id: photoId,
               filename: p.name || `현장사진_${act.date}_#${pIdx + 1}`,
               rel_url: p.dataUrl,
               dataUrl: p.dataUrl,
-              folder: `천내리${(act.date || '').replace(/-/g, '').slice(2)}`,
-              date_group: act.date || '2026-08-27',
+              folder: folderName,
+              date_group: act.date || '2026-08-30',
               lat: lat,
               lng: lng,
-              altitude: 130.0,
+              altitude: isChunpo ? 69.8 : 130.0,
               bearing: 220 + (pIdx * 30),
               timestamp: `${act.date} 10:${String(pIdx * 15).padStart(2, '0')}:00`,
               stage: pIdx === 0 ? '작업 전' : (pIdx === act.photos.length - 1 ? '작업 후' : '작업 중'),
