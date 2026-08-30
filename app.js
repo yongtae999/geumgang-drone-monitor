@@ -289,8 +289,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.warn("Project data fetch fallback:", err);
     }
 
-    // Safety fallback for photos if empty
-    if (!photosData || photosData.length === 0) {
+    // Safety fallback for photos if empty (only for cheonnaeri)
+    if ((!photosData || photosData.length === 0) && projectId === 'cheonnaeri') {
       try {
         const pFallback = await fetch('data/photos.json');
         if (pFallback.ok) photosData = await pFallback.json();
