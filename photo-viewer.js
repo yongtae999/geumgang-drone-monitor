@@ -235,8 +235,13 @@ class PhotoViewerManager {
 
     // Determine Zone by Lat/Lng
     let zoneName = "2구간 (B) 천내리습지 중심부";
-    if (photo.lat > 36.1080) zoneName = "1구간 (A) 제원대교 일원";
-    else if (photo.lng > 127.5790) zoneName = "3구간 (C) 습지 하류부";
+    if (photo.date_group === '2026-09-04') {
+      zoneName = "3구간 (C) 시작지점~중간부 집중제거";
+    } else if (photo.lat > 36.1080) {
+      zoneName = "1구간 (A) 제원대교 일원";
+    } else if (photo.lng > 127.5790) {
+      zoneName = "3구간 (C) 습지 하류부";
+    }
     zoneElem.textContent = zoneName;
 
     if (photo.date_group === '2026-07-24') {
