@@ -58,9 +58,21 @@ class WorkReportManager {
     const targetWorkers = this.kpis.target_workers || 45;
     const workerProgressPct = targetWorkers > 0 ? ((cumWorkers / targetWorkers) * 100).toFixed(1) : 0.0;
 
-    // Labor Cost (Daily wage 226,122 KRW per worker)
-    const spentBudget = cumWorkers > 0 ? cumWorkers * 226122 : 0;
-    const totalBudget = this.kpis.total_budget || 15000000;
+    // Actual Executed Budget (referencing '예산사용현황' tab in Excel)
+    const isCheonnaeri = !this.kpis || this.kpis.total_target_area === 144806;
+    const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+    const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
+
+    let spentBudget = 0;
+    if (this.kpis && this.kpis.spent_budget !== undefined) {
+      spentBudget = this.kpis.spent_budget;
+    } else if (isCheonnaeri) {
+      spentBudget = 4932440; // 엑셀 '예산사용현황' 탭 확정 실집행액 (오늘 9/4 5차 인건비는 미집행)
+    } else {
+      spentBudget = 0;
+    }
+
+    const totalBudget = this.kpis.total_budget || (isDoowoong ? 25000000 : (isChunpo ? 18000000 : 15000000));
     const budgetPct = totalBudget > 0 ? ((spentBudget / totalBudget) * 100).toFixed(1) : 0.0;
 
     if (areaElem) areaElem.textContent = cumArea.toLocaleString();
@@ -93,7 +105,13 @@ class WorkReportManager {
       workersSubElem.textContent = `계획 연인원 ${targetWorkers}명 중 (${workerProgressPct}%)`;
     }
     if (budgetSubElem) {
-      budgetSubElem.textContent = `총 ${totalBudget.toLocaleString()}원 대비 ${budgetPct}%`;
+      if (isCheonnaeri) {
+        budgetSubElem.textContent = `총 ${totalBudget.toLocaleString()}원 대비 ${budgetPct}% (실집행 기준)`;
+      } else if (isChunpo || isDoowoong) {
+        budgetSubElem.textContent = `총 ${totalBudget.toLocaleString()}원 대비 0.0%`;
+      } else {
+        budgetSubElem.textContent = `총 ${totalBudget.toLocaleString()}원 대비 ${budgetPct}%`;
+      }
     }
   }
 
@@ -486,6 +504,34 @@ class WorkReportManager {
           alert("저장 완료 (브라우저 로컬 저장)");
           modal.classList.add('hidden');
           location.reload();
+        }
+      });
+    }
+
+    // Bind Budget Detail Modal
+    const budgetCard = document.getElementById('kpi-card-budget');
+    const budgetModal = document.getElementById('modal-budget-detail');
+    const closeBudgetBtn = document.getElementById('btn-close-budget-modal');
+
+    if (budgetCard && budgetModal) {
+      budgetCard.addEventListener('click', () => {
+        budgetModal.classList.remove('hidden');
+        budgetModal.style.display = 'flex';
+      });
+    }
+
+    if (closeBudgetBtn && budgetModal) {
+      closeBudgetBtn.addEventListener('click', () => {
+        budgetModal.classList.add('hidden');
+        budgetModal.style.display = 'none';
+      });
+    }
+
+    if (budgetModal) {
+      budgetModal.addEventListener('click', (e) => {
+        if (e.target === budgetModal || (e.target.classList && e.target.classList.contains('modal-backdrop'))) {
+          budgetModal.classList.add('hidden');
+          budgetModal.style.display = 'none';
         }
       });
     }

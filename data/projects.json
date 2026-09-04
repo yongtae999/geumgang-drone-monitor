@@ -18,10 +18,11 @@
     "target_workers": 45,
     "zones_file": "data/zones.geojson",
     "work_logs_file": "data/work_logs.json",
-    "photos_file": "data/photos.json",
+    "budget_file": "data/budget_cheonnaeri.json",
     "kpis": {
       "total_target_area": 144806,
       "total_budget": 15000000,
+      "spent_budget": 4932440,
       "target_workers": 45
     },
     "flight_tour": [

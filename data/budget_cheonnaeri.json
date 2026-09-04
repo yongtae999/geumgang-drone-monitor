@@ -1,0 +1,105 @@
+{
+  "project_id": "cheonnaeri",
+  "title": "2026년 천내리습지 구간 생태계교란식물 제거사업 예산 사용현황",
+  "as_of_date": "2026-09-04",
+  "note": "오늘(9/4) 5차 작업자 인건비는 월말 정산 예정으로 아직 미집행이며, 9/4 예초기 휘발유(20,000원) 재료비 지출 포함",
+  "summary": {
+    "total_budget": 15000000,
+    "total_spent": 4932440,
+    "total_balance": 10067560,
+    "execution_rate_pct": 32.9
+  },
+  "categories": [
+    {
+      "category": "인건비",
+      "sub_category": "관리자 인건비",
+      "budget": 1993000,
+      "spent": 0,
+      "balance": 1993000,
+      "rate_pct": 0.0,
+      "note": "연구보조원·보조원 각 1인 6개월 10%"
+    },
+    {
+      "category": "인건비",
+      "sub_category": "작업자 인건비",
+      "budget": 10175490,
+      "spent": 4522440,
+      "balance": 5653050,
+      "rate_pct": 44.4,
+      "note": "7월(904,488원) + 8월(3,617,952원) 집행 완료 (오늘 9/4 5차 인건비는 미집행)"
+    },
+    {
+      "category": "경비",
+      "sub_category": "조사단 운영비",
+      "budget": 615124,
+      "spent": 0,
+      "balance": 615124,
+      "rate_pct": 0.0,
+      "note": "책임조사원·전문조사원·여비"
+    },
+    {
+      "category": "경비",
+      "sub_category": "회의 및 사전교육",
+      "budget": 200000,
+      "spent": 100000,
+      "balance": 100000,
+      "rate_pct": 50.0,
+      "note": "7/10 사전교육 식사비 100,000원 집행"
+    },
+    {
+      "category": "경비",
+      "sub_category": "재료비",
+      "budget": 450000,
+      "spent": 280000,
+      "balance": 170000,
+      "rate_pct": 62.2,
+      "note": "7/16 물품(19만)+약품(5만), 8/6 휘발유(2만), 9/4 휘발유(2만)"
+    },
+    {
+      "category": "경비",
+      "sub_category": "홍보비",
+      "budget": 30000,
+      "spent": 30000,
+      "balance": 0,
+      "rate_pct": 100.0,
+      "note": "7/21 현수막 제작 30,000원 집행 완료"
+    },
+    {
+      "category": "경비",
+      "sub_category": "결과보고서 제작",
+      "budget": 250000,
+      "spent": 0,
+      "balance": 250000,
+      "rate_pct": 0.0,
+      "note": "보고서 작성 및 인쇄 (완료 시점)"
+    },
+    {
+      "category": "경비",
+      "sub_category": "안전보건관리비",
+      "budget": 455000,
+      "spent": 0,
+      "balance": 455000,
+      "rate_pct": 0.0,
+      "note": "상해보험료 65,000원×7인"
+    },
+    {
+      "category": "일반관리비",
+      "sub_category": "일반관리비",
+      "budget": 831600,
+      "spent": 0,
+      "balance": 831600,
+      "rate_pct": 0.0,
+      "note": "(인건비+경비)의 6% 이내"
+    }
+  ],
+  "ledgers": [
+    { "no": 1, "date": "2026-07-10", "item": "회의 및 사전교육", "amount": 100000, "desc": "사전교육 식사비" },
+    { "no": 2, "date": "2026-07-16", "item": "재료비", "amount": 190000, "desc": "안전 및 방제 물품구입" },
+    { "no": 3, "date": "2026-07-16", "item": "재료비", "amount": 50000, "desc": "구급 의약품구입" },
+    { "no": 4, "date": "2026-07-21", "item": "홍보비", "amount": 30000, "desc": "현장 현수막 제작" },
+    { "no": 5, "date": "2026-08-03", "item": "작업자 인건비", "amount": 904488, "desc": "7월 작업자 인건비 지급" },
+    { "no": 6, "date": "2026-08-06", "item": "재료비", "amount": 20000, "desc": "2차 예초기 휘발유" },
+    { "no": 7, "date": "2026-08-31", "item": "작업자 인건비", "amount": 3617952, "desc": "8월 작업자 인건비 지급" },
+    { "no": 8, "date": "2026-09-04", "item": "재료비", "amount": 20000, "desc": "5차 예초기 휘발유" }
+  ]
+}
