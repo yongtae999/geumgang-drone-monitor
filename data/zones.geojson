@@ -78,13 +78,13 @@
         ],
         "density": "대군락 형성 (피도 75%)",
         "priority": "최우선 집중 관리",
-        "status_label": "1~5차 집중방제 완료",
-        "work_summary": "누적 121,200㎡ 작업 (5차 30,000㎡ / 1,700kg 추가 방제 완료)",
+        "status_label": "1~4차 집중방제 완료",
+        "work_summary": "누적 91,200㎡ 작업 (1차 30,000㎡ + 2차 48,000㎡ + 3차 25,200㎡ + 4차 21,000㎡)",
         "start_coords": "N 36°06′25.6″ E 127°34′26.9″",
         "end_coords": "N 36°06′18.2″ E 127°34′42.9″",
         "color": "#f87171",
-        "completed_area": 121200,
-        "removed_kg": 4420,
+        "completed_area": 91200,
+        "removed_kg": 3070,
         "progress_pct": 100
       },
       "geometry": {
@@ -144,13 +144,14 @@
         ],
         "density": "대군락 형성 (피도 60%)",
         "priority": "확산 방지 차단",
-        "status_label": "4차 집중차단 완료",
-        "work_summary": "4차 9,000㎡ 투입 및 하류부 집중 예찰",
+        "status_label": "5차 집중제거 완료 (시작점~중간부)",
+        "work_summary": "5차 30,000㎡ / 1,700kg 제거 (3구간 시작지점부터 중간까지 집중 예초·낫베기 완료)",
         "start_coords": "N 36°06′18.2″ E 127°34′42.9″",
         "end_coords": "N 36°06′13.3″ E 127°34′55.6″",
         "color": "#34d399",
-        "completed_area": 9000,
-        "progress_pct": 21
+        "completed_area": 30000,
+        "removed_kg": 1700,
+        "progress_pct": 70
       },
       "geometry": {
         "type": "Polygon",

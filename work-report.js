@@ -306,7 +306,7 @@ class WorkReportManager {
         { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
         { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초 (B·A)', completed: true, focus: 'zone-2' },
         { step: 4, date: '08.27 (4차)', label: '개화전 집중 (환삼70%·가시30%)', completed: true, focus: 'zone-2' },
-        { step: 5, date: '09.04 (5차)', label: '영양생장기 집중 예초 (1,700kg)', completed: true, focus: 'overview' },
+        { step: 5, date: '09.04 (5차)', label: '3구간 시작~중간 집중예초 (1,700kg)', completed: true, focus: 'zone-3' },
         { step: 6, date: '09.18 (6차)', label: '개화기 2차 제거 (예정)', completed: false, focus: 'overview' },
         { step: 7, date: '10.15 (7차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
         { step: 8, date: '11.10 (8차)', label: '결실제거 및 완료 (예정)', completed: false, focus: 'overview' }

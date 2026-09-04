@@ -86,7 +86,7 @@
   {
     "id": 5,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "천내리 습지 일대",
+    "location": "천내리 습지 3구간 (시작지점~중간부)",
     "work_date": "2026-09-04",
     "is_completed": true,
     "method": "낫으로 베기, 예초기 사용",
@@ -98,7 +98,14 @@
     "area_sqm": 30000.0,
     "hours": 6,
     "amount_kg": 1700,
-    "workers": 6
+    "workers": 6,
+    "section_breakdown": {
+      "zone": "zone-3",
+      "zone_name": "3구간 하류 확산 차단구역",
+      "section_desc": "3구간 시작지점부터 중간까지 (500m×60m)",
+      "area_sqm": 30000,
+      "amount_kg": 1700
+    }
   },
   {
     "id": 6,
