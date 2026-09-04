@@ -11,7 +11,7 @@ class WorkReportManager {
     this.speciesChart = null;
     this.methodChart = null;
     this.timelineInterval = null;
-    this.currentTimelineIdx = 1; // Default to 2nd step (Aug 06)
+    this.currentTimelineIdx = 4; // Default to 5th step (Sep 04)
   }
 
   init(workLogsData, kpisData) {
@@ -106,11 +106,11 @@ class WorkReportManager {
     if (ctx1) {
       if (this.speciesChart) this.speciesChart.destroy();
 
-      let chartLabels = ['가시박 (58%)', '환삼덩굴 (42%)'];
-      let chartData = [58, 42];
+      let chartLabels = ['가시박 (52%)', '환삼덩굴 (48%)'];
+      let chartData = [52, 48];
       let chartColors = ['#ef4444', '#f59e0b'];
-      let titleTxt = '현장 누적 제거 식생 비중 (4차 반영)';
-      let subTxt = '※ 4차: 환삼덩굴 70%(700kg) · 가시박 30%(300kg)';
+      let titleTxt = '현장 누적 제거 식생 비중 (5차 09.04 반영)';
+      let subTxt = '※ 5차: 가시박·환삼덩굴 영양생장 집중 예초 (1,700kg)';
 
       if (isDoowoong) {
         chartLabels = ['황소개구리', '미국수련', '기타 (마름 등)'];
@@ -168,7 +168,7 @@ class WorkReportManager {
       if (this.methodChart) this.methodChart.destroy();
 
       const methodLabels = ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
-      let methodData = [65800, 48200, 18000];
+      let methodData = [85800, 58200, 18000];
       let barTitle = '제거 방식별 누적 실적 (㎡)';
 
       if (isDoowoong) {
@@ -288,8 +288,8 @@ class WorkReportManager {
         { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
         { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초 (B·A)', completed: true, focus: 'zone-2' },
         { step: 4, date: '08.27 (4차)', label: '개화전 집중 (환삼70%·가시30%)', completed: true, focus: 'zone-2' },
-        { step: 5, date: '09.10 (5차)', label: '개화기 집중 차단 (예정)', completed: false, focus: 'overview' },
-        { step: 6, date: '09.25 (6차)', label: '개화기 2차 제거 (예정)', completed: false, focus: 'overview' },
+        { step: 5, date: '09.04 (5차)', label: '영양생장기 집중 예초 (1,700kg)', completed: true, focus: 'overview' },
+        { step: 6, date: '09.18 (6차)', label: '개화기 2차 제거 (예정)', completed: false, focus: 'overview' },
         { step: 7, date: '10.15 (7차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
         { step: 8, date: '11.10 (8차)', label: '결실제거 및 완료 (예정)', completed: false, focus: 'overview' }
       ];

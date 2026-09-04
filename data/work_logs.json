@@ -72,13 +72,13 @@
     "length_m": 60,
     "area_sqm": 30000.0,
     "hours": 6,
-    "amount_kg": 1000,
+    "amount_kg": 1350,
     "workers": 5,
     "section_breakdown": {
       "humulus_japonicus_pct": 70,
       "sicyos_angulatus_pct": 30,
-      "humulus_kg": 700,
-      "sicyos_kg": 300,
+      "humulus_kg": 945,
+      "sicyos_kg": 405,
       "humulus_sqm": 21000,
       "sicyos_sqm": 9000
     }
@@ -87,24 +87,24 @@
     "id": 5,
     "target_plant": "가시박, 환삼덩굴",
     "location": "천내리 습지 일대",
-    "work_date": "2026-09-10 (예정)",
-    "is_completed": false,
+    "work_date": "2026-09-04",
+    "is_completed": true,
     "method": "낫으로 베기, 예초기 사용",
     "stages": [
-      "개화기 집중 차단"
+      "영양생장"
     ],
     "width_m": 500,
     "length_m": 60,
     "area_sqm": 30000.0,
     "hours": 6,
-    "amount_kg": 1200,
-    "workers": 5
+    "amount_kg": 1700,
+    "workers": 6
   },
   {
     "id": 6,
     "target_plant": "가시박, 환삼덩굴",
     "location": "천내리 습지 일대",
-    "work_date": "2026-09-25 (예정)",
+    "work_date": "2026-09-18 (예정)",
     "is_completed": false,
     "method": "낫으로 베기, 예초기 사용",
     "stages": [
