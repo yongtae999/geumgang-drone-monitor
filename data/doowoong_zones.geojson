@@ -14,8 +14,9 @@
         "density": "수면 피도 65%",
         "priority": "지하경(뿌리줄기) 집중 굴취",
         "color": "#38bdf8",
-        "completed_area": 0,
-        "progress_pct": 0.0
+        "completed_area": 18500,
+        "progress_pct": 100.0,
+        "status": "1차 집중 굴취 완료 (200kg 수거)"
       },
       "geometry": {
         "type": "Polygon",
@@ -62,8 +63,9 @@
         "density": "포획통발 15개소 설치 가동",
         "priority": "성체·난괴 집중 수거 (금개구리 혼획방지)",
         "color": "#ef4444",
-        "completed_area": 0,
-        "progress_pct": 0.0
+        "completed_area": 26500,
+        "progress_pct": 100.0,
+        "status": "포획통발 15개소 설치 및 가동 중"
       },
       "geometry": {
         "type": "Polygon",

@@ -69,17 +69,32 @@ document.addEventListener('DOMContentLoaded', async () => {
       } catch (e) {}
     }
 
-    // Also check geumgang_work_logs for backward compatibility
-    const geumgangLocal = localStorage.getItem('geumgang_work_logs');
-    if (geumgangLocal) {
+    // Check project-specific localStorage
+    const projLocal = localStorage.getItem(`${projectId}_work_logs`);
+    if (projLocal) {
       try {
-        const gLogs = JSON.parse(geumgangLocal);
-        gLogs.forEach(gl => {
-          if (!merged.some(m => m.work_date === gl.work_date)) {
-            merged.push(gl);
+        const pLogs = JSON.parse(projLocal);
+        pLogs.forEach(pl => {
+          if (!merged.some(m => m.work_date === pl.work_date)) {
+            merged.push(pl);
           }
         });
       } catch (e) {}
+    }
+
+    // Also check geumgang_work_logs ONLY for cheonnaeri (backward compatibility)
+    if (projectId === 'cheonnaeri') {
+      const geumgangLocal = localStorage.getItem('geumgang_work_logs');
+      if (geumgangLocal) {
+        try {
+          const gLogs = JSON.parse(geumgangLocal);
+          gLogs.forEach(gl => {
+            if (!merged.some(m => m.work_date === gl.work_date)) {
+              merged.push(gl);
+            }
+          });
+        } catch (e) {}
+      }
     }
 
     // 2. Filter activities relevant to this project
@@ -311,14 +326,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       zoneMgr = new ZoneOverlayManager(mapCtrl);
       photoMgr = new PhotoViewerManager(mapCtrl);
       reportMgr = new WorkReportManager(mapCtrl);
+      window.photoMgr = photoMgr;
 
       zoneMgr.init(zonesData);
       photoMgr.init(photosData);
-      reportMgr.init(workLogsData, kpisData);
+      reportMgr.init(workLogsData, kpisData, currentProject);
     } else {
+      window.photoMgr = photoMgr;
       zoneMgr.updateZones(zonesData);
       photoMgr.updatePhotos(photosData);
-      reportMgr.updateData(workLogsData, kpisData);
+      reportMgr.updateData(workLogsData, kpisData, currentProject);
     }
 
     // 5. Update Flight Mode Button Labels

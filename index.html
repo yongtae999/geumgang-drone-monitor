@@ -401,7 +401,7 @@
           <div class="gov-form-header">
             <span class="form-tag">[별지서식 2]</span>
             <h2>생태계교란식물 제거사업 일일작업결과표</h2>
-            <div class="form-sub-info">사업명: 2026년 금강유역환경청 천내리 생태계교란식물 제거사업</div>
+            <div class="form-sub-info" id="form-sub-project-name">사업명: 2026년 금강유역환경청 천내리 생태계교란식물 제거사업</div>
           </div>
 
           <form id="daily-work-form" class="gov-form-table-wrap">
@@ -482,27 +482,30 @@
             </table>
 
             <div class="photo-attachment-preview">
-              <div class="photo-attach-title">작업 전·중·후 사진 첨부</div>
+              <div class="photo-attach-title"><i class="fa-solid fa-camera text-cyan"></i> 작업 전·중·후 현장 사진 첨부 (각 영역을 클릭하여 사진 등록)</div>
               <div class="photo-grid-3">
-                <div class="photo-box">
+                <div class="photo-box" id="box-wrapper-before">
                   <span class="photo-box-tag">작업 전</span>
-                  <div class="photo-box-img-wrap" id="box-img-before">
-                    <i class="fa-solid fa-image"></i>
-                    <span>사진 선택</span>
+                  <input type="file" id="input-photo-before" accept="image/*" style="display: none;">
+                  <div class="photo-box-img-wrap" id="box-img-before" style="cursor: pointer; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-cloud-arrow-up text-cyan" style="font-size: 1.5rem; margin-bottom: 4px;"></i>
+                    <span>사진 선택 (클릭)</span>
                   </div>
                 </div>
-                <div class="photo-box">
+                <div class="photo-box" id="box-wrapper-during">
                   <span class="photo-box-tag">작업 중</span>
-                  <div class="photo-box-img-wrap" id="box-img-during">
-                    <i class="fa-solid fa-image"></i>
-                    <span>사진 선택</span>
+                  <input type="file" id="input-photo-during" accept="image/*" style="display: none;">
+                  <div class="photo-box-img-wrap" id="box-img-during" style="cursor: pointer; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-cloud-arrow-up text-cyan" style="font-size: 1.5rem; margin-bottom: 4px;"></i>
+                    <span>사진 선택 (클릭)</span>
                   </div>
                 </div>
-                <div class="photo-box">
+                <div class="photo-box" id="box-wrapper-after">
                   <span class="photo-box-tag">작업 후</span>
-                  <div class="photo-box-img-wrap" id="box-img-after">
-                    <i class="fa-solid fa-image"></i>
-                    <span>사진 선택</span>
+                  <input type="file" id="input-photo-after" accept="image/*" style="display: none;">
+                  <div class="photo-box-img-wrap" id="box-img-after" style="cursor: pointer; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-cloud-arrow-up text-cyan" style="font-size: 1.5rem; margin-bottom: 4px;"></i>
+                    <span>사진 선택 (클릭)</span>
                   </div>
                 </div>
               </div>
@@ -852,11 +855,11 @@
   </div>
 
   <!-- App Scripts -->
-  <script src="cloud-sync.js?v=20260904_1755"></script>
-  <script src="drone-map.js?v=20260904_1755"></script>
-  <script src="zone-overlay.js?v=20260904_1755"></script>
-  <script src="photo-viewer.js?v=20260904_1755"></script>
-  <script src="work-report.js?v=20260904_1755"></script>
-  <script src="app.js?v=20260904_1755"></script>
+  <script src="cloud-sync.js?v=20260912_1250"></script>
+  <script src="drone-map.js?v=20260912_1250"></script>
+  <script src="zone-overlay.js?v=20260912_1250"></script>
+  <script src="photo-viewer.js?v=20260912_1250"></script>
+  <script src="work-report.js?v=20260912_1250"></script>
+  <script src="app.js?v=20260912_1250"></script>
 </body>
 </html>

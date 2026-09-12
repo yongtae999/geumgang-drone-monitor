@@ -8,26 +8,41 @@ class WorkReportManager {
     this.mapCtrl = mapController;
     this.workLogs = [];
     this.kpis = {};
+    this.currentProject = null;
     this.speciesChart = null;
     this.methodChart = null;
     this.timelineInterval = null;
     this.currentTimelineIdx = 4; // Default to 5th step (Sep 04)
+    this.attachedPhotos = { before: null, during: null, after: null };
   }
 
-  init(workLogsData, kpisData) {
-    this.workLogs = workLogsData;
-    this.kpis = kpisData;
+  init(workLogsData, kpisData, currentProject) {
+    this.workLogs = workLogsData || [];
+    this.kpis = kpisData || {};
+    this.currentProject = currentProject || null;
+
+    const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+    if (isDoowoong) {
+      this.currentTimelineIdx = 2; // Step 3 (09.11 1차)
+    }
 
     this.renderKPIs();
     this.renderCharts();
     this.renderWorkLogsList();
     this.renderTimeline();
     this.bindReportModalEvents();
+    this.setupPhotoAttachmentHandlers();
   }
 
-  updateData(workLogsData, kpisData) {
-    this.workLogs = workLogsData;
-    this.kpis = kpisData;
+  updateData(workLogsData, kpisData, currentProject) {
+    this.workLogs = workLogsData || [];
+    this.kpis = kpisData || {};
+    if (currentProject) this.currentProject = currentProject;
+
+    const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+    if (isDoowoong) {
+      this.currentTimelineIdx = 2; // Step 3 (09.11 1차)
+    }
 
     this.renderKPIs();
     this.renderCharts();
@@ -282,14 +297,14 @@ class WorkReportManager {
     let timelineData = [];
     if (isDoowoong) {
       timelineData = [
-        { step: 1, date: '08.10 (착수)', label: '착수 및 사전 안전교육', completed: true, focus: 'overview' },
-        { step: 2, date: '08.15 (1차)', label: '생물종 실태 정밀조사', completed: false, focus: 'zone-1' },
-        { step: 3, date: '08.20 (2차)', label: '황소개구리 통발 가동', completed: false, focus: 'zone-2' },
-        { step: 4, date: '09.05 (3차)', label: '미국수련 지하경 굴취', completed: false, focus: 'zone-1' },
-        { step: 5, date: '09.25 (4차)', label: '성체·유생 집중 포획', completed: false, focus: 'zone-2' },
-        { step: 6, date: '10.15 (5차)', label: '2차 실태조사/중간보고', completed: false, focus: 'overview' },
-        { step: 7, date: '11.10 (6차)', label: '수생 잔재물 수거정비', completed: false, focus: 'zone-3' },
-        { step: 8, date: '11.30 (완료)', label: '사업 종합완료보고', completed: false, focus: 'overview' }
+        { step: 1, date: '08.31 (조사)', label: '1차 실태 정밀조사 (식생·서식처)', completed: true, focus: 'overview' },
+        { step: 2, date: '09.01 (교육)', label: '착수 및 사전 안전교육 (혼획방지)', completed: true, focus: 'overview' },
+        { step: 3, date: '09.11 (1차)', label: '수련 200kg 굴취·통발 15개 가동', completed: true, focus: 'zone-1' },
+        { step: 4, date: '09.25 (2차)', label: '포획통발 점검 및 2차 수거 (예정)', completed: false, focus: 'zone-2' },
+        { step: 5, date: '10.15 (3차)', label: '수생 잔재물 수거 및 정비 (예정)', completed: false, focus: 'zone-1' },
+        { step: 6, date: '10.30 (4차)', label: '서식처 2차 실태조사 (예정)', completed: false, focus: 'overview' },
+        { step: 7, date: '11.15 (5차)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
+        { step: 8, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
       ];
     } else if (isChunpo) {
       timelineData = [
@@ -359,17 +374,146 @@ class WorkReportManager {
     this.mapCtrl.flyToPreset(node.focus);
   }
 
+  setupPhotoAttachmentHandlers() {
+    const stages = ['before', 'during', 'after'];
+    stages.forEach(stage => {
+      const box = document.getElementById(`box-img-${stage}`);
+      const input = document.getElementById(`input-photo-${stage}`);
+      if (!box || !input) return;
+
+      box.onclick = (e) => {
+        if (e.target.classList.contains('btn-remove-photo') || e.target.closest('.btn-remove-photo')) {
+          return;
+        }
+        input.click();
+      };
+
+      input.onchange = (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (re) => {
+          const img = new Image();
+          img.onload = () => {
+            const maxDim = 1200;
+            let w = img.width;
+            let h = img.height;
+            if (w > maxDim || h > maxDim) {
+              if (w > h) {
+                h = Math.round((h * maxDim) / w);
+                w = maxDim;
+              } else {
+                w = Math.round((w * maxDim) / h);
+                h = maxDim;
+              }
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.82);
+
+            const stageLabel = stage === 'before' ? '작업 전' : (stage === 'after' ? '작업 후' : '작업 중');
+            this.attachedPhotos[stage] = {
+              stage: stageLabel,
+              filename: file.name,
+              dataUrl: compressedDataUrl
+            };
+
+            box.innerHTML = `
+              <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px;">
+                <img src="${compressedDataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
+                <span style="position: absolute; bottom: 4px; left: 4px; font-size: 0.65rem; background: rgba(0,0,0,0.75); color: #38bdf8; padding: 2px 6px; border-radius: 3px; max-width: 75%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${file.name}</span>
+                <button type="button" class="btn-remove-photo" data-stage="${stage}" style="position: absolute; top: 4px; right: 4px; background: rgba(239,68,68,0.9); color: #fff; border: none; border-radius: 3px; font-size: 0.65rem; padding: 2px 6px; cursor: pointer;">✕ 삭제</button>
+              </div>
+            `;
+
+            const rmBtn = box.querySelector('.btn-remove-photo');
+            if (rmBtn) {
+              rmBtn.onclick = (ev) => {
+                ev.stopPropagation();
+                this.resetPhotoBox(stage);
+              };
+            }
+          };
+          img.src = re.target.result;
+        };
+        reader.readAsDataURL(file);
+      };
+    });
+  }
+
+  resetPhotoBox(stage) {
+    this.attachedPhotos[stage] = null;
+    const input = document.getElementById(`input-photo-${stage}`);
+    if (input) input.value = '';
+    const box = document.getElementById(`box-img-${stage}`);
+    if (box) {
+      box.innerHTML = `
+        <i class="fa-solid fa-cloud-arrow-up text-cyan" style="font-size: 1.5rem; margin-bottom: 4px;"></i>
+        <span>사진 선택 (클릭)</span>
+      `;
+    }
+  }
+
   openReportModalWithData(log) {
     const modal = document.getElementById('report-modal');
     if (!modal) return;
 
-    document.getElementById('form-plant').value = log.target_plant || '가시박, 환삼덩굴';
-    document.getElementById('form-location').value = log.location || '충청남도 금산군 천내리습지 일대';
-    document.getElementById('form-date').value = log.work_date.includes('(') ? '2026-08-18' : log.work_date;
-    document.getElementById('form-area').value = log.area_sqm || 800;
-    document.getElementById('form-kg').value = log.amount_kg || 800;
-    document.getElementById('form-workers').value = log.workers || 5;
+    const subInfo = document.getElementById('form-sub-project-name');
+    if (subInfo && this.currentProject) {
+      subInfo.textContent = `사업명: ${this.currentProject.name}`;
+    }
+
+    const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+
+    document.getElementById('form-plant').value = log.target_plant || (isDoowoong ? '황소개구리, 미국수련 (마름 등)' : '가시박, 환삼덩굴');
+    document.getElementById('form-location').value = log.location || (isDoowoong ? '충청남도 태안군 두웅습지 일대' : '충청남도 금산군 천내리습지 일대');
+    document.getElementById('form-date').value = log.work_date && !log.work_date.includes('(') ? log.work_date : (isDoowoong ? '2026-09-11' : '2026-09-04');
+    document.getElementById('form-area').value = log.area_sqm || (isDoowoong ? 45000 : 30000);
+    document.getElementById('form-kg').value = log.amount_kg || (isDoowoong ? 200 : 1700);
+    document.getElementById('form-workers').value = log.workers || (isDoowoong ? 4 : 6);
     document.getElementById('form-hours').value = log.hours || 6;
+    if (log.notes && document.getElementById('form-notes')) {
+      document.getElementById('form-notes').value = log.notes;
+    }
+
+    // Reset attached photo slots
+    this.resetPhotoBox('before');
+    this.resetPhotoBox('during');
+    this.resetPhotoBox('after');
+
+    if (log.representative_photo) {
+      const boxDuring = document.getElementById('box-img-during');
+      if (boxDuring) {
+        boxDuring.innerHTML = `
+          <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px;">
+            <img src="${log.representative_photo}" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; bottom: 4px; left: 4px; font-size: 0.65rem; background: rgba(0,0,0,0.75); color: #38bdf8; padding: 2px 6px; border-radius: 3px;">대표 현장사진</span>
+          </div>
+        `;
+      }
+    }
+
+    if (log.photos && Array.isArray(log.photos)) {
+      log.photos.forEach(p => {
+        let stageKey = 'during';
+        if (p.stage === '작업 전') stageKey = 'before';
+        else if (p.stage === '작업 후') stageKey = 'after';
+
+        const box = document.getElementById(`box-img-${stageKey}`);
+        if (box && p.dataUrl) {
+          box.innerHTML = `
+            <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px;">
+              <img src="${p.dataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; bottom: 4px; left: 4px; font-size: 0.65rem; background: rgba(0,0,0,0.75); color: #38bdf8; padding: 2px 6px; border-radius: 3px; max-width: 75%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${p.name || p.filename || '현장사진'}</span>
+            </div>
+          `;
+        }
+      });
+    }
 
     modal.classList.remove('hidden');
   }
@@ -378,24 +522,49 @@ class WorkReportManager {
     const modal = document.getElementById('report-modal');
     if (!modal) return;
 
+    const subInfo = document.getElementById('form-sub-project-name');
+    if (subInfo && this.currentProject) {
+      subInfo.textContent = `사업명: ${this.currentProject.name}`;
+    }
+
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
 
     const formPlant = document.getElementById('form-plant');
     const formLoc = document.getElementById('form-location');
     const formCoords = document.getElementById('form-coords');
+    const formDate = document.getElementById('form-date');
+    const formArea = document.getElementById('form-area');
+    const formKg = document.getElementById('form-kg');
+    const formWorkers = document.getElementById('form-workers');
+    const formHours = document.getElementById('form-hours');
     const formNotes = document.getElementById('form-notes');
 
     if (isDoowoong) {
-      if (formPlant) formPlant.value = '황소개구리, 미국수련, 기타 (마름 등)';
+      if (formPlant) formPlant.value = '황소개구리, 미국수련 (마름 등)';
       if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두해변길 291-30 (두웅습지)';
-      if (formCoords) formCoords.value = 'N 36°50′11.1″  E 126°11′45.8″';
-      if (formNotes) formNotes.value = '두웅습지 황소개구리 포획통발 가동 및 미국수련 뿌리줄기(지하경) 굴취. 금개구리 혼획 방지 안전 수칙 준수.';
+      if (formCoords) formCoords.value = 'N 36°50′10.8″  E 126°11′46.2″';
+      if (formDate) formDate.value = '2026-09-11';
+      if (formArea) formArea.value = 45000;
+      if (formKg) formKg.value = 200;
+      if (formWorkers) formWorkers.value = 4;
+      if (formHours) formHours.value = 6;
+      if (formNotes) formNotes.value = '황소개구리 포획통발 15개소 설치 완료 및 미국수련·마름 지하경·줄기 200kg 수작업 굴취 수거 완료. 금개구리 혼획 방지 안전관리 수칙 준수.';
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
       if (formLoc) formLoc.value = '충청남도 금산군 제원면 천내리습지 일대';
       if (formCoords) formCoords.value = 'N 36°06′25.6″  E 127°34′26.9″';
-      if (formNotes) formNotes.value = '제2구간 중심부 가시박 대군락지 예초 및 뿌리 제거 작업 실시. 안전교육 완료 후 작업 진행.';
+      if (formDate) formDate.value = '2026-09-04';
+      if (formArea) formArea.value = 30000;
+      if (formKg) formKg.value = 1700;
+      if (formWorkers) formWorkers.value = 6;
+      if (formHours) formHours.value = 6;
+      if (formNotes) formNotes.value = '제3구간 시작지점부터 중간까지 가시박 대군락지 예초기 집중작업 및 낫베기 병행 완료. 안전교육 완료 후 작업 진행.';
     }
+
+    // Reset photo attachment previews
+    this.resetPhotoBox('before');
+    this.resetPhotoBox('during');
+    this.resetPhotoBox('after');
 
     modal.classList.remove('hidden');
   }
@@ -439,30 +608,52 @@ class WorkReportManager {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+        const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
+        const projKey = isDoowoong ? 'doowoong' : (isChunpo ? 'chunpo' : 'cheonnaeri');
+
+        // Collect photos
+        const photosArr = [];
+        ['before', 'during', 'after'].forEach(stageKey => {
+          if (this.attachedPhotos[stageKey]) {
+            photosArr.push(this.attachedPhotos[stageKey]);
+          }
+        });
+
         const newLog = {
           target_plant: document.getElementById('form-plant').value,
           location: document.getElementById('form-location').value,
           work_date: document.getElementById('form-date').value,
           area_sqm: parseFloat(document.getElementById('form-area').value) || 0,
           amount_kg: parseFloat(document.getElementById('form-kg').value) || 0,
-          workers: parseInt(document.getElementById('form-workers').value) || 5,
+          workers: parseInt(document.getElementById('form-workers').value) || (isDoowoong ? 4 : 5),
           hours: parseInt(document.getElementById('form-hours').value) || 6,
           is_completed: true,
-          zone: "2구간 (B)",
-          method: "예초기 사용, 낫으로 베기",
-          stages: ["영양생장"]
+          zone: isDoowoong ? "1구간(미국수련) 및 2구간(황소개구리)" : "3구간 (C)",
+          method: isDoowoong ? "통발 포획(황소개구리) 및 뿌리·줄기 뽑기(미국수련, 마름 등)" : "예초기 사용, 낫으로 베기",
+          stages: ["영양생장"],
+          notes: document.getElementById('form-notes') ? document.getElementById('form-notes').value : ''
         };
 
+        if (photosArr.length > 0) {
+          newLog.photos = photosArr;
+          newLog.representative_photo = photosArr[0].dataUrl;
+        }
+
         try {
-          // 1. Update local geumgang_work_logs
-          const localLogsStr = localStorage.getItem('geumgang_work_logs');
+          // 1. Update project-specific localStorage
+          const storageKey = `${projKey}_work_logs`;
+          const localLogsStr = localStorage.getItem(storageKey);
           let currentLogs = localLogsStr ? JSON.parse(localLogsStr) : this.workLogs;
           newLog.id = currentLogs.length + 1;
+          newLog.round = currentLogs.length + 1;
           currentLogs.push(newLog);
-          localStorage.setItem('geumgang_work_logs', JSON.stringify(currentLogs));
+          localStorage.setItem(storageKey, JSON.stringify(currentLogs));
+          if (!isDoowoong && !isChunpo) {
+            localStorage.setItem('geumgang_work_logs', JSON.stringify(currentLogs));
+          }
 
-          // 2. Also map & save to Central HQ Activity Store ('wma_ecosystem_activities_v5')
-          const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+          // 2. Map & save to Central HQ Activity Store ('wma_ecosystem_activities_v5')
           const hqActivity = {
             id: `act-dcs-${Date.now()}`,
             branch_id: "daejeon-chungnam-sejong",
@@ -470,17 +661,22 @@ class WorkReportManager {
             project_id: isDoowoong ? "proj-dcs-doowoong-02" : "proj-dcs-geumgang-01",
             project_title: isDoowoong ? "2026년 두웅습지 외래생물 실태조사 및 확산방지 용역" : "천내리습지 생태계교란식물 제거사업",
             date: newLog.work_date,
-            work_type: newLog.method || "물리적 굴취 및 예초",
+            work_type: newLog.method || "물리적 굴취 및 통발 포획",
             worker_count: newLog.workers,
             area_m2: newLog.area_sqm,
             harvest_kg: newLog.amount_kg,
             location: newLog.location,
-            summary: `[3D 드론 관제 등록] ${newLog.location} 일원 제거작업 완료 (${newLog.area_sqm.toLocaleString()}㎡ / ${newLog.amount_kg.toLocaleString()}kg / 작업자 ${newLog.workers}명)`,
-            status: "완료"
+            summary: isDoowoong
+              ? `[3D 드론 관제 등록] 두웅습지 1차 외래생물 방제작업 완료 (수련·마름 ${newLog.amount_kg}kg 제거, 통발 15개 가동, 작업자 ${newLog.workers}명)`
+              : `[3D 드론 관제 등록] ${newLog.location} 일원 제거작업 완료 (${newLog.area_sqm.toLocaleString()}㎡ / ${newLog.amount_kg.toLocaleString()}kg / 작업자 ${newLog.workers}명)`,
+            status: "완료",
+            photos: photosArr
           };
 
           const rawActs = localStorage.getItem('wma_ecosystem_activities_v5');
           let acts = rawActs ? JSON.parse(rawActs) : [];
+          // Purge old 04-30 contract activity if exists in localStorage
+          acts = acts.filter(a => !(a.project_id === 'proj-dcs-doowoong-02' && a.date === '2026-04-30'));
           acts.unshift(hqActivity);
           localStorage.setItem('wma_ecosystem_activities_v5', JSON.stringify(acts));
 
@@ -489,14 +685,7 @@ class WorkReportManager {
             window.cloudSync.syncActivity(hqActivity);
           }
 
-          // Try server POST if available
-          fetch('/api/work-logs', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newLog)
-          }).catch(() => {});
-
-          alert("✅ 일일작업결과표가 정상적으로 등록되었으며, 중앙사무국 및 전국 관제망에 실시간 동기화되었습니다.");
+          alert("✅ 일일작업결과표와 현장 사진이 정상적으로 등록되었으며, 중앙사무국 및 전국 관제망에 실시간 동기화되었습니다.");
           modal.classList.add('hidden');
           location.reload();
         } catch (err) {

@@ -138,7 +138,10 @@ class PhotoViewerManager {
       '2026-08-06': '8월 6일 (2차)',
       '2026-08-20': '8월 20일 (3차)',
       '2026-08-27': '8월 27일 (4차)',
-      '2026-09-04': '9월 4일 (5차)'
+      '2026-09-04': '9월 4일 (5차)',
+      '2026-08-31': '8월 31일 (실태조사)',
+      '2026-09-01': '9월 1일 (안전교육)',
+      '2026-09-11': '9월 11일 (1차)'
     };
 
     let html = `<button class="filter-pill ${this.activeFilter === 'all' ? 'active' : ''}" data-filter="all">전체</button>`;
@@ -229,16 +232,27 @@ class PhotoViewerManager {
     if (photo.lat && photo.lng) {
       gpsElem.textContent = `${photo.lat.toFixed(6)}° N, ${photo.lng.toFixed(6)}° E`;
     } else {
-      gpsElem.textContent = 'GPS 미기록 (천내리 일대)';
+      gpsElem.textContent = 'GPS 미기록 (사업 대상지 일원)';
     }
 
     const altStr = photo.altitude ? `${photo.altitude}m` : '131.5m (해발고도)';
     const bearingStr = photo.bearing ? `${photo.bearing}°` : '180° (남향)';
     altBearingElem.textContent = `${altStr} / ${bearingStr}`;
 
-    // Determine Zone by Lat/Lng
+    // Determine Zone by Lat/Lng and project
     let zoneName = "2구간 (B) 천내리습지 중심부";
-    if (photo.date_group === '2026-09-04') {
+    if (photo.zone) {
+      zoneName = photo.zone;
+    } else if (photo.lat > 36.8) {
+      // Duung Wetland
+      if (photo.lng > 126.1968 || (photo.note && photo.note.includes('황소개구리'))) {
+        zoneName = "2구간 (B) 황소개구리 포획구역";
+      } else if (photo.lat < 36.8361 || (photo.note && (photo.note.includes('진입') || photo.note.includes('안전')))) {
+        zoneName = "3구간 (C) 기타 정비구역";
+      } else {
+        zoneName = "1구간 (A) 미국수련 제거구역";
+      }
+    } else if (photo.date_group === '2026-09-04') {
       zoneName = "3구간 (C) 시작지점~중간부 집중제거";
     } else if (photo.lat > 36.1080) {
       zoneName = "1구간 (A) 제원대교 일원";
@@ -247,7 +261,13 @@ class PhotoViewerManager {
     }
     zoneElem.textContent = zoneName;
 
-    if (photo.date_group === '2026-07-24') {
+    if (photo.stage === '실태조사') {
+      stageElem.textContent = '1차 정밀 실태조사 (식생 및 서식처)';
+    } else if (photo.stage === '안전교육') {
+      stageElem.textContent = '현장 작업자 사전 안전교육 (혼획방지)';
+    } else if (photo.date_group === '2026-09-11') {
+      stageElem.textContent = '1차 방제작업 (미국수련 굴취 및 통발 가동)';
+    } else if (photo.date_group === '2026-07-24') {
       stageElem.textContent = '1차 발아기 제거 (손 뿌리뽑기)';
     } else if (photo.date_group === '2026-08-06') {
       stageElem.textContent = '2차 성장기 제거 (예초·낫베기)';
