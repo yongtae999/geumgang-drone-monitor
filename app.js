@@ -165,9 +165,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       let loc = '천내리 습지 일대';
       let meth = '낫으로 베기, 예초기 사용';
       if (isDoowoong) {
-        targetPlant = '황소개구리, 미국수련';
-        loc = '두웅습지 람사르보호지역';
-        meth = '포획통발 및 뿌리 굴취';
+        targetPlant = '미국수련 (마름 등)';
+        loc = '충청남도 태안군 원북면 신두해변길 291-30 (두웅습지보호지역)';
+        meth = '뿌리 및 줄기 제거';
       } else if (isChunpo) {
         targetPlant = '양미역취, 가시박, 환삼덩굴';
         loc = '익산시 춘포면 만경강 일원';

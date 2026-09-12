@@ -58,42 +58,12 @@ class PhotoViewerManager {
     }
     this.markers = [];
 
-    const validPhotos = this.photos.filter(p => p.lat && p.lng);
     const countElem = document.getElementById('photo-count');
-    if (countElem) countElem.textContent = validPhotos.length;
+    if (countElem) countElem.textContent = this.photos ? this.photos.length : 0;
 
-    const currentMapBearing = this.map ? this.map.getBearing() : 0;
-
-    validPhotos.forEach((photo) => {
-      const el = document.createElement('div');
-      el.className = 'photo-marker-pin';
-      el.dataset.date = photo.date_group;
-      
-      const photoBearing = typeof photo.bearing === 'number' ? photo.bearing : 110;
-      const initialRot = photoBearing - currentMapBearing;
-
-      el.innerHTML = `
-        <div class="pin-pulse"></div>
-        <div class="pin-cone-arrow" style="transform: rotate(${initialRot}deg);"></div>
-        <div class="pin-icon" title="${photo.filename} (${photoBearing}°)">
-          <i class="fa-solid fa-camera"></i>
-        </div>
-      `;
-
-      el.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.openPhotoModal(photo);
-      });
-
-      const marker = new maplibregl.Marker({ element: el })
-        .setLngLat([photo.lng, photo.lat])
-        .addTo(this.map);
-
-      this.markers.push({ marker, el, photo });
-    });
-
-    this.applyFilter(this.activeFilter);
-    this.updateMarkerOrientations();
+    // 사용자 요청: GPS 오차 및 3D 지형 왜곡으로 인한 위치 불일치 문제를 해결하기 위해
+    // 지도 상의 카메라 핀포인트 마커를 표시하지 않음 (사진은 갤러리 및 결과표에서 확인)
+    return;
   }
 
   renderThumbnails() {
@@ -112,14 +82,6 @@ class PhotoViewerManager {
 
       item.addEventListener('click', () => {
         this.openPhotoModal(photo);
-        if (photo.lat && photo.lng) {
-          this.map.flyTo({
-            center: [photo.lng, photo.lat],
-            zoom: 17.5,
-            pitch: 65,
-            duration: 1800
-          });
-        }
       });
 
       strip.appendChild(item);

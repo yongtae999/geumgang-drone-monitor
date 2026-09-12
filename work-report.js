@@ -152,11 +152,11 @@ class WorkReportManager {
       let subTxt = '※ 5차: 가시박·환삼덩굴 영양생장 집중 예초 (1,700kg)';
 
       if (isDoowoong) {
-        chartLabels = ['황소개구리', '미국수련', '기타 (마름 등)'];
-        chartData = [45, 40, 15];
-        chartColors = ['#ef4444', '#38bdf8', '#10b981'];
-        titleTxt = '관리 대상종 비중 (조사 기준)';
-        subTxt = '실태조사 결과 기반';
+        chartLabels = ['미국수련 (100%)', '황소개구리 (미포획)'];
+        chartData = [100, 0];
+        chartColors = ['#38bdf8', '#475569'];
+        titleTxt = '현장 제거 실적 비중 (1차 09.11 반영)';
+        subTxt = '※ 미국수련 집중 굴취 200kg 완료 (황소개구리 포획은 미실시)';
       } else if (isChunpo) {
         chartLabels = ['양미역취 (70%)', '가시박 (20%)', '환삼덩굴 (10%)'];
         chartData = [70, 20, 10];
@@ -206,13 +206,18 @@ class WorkReportManager {
     if (ctx2) {
       if (this.methodChart) this.methodChart.destroy();
 
-      const methodLabels = ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
+      let methodLabels = ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
       let methodData = [85800, 58200, 18000];
       let barTitle = '제거 방식별 누적 실적 (㎡)';
+      let barColors = ['#38bdf8', '#34d399', '#a78bfa'];
+      let methodSubTxt = '';
 
       if (isDoowoong) {
-        barTitle = '공정별 작업 실적 (착수 대기)';
-        methodData = [0, 0, 0];
+        barTitle = '공정별 작업 실적 (㎡) - 1차 09.11 반영';
+        methodLabels = ['뿌리 및 줄기 제거', '통발'];
+        methodData = [45000, 0];
+        barColors = ['#38bdf8', '#475569'];
+        methodSubTxt = '※ 뿌리및줄기 45,000㎡ 완료 / 통발 포획 미실시';
       } else if (isChunpo) {
         barTitle = '공정별 작업 실적 (작업 대기 / 미실시)';
         methodData = [0, 0, 0];
@@ -225,7 +230,7 @@ class WorkReportManager {
           datasets: [{
             label: '실적',
             data: methodData,
-            backgroundColor: ['#38bdf8', '#34d399', '#a78bfa'],
+            backgroundColor: barColors,
             borderRadius: 4
           }]
         },
@@ -240,6 +245,12 @@ class WorkReportManager {
               text: barTitle,
               color: '#cbd5e1',
               font: { size: 11, weight: 'bold' }
+            },
+            subtitle: {
+              display: isDoowoong,
+              text: methodSubTxt,
+              color: '#64748b',
+              font: { size: 9, style: 'italic' }
             }
           },
           scales: {
