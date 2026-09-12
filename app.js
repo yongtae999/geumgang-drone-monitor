@@ -6,6 +6,25 @@
 document.addEventListener('DOMContentLoaded', async () => {
   console.log("🛸 Initializing Universal Ecosystem Monitoring Platform...");
 
+  // Auto cleanup any legacy 04-30 / 4월 30일 / act-dcs-02 placeholder entries from user browser's storage
+  try {
+    ['wma_ecosystem_activities_v5', 'wma_ecosystem_activities_v4', 'geumgang_work_logs', 'doowoong_work_logs', 'chunpo_work_logs'].forEach(key => {
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const data = JSON.parse(raw);
+        if (Array.isArray(data)) {
+          const cleaned = data.filter(item => {
+            const d = item.date || item.work_date || '';
+            const is0430 = d.includes('04-30') || d.includes('04/30') || d.includes('4월 30') || d.includes('4월30');
+            const isContract = item.id === 'act-dcs-02' || (item.work_type && item.work_type.includes('계약')) || (item.method && item.method.includes('계약'));
+            return !is0430 && !isContract;
+          });
+          localStorage.setItem(key, JSON.stringify(cleaned));
+        }
+      }
+    });
+  } catch (e) {}
+
   // 1. Initialize Drone 3D Map Controller
   const mapCtrl = new DroneMapController('drone-map');
   const map = mapCtrl.init();
@@ -103,6 +122,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const isChunpo = projectId === 'chunpo';
 
     const relevantActivities = centralActivities.filter(act => {
+      const d = act.date || '';
+      const is0430 = d.includes('04-30') || d.includes('04/30') || d.includes('4월 30') || d.includes('4월30');
+      const isContract = act.id === 'act-dcs-02' || (act.work_type && act.work_type.includes('계약'));
+      if (is0430 || isContract) return false;
+
       if (isCheonnaeri) {
         return act.project_id === 'proj-dcs-geumgang-01' ||
                (act.project_title && act.project_title.includes('천내리')) ||
@@ -192,7 +216,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    return merged;
+    return merged.filter(log => {
+      const d = log.work_date || '';
+      const is0430 = d.includes('04-30') || d.includes('04/30') || d.includes('4월 30') || d.includes('4월30');
+      const isContract = log.id === 'act-dcs-02' || (log.method && log.method.includes('계약'));
+      return !is0430 && !isContract;
+    });
   }
 
   // Dynamic Photos Merger for Real-time Uploads

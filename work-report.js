@@ -61,8 +61,14 @@ class WorkReportManager {
     const workersSubElem = document.getElementById('kpi-workers-sub');
     const budgetSubElem = document.getElementById('kpi-budget-sub');
 
-    // Calculate actual cumulative stats from completed work logs
-    const completedLogs = this.workLogs.filter(log => log.is_completed === true);
+    // Calculate actual cumulative stats from completed work logs (exclude 04-30 or contract placeholders)
+    const completedLogs = this.workLogs.filter(log => {
+      if (log.is_completed !== true) return false;
+      const d = log.work_date || '';
+      if (d.includes('04-30') || d.includes('04/30') || d.includes('4월 30') || d.includes('4월30')) return false;
+      if (log.id === 'act-dcs-02' || (log.method && log.method.includes('계약'))) return false;
+      return true;
+    });
     
     const cumArea = completedLogs.reduce((sum, l) => sum + (parseFloat(l.area_sqm) || 0), 0);
     const cumKg = completedLogs.reduce((sum, l) => sum + (parseFloat(l.amount_kg) || 0), 0);
@@ -251,8 +257,14 @@ class WorkReportManager {
 
     list.innerHTML = '';
     
-    // Filter only completed work logs
-    const completedLogs = this.workLogs.filter(log => log.is_completed === true);
+    // Filter only completed work logs (strictly excluding legacy contract or test dates like 04-30)
+    const completedLogs = this.workLogs.filter(log => {
+      if (log.is_completed !== true) return false;
+      const d = String(log.work_date || '');
+      if (d.includes('04-30') || d.includes('04/30') || d.includes('4월 30') || d.includes('4월30')) return false;
+      if (log.id === 'act-dcs-02' || (log.method && log.method.includes('계약')) || (log.title && log.title.includes('계약'))) return false;
+      return true;
+    });
 
     if (completedLogs.length === 0) {
       list.innerHTML = '<div style="color: var(--text-muted); font-size: 0.76rem; text-align: center; padding: 20px 10px; line-height: 1.5;"><i class="fa-solid fa-clipboard-list" style="font-size: 1.3rem; margin-bottom: 6px; display: block; color: var(--hud-cyan);"></i>작업 착수 대기 중<br><small style="color: #64748b;">상단 [+ 일일작업결과표 작성]을 통해 실적을 등록하세요.</small></div>';
