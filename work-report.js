@@ -562,16 +562,21 @@ class WorkReportManager {
     const formHours = document.getElementById('form-hours');
     const formNotes = document.getElementById('form-notes');
 
+    const methodCheckboxes = document.querySelectorAll('input[name="method"]');
+
     if (isDoowoong) {
-      if (formPlant) formPlant.value = '황소개구리, 미국수련 (마름 등)';
-      if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두해변길 291-30 (두웅습지)';
+      if (formPlant) formPlant.value = '미국수련 (마름 등)';
+      if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두해변길 291-30 (두웅습지보호지역)';
       if (formCoords) formCoords.value = 'N 36°50′10.8″  E 126°11′46.2″';
       if (formDate) formDate.value = '2026-09-11';
       if (formArea) formArea.value = 45000;
       if (formKg) formKg.value = 200;
       if (formWorkers) formWorkers.value = 4;
       if (formHours) formHours.value = 6;
-      if (formNotes) formNotes.value = '황소개구리 포획통발 15개소 설치 완료 및 미국수련·마름 지하경·줄기 200kg 수작업 굴취 수거 완료. 금개구리 혼획 방지 안전관리 수칙 준수.';
+      if (formNotes) formNotes.value = '두웅습지 수면부 미국수련 및 마름 지하경(뿌리줄기) 집중 수작업 굴취·제거 200kg 수거 완료. 금개구리 서식지 보호 수칙 준수 (※ 황소개구리 포획은 추후 실시 예정).';
+      methodCheckboxes.forEach(cb => {
+        cb.checked = (cb.value === '뿌리 및 줄기 제거');
+      });
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
       if (formLoc) formLoc.value = '충청남도 금산군 제원면 천내리습지 일대';
@@ -582,6 +587,9 @@ class WorkReportManager {
       if (formWorkers) formWorkers.value = 6;
       if (formHours) formHours.value = 6;
       if (formNotes) formNotes.value = '제3구간 시작지점부터 중간까지 가시박 대군락지 예초기 집중작업 및 낫베기 병행 완료. 안전교육 완료 후 작업 진행.';
+      methodCheckboxes.forEach(cb => {
+        cb.checked = (cb.value === '낫으로 베기' || cb.value === '예초기 사용');
+      });
     }
 
     // Reset photo attachment previews
