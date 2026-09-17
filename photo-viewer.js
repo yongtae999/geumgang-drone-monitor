@@ -185,7 +185,7 @@ class PhotoViewerManager {
 
     let photoUrl = photo.dataUrl || photo.rel_url || (photo.filename && photo.filename.startsWith('data:') ? photo.filename : `assets/photos/${photo.filename}`);
     if (!photoUrl.startsWith('data:') && !photoUrl.includes('?')) {
-      photoUrl += '?v=20260904_fix';
+      photoUrl += '?v=20260917';
     }
     img.src = photoUrl;
 
