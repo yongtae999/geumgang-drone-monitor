@@ -65,12 +65,30 @@ class WorkReportManager {
     const workersSubElem = document.getElementById('kpi-workers-sub');
     const budgetSubElem = document.getElementById('kpi-budget-sub');
 
-    // Calculate actual cumulative stats from completed work logs (exclude 04-30 or contract placeholders)
+    // Identify current project mode
+    const isCheonnaeri = !this.kpis || this.kpis.total_target_area === 144806;
+    const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+    const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
+
+    // Calculate actual cumulative stats from completed work logs (exclude 04-30, contract placeholders, and cross-project entries)
     const completedLogs = this.workLogs.filter(log => {
       if (log.is_completed !== true) return false;
       const d = log.work_date || '';
       if (d.includes('04-30') || d.includes('04/30') || d.includes('4월 30') || d.includes('4월30')) return false;
       if (log.id === 'act-dcs-02' || (log.method && log.method.includes('계약'))) return false;
+
+      const loc = log.location || '';
+      const plant = log.target_plant || '';
+      if (isCheonnaeri) {
+        if (loc.includes('두웅') || loc.includes('태안') || plant.includes('수련') || plant.includes('황소개구리') || d === '2026-09-11') {
+          return false;
+        }
+      }
+      if (isDoowoong) {
+        if (loc.includes('천내리') || loc.includes('금산') || plant.includes('가시박')) {
+          return false;
+        }
+      }
       return true;
     });
     
@@ -272,12 +290,28 @@ class WorkReportManager {
 
     list.innerHTML = '';
     
-    // Filter only completed work logs (strictly excluding legacy contract or test dates like 04-30)
+    const isCheonnaeri = !this.kpis || this.kpis.total_target_area === 144806;
+    const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+
+    // Filter only completed work logs (strictly excluding legacy contract, test dates, and cross-project entries)
     const completedLogs = this.workLogs.filter(log => {
       if (log.is_completed !== true) return false;
       const d = String(log.work_date || '');
       if (d.includes('04-30') || d.includes('04/30') || d.includes('4월 30') || d.includes('4월30')) return false;
       if (log.id === 'act-dcs-02' || (log.method && log.method.includes('계약')) || (log.title && log.title.includes('계약'))) return false;
+
+      const loc = log.location || '';
+      const plant = log.target_plant || '';
+      if (isCheonnaeri) {
+        if (loc.includes('두웅') || loc.includes('태안') || plant.includes('수련') || plant.includes('황소개구리') || d === '2026-09-11') {
+          return false;
+        }
+      }
+      if (isDoowoong) {
+        if (loc.includes('천내리') || loc.includes('금산') || plant.includes('가시박')) {
+          return false;
+        }
+      }
       return true;
     });
 

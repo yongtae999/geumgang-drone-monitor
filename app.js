@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   console.log("🛸 Initializing Universal Ecosystem Monitoring Platform...");
 
-  // Auto cleanup any legacy 04-30 / 4월 30일 / act-dcs-02 placeholder entries from user browser's storage
+  // Auto cleanup any legacy 04-30 / 4월 30일 / act-dcs-02 placeholder entries and prevent cross-project pollution
   try {
     ['wma_ecosystem_activities_v5', 'wma_ecosystem_activities_v4', 'geumgang_work_logs', 'doowoong_work_logs', 'chunpo_work_logs'].forEach(key => {
       const raw = localStorage.getItem(key);
@@ -17,7 +17,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             const d = item.date || item.work_date || '';
             const is0430 = d.includes('04-30') || d.includes('04/30') || d.includes('4월 30') || d.includes('4월30');
             const isContract = item.id === 'act-dcs-02' || (item.work_type && item.work_type.includes('계약')) || (item.method && item.method.includes('계약'));
-            return !is0430 && !isContract;
+            if (is0430 || isContract) return false;
+
+            // Strict separation: remove any Doowoong/Taean items from Cheonnaeri logs
+            if (key === 'geumgang_work_logs') {
+              const loc = item.location || '';
+              const plant = item.target_plant || item.species || '';
+              if (loc.includes('두웅') || loc.includes('태안') || plant.includes('수련') || plant.includes('황소개구리') || d === '2026-09-11') {
+                return false;
+              }
+            }
+            if (key === 'doowoong_work_logs') {
+              const loc = item.location || '';
+              const plant = item.target_plant || item.species || '';
+              if (loc.includes('천내리') || loc.includes('금산') || plant.includes('가시박')) {
+                return false;
+              }
+            }
+            return true;
           });
           localStorage.setItem(key, JSON.stringify(cleaned));
         }
@@ -108,6 +125,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
           const gLogs = JSON.parse(geumgangLocal);
           gLogs.forEach(gl => {
+            const loc = gl.location || '';
+            const plant = gl.target_plant || gl.species || '';
+            const d = gl.work_date || gl.date || '';
+            if (loc.includes('두웅') || loc.includes('태안') || plant.includes('수련') || plant.includes('황소개구리') || d === '2026-09-11') {
+              return; // strictly exclude Doowoong entries
+            }
             if (!merged.some(m => m.work_date === gl.work_date)) {
               merged.push(gl);
             }
