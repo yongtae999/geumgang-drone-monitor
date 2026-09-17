@@ -110,19 +110,35 @@
   {
     "id": 6,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "천내리 습지 일대",
-    "work_date": "2026-09-18 (예정)",
-    "is_completed": false,
+    "location": "천내리 습지 2·1구간 (B구간 중간~A구간 진입방향)",
+    "work_date": "2026-09-17",
+    "is_completed": true,
     "method": "낫으로 베기, 예초기 사용",
     "stages": [
-      "개화기 2차 제거"
+      "영양생장",
+      "개화"
     ],
     "width_m": 800,
     "length_m": 60,
     "area_sqm": 48000.0,
     "hours": 6,
-    "amount_kg": 1600,
-    "workers": 5
+    "amount_kg": 2000,
+    "workers": 5,
+    "section_breakdown": {
+      "zone": "zone-2_zone-1",
+      "zone_name": "2구간(B) 및 1구간(A) 연계구역",
+      "section_desc": "B구간 중간 지점에서 A구간 시작방향으로 진행 (가시박 밑둥 집중 제거)",
+      "sickle_sqm": 30000,
+      "sickle_kg": 300,
+      "sickle_workers": 2,
+      "mower_sqm": 18000,
+      "mower_kg": 1700,
+      "mower_workers": 3,
+      "area_sqm": 48000,
+      "amount_kg": 2000
+    },
+    "notes": "B구간 중간 지점에서 A구간 시작방향으로 진행, 하천수변부 버드나무 군락 아래 가시박 및 환삼덩굴 집중 예초·낫베기 실시 (A구간 가시박 밑둥 집중 제거). 2,000kg 수거 후 현장 바닥 말림.",
+    "representative_photo": "assets/photos/P20260917_060718378_CA8B0066-58BD-4BA0-89B9-C76B412CC738.JPG"
   },
   {
     "id": 7,

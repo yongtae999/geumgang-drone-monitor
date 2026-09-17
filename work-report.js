@@ -12,7 +12,7 @@ class WorkReportManager {
     this.speciesChart = null;
     this.methodChart = null;
     this.timelineInterval = null;
-    this.currentTimelineIdx = 4; // Default to 5th step (Sep 04)
+    this.currentTimelineIdx = 5; // Default to 6th step (Sep 17)
     this.attachedPhotos = { before: null, during: null, after: null };
   }
 
@@ -24,6 +24,8 @@ class WorkReportManager {
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
     if (isDoowoong) {
       this.currentTimelineIdx = 2; // Step 3 (09.11 1차)
+    } else {
+      this.currentTimelineIdx = 5; // Step 6 (09.17 6차)
     }
 
     this.renderKPIs();
@@ -42,6 +44,8 @@ class WorkReportManager {
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
     if (isDoowoong) {
       this.currentTimelineIdx = 2; // Step 3 (09.11 1차)
+    } else {
+      this.currentTimelineIdx = 5; // Step 6 (09.17 6차)
     }
 
     this.renderKPIs();
@@ -88,7 +92,7 @@ class WorkReportManager {
     if (this.kpis && this.kpis.spent_budget !== undefined) {
       spentBudget = this.kpis.spent_budget;
     } else if (isCheonnaeri) {
-      spentBudget = 4932440; // 엑셀 '예산사용현황' 탭 확정 실집행액 (오늘 9/4 5차 인건비는 미집행)
+      spentBudget = 4942440; // 엑셀 '예산사용현황' 탭 확정 실집행액 (9/17 엔진오일 포함, 9/4, 9/17 인건비는 미집행)
     } else {
       spentBudget = 0;
     }
@@ -145,11 +149,11 @@ class WorkReportManager {
     if (ctx1) {
       if (this.speciesChart) this.speciesChart.destroy();
 
-      let chartLabels = ['가시박 (52%)', '환삼덩굴 (48%)'];
-      let chartData = [52, 48];
+      let chartLabels = ['가시박 (53%)', '환삼덩굴 (47%)'];
+      let chartData = [53, 47];
       let chartColors = ['#ef4444', '#f59e0b'];
-      let titleTxt = '현장 누적 제거 식생 비중 (5차 09.04 반영)';
-      let subTxt = '※ 5차: 가시박·환삼덩굴 영양생장 집중 예초 (1,700kg)';
+      let titleTxt = '현장 누적 제거 식생 비중 (6차 09.17 반영)';
+      let subTxt = '※ 6차: B구간~A구간 가시박 밑둥 집중 제거 (2,000kg)';
 
       if (isDoowoong) {
         chartLabels = ['미국수련 (100%)', '황소개구리 (미포획)'];
@@ -207,7 +211,7 @@ class WorkReportManager {
       if (this.methodChart) this.methodChart.destroy();
 
       let methodLabels = ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
-      let methodData = [85800, 58200, 18000];
+      let methodData = [103800, 88200, 18000];
       let barTitle = '제거 방식별 누적 실적 (㎡)';
       let barColors = ['#38bdf8', '#34d399', '#a78bfa'];
       let methodSubTxt = '';
@@ -345,7 +349,7 @@ class WorkReportManager {
         { step: 3, date: '08.20 (3차)', label: '성장기 집중 예초 (B·A)', completed: true, focus: 'zone-2' },
         { step: 4, date: '08.27 (4차)', label: '개화전 집중 (환삼70%·가시30%)', completed: true, focus: 'zone-2' },
         { step: 5, date: '09.04 (5차)', label: '3구간 시작~중간 집중예초 (1,700kg)', completed: true, focus: 'zone-3' },
-        { step: 6, date: '09.18 (6차)', label: '개화기 2차 제거 (예정)', completed: false, focus: 'overview' },
+        { step: 6, date: '09.17 (6차)', label: '2구간(B)~1구간(A) 밑둥 집중제거 (2,000kg)', completed: true, focus: 'zone-2' },
         { step: 7, date: '10.15 (7차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
         { step: 8, date: '11.10 (8차)', label: '결실제거 및 완료 (예정)', completed: false, focus: 'overview' }
       ];
@@ -579,14 +583,14 @@ class WorkReportManager {
       });
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
-      if (formLoc) formLoc.value = '충청남도 금산군 제원면 천내리습지 일대';
-      if (formCoords) formCoords.value = 'N 36°06′25.6″  E 127°34′26.9″';
-      if (formDate) formDate.value = '2026-09-04';
-      if (formArea) formArea.value = 30000;
-      if (formKg) formKg.value = 1700;
-      if (formWorkers) formWorkers.value = 6;
+      if (formLoc) formLoc.value = '충청남도 금산군 제원면 용화리 403-1 / 천내리습지 2·1구간';
+      if (formCoords) formCoords.value = 'N 36°10′67.6″  E 127°57′47.0″';
+      if (formDate) formDate.value = '2026-09-17';
+      if (formArea) formArea.value = 48000;
+      if (formKg) formKg.value = 2000;
+      if (formWorkers) formWorkers.value = 5;
       if (formHours) formHours.value = 6;
-      if (formNotes) formNotes.value = '제3구간 시작지점부터 중간까지 가시박 대군락지 예초기 집중작업 및 낫베기 병행 완료. 안전교육 완료 후 작업 진행.';
+      if (formNotes) formNotes.value = 'B구간 중간 지점에서 A구간 시작방향으로 진행, 하천수변부 버드나무 군락 아래 가시박 및 환삼덩굴 집중 예초·낫베기 실시 (A구간 가시박 밑둥 집중 제거). 2,000kg 수거 완료 후 현장 바닥 말림.';
       methodCheckboxes.forEach(cb => {
         cb.checked = (cb.value === '낫으로 베기' || cb.value === '예초기 사용');
       });

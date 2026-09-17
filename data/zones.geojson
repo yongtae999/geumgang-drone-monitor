@@ -15,14 +15,14 @@
         ],
         "density": "산재 (피도 25%)",
         "priority": "중점 관리",
-        "status_label": "3차 작업완료 (지속관리)",
-        "work_summary": "3차 10,800㎡ 작업 (360kg 제거)",
+        "status_label": "3·6차 작업완료 (지속관리)",
+        "work_summary": "누적 28,800㎡ 작업 (3차 10,800㎡ + 6차 가시박 밑둥 집중제거 18,000㎡)",
         "start_coords": "N 36°06′42.8″ E 127°34′03.6″",
         "end_coords": "N 36°06′25.6″ E 127°34′26.9″",
         "color": "#38bdf8",
-        "completed_area": 10800,
-        "progress_pct": 37,
-        "removed_kg": 360
+        "completed_area": 28800,
+        "progress_pct": 100,
+        "removed_kg": 1060
       },
       "geometry": {
         "type": "Polygon",
@@ -78,13 +78,13 @@
         ],
         "density": "대군락 형성 (피도 75%)",
         "priority": "최우선 집중 관리",
-        "status_label": "1~4차 집중방제 완료",
-        "work_summary": "누적 91,200㎡ 작업 (1차 30,000㎡ + 2차 48,000㎡ + 3차 25,200㎡ + 4차 21,000㎡)",
+        "status_label": "1~6차 집중방제 완료",
+        "work_summary": "누적 121,200㎡ 작업 (1~4차 91,200㎡ + 6차 B구간 30,000㎡/1,300kg)",
         "start_coords": "N 36°06′25.6″ E 127°34′26.9″",
         "end_coords": "N 36°06′18.2″ E 127°34′42.9″",
         "color": "#f87171",
-        "completed_area": 91200,
-        "removed_kg": 3070,
+        "completed_area": 121200,
+        "removed_kg": 4370,
         "progress_pct": 100
       },
       "geometry": {
