@@ -102,10 +102,6 @@ class WorkReportManager {
     const workerProgressPct = targetWorkers > 0 ? ((cumWorkers / targetWorkers) * 100).toFixed(1) : 0.0;
 
     // Actual Executed Budget (referencing '예산사용현황' tab in Excel)
-    const isCheonnaeri = !this.kpis || this.kpis.total_target_area === 144806;
-    const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
-    const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
-
     let spentBudget = 0;
     if (this.kpis && this.kpis.spent_budget !== undefined) {
       spentBudget = this.kpis.spent_budget;
