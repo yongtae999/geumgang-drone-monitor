@@ -191,6 +191,9 @@
             <span class="compass-marker">150</span>
             <span class="compass-marker">S</span>
           </div>
+          <button id="btn-hud-drone-video" class="hud-btn-video pointer-events-auto" style="display: none;" title="두웅습지 4K 드론 항공영상 보기">
+            <i class="fa-solid fa-circle-play text-red"></i> <span>4K 드론 영상</span>
+          </button>
         </div>
 
         <!-- Center Crosshair & Pitch Ladder -->
@@ -865,12 +868,76 @@
     </div>
   </div>
 
+  <!-- MODAL: 두웅습지 4K 드론 항공 실사 영상 플레이어 -->
+  <div id="modal-drone-video" class="modal-overlay hidden" style="display: none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card" style="max-width: 960px; width: 95%; max-height: 92vh; background: #0b1324; border: 1px solid rgba(56, 189, 248, 0.35); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);">
+      <div class="modal-header" style="background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 12px 18px; display: flex; justify-content: space-between; align-items: center;">
+        <div class="modal-title-group" style="display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-video text-cyan" style="font-size: 1.25rem;"></i>
+          <div>
+            <h3 style="margin: 0; font-size: 1.05rem; color: #f8fafc; font-weight: 700;">[4K 드론 항공 영상] 태안 신두리 사구배후습지 두웅습지</h3>
+            <span style="font-size: 0.74rem; color: #94a3b8;">태안해안국립공원 신두리 해안사구 & 람사르 두웅습지보호지역 4K 초고화질 드론 항공 촬영 영상</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="btn-close-drone-video" style="background: none; border: none; color: #94a3b8; font-size: 1.2rem; cursor: pointer; padding: 4px 8px;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body" style="padding: 16px; overflow-y: auto;">
+        <!-- Tactical OSD Video Frame Container -->
+        <div class="video-player-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000; box-shadow: inset 0 0 25px rgba(0,0,0,0.9); border: 1px solid rgba(56, 189, 248, 0.25);">
+          <iframe id="drone-video-iframe" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+            src="" 
+            title="두웅습지 4K 드론 영상" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+          <!-- Tactical HUD Corners -->
+          <div style="position: absolute; top: 12px; left: 14px; pointer-events: none; color: #38bdf8; font-family: monospace; font-size: 0.72rem; text-shadow: 0 0 4px #000; z-index: 2; line-height: 1.4;">
+            <div>● REC 4K UHD 60FPS</div>
+            <div>ALT 120.0m | SPD 8.5m/s</div>
+          </div>
+          <div style="position: absolute; top: 12px; right: 14px; pointer-events: none; color: #38bdf8; font-family: monospace; font-size: 0.72rem; text-shadow: 0 0 4px #000; z-index: 2; text-align: right; line-height: 1.4;">
+            <div>N 36°50′11.1″ E 126°11′45.7″</div>
+            <div>DUUNG WETLAND RAMSAR #1770</div>
+          </div>
+        </div>
+
+        <!-- Video Metadata & Explanation Card -->
+        <div style="margin-top: 14px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div style="font-weight: 700; color: #f1f5f9; font-size: 0.9rem;">
+              <i class="fa-solid fa-plane-up text-cyan"></i> 드론 항공 촬영 정보 (Drone Flight Overview)
+            </div>
+            <div style="font-size: 0.75rem; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.3);">
+              사구배후습지 정밀 모니터링
+            </div>
+          </div>
+          <p style="margin: 0; font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">
+            본 영상은 국내 최대 해안사구인 태안 신두리 사구 배후에 형성된 <b>두웅습지보호지역(람사르습지 제1770호)</b>의 광활한 자연 전경과 개방수면을 4K 초고화질 드론으로 담아낸 실사 영상입니다. 습지 중심 개방수면부의 미국수련·마름 군락 및 수변부 갈대·부들 군락의 지형적 분포를 파악하는 데 효과적으로 활용됩니다.
+          </p>
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 4px; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px; flex-wrap: wrap;">
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <span><i class="fa-solid fa-location-dot text-emerald"></i> 위치: 충남 태안군 원북면 신두해변길 291-30</span>
+              <span><i class="fa-solid fa-vector-square text-cyan"></i> 보호구역 면적: 67,050 ㎡</span>
+              <span><i class="fa-solid fa-camera"></i> 출처: DynapicKorea Drone Archive</span>
+            </div>
+            <a href="https://www.youtube.com/watch?v=3x8ryFlD2fE" target="_blank" rel="noopener noreferrer" style="color: #f87171; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; background: rgba(239, 68, 68, 0.15); padding: 5px 12px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.4); font-size: 0.76rem;">
+              <i class="fa-brands fa-youtube" style="font-size: 0.9rem;"></i> 유튜브에서 4K 고화질로 보기 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.68rem;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- App Scripts -->
-  <script src="cloud-sync.js?v=20260924_0930"></script>
-  <script src="drone-map.js?v=20260924_0930"></script>
-  <script src="zone-overlay.js?v=20260924_0930"></script>
-  <script src="photo-viewer.js?v=20260924_0930"></script>
-  <script src="work-report.js?v=20260924_0930"></script>
-  <script src="app.js?v=20260924_0930"></script>
+  <script src="cloud-sync.js?v=20260924_0945"></script>
+  <script src="drone-map.js?v=20260924_0945"></script>
+  <script src="zone-overlay.js?v=20260924_0945"></script>
+  <script src="photo-viewer.js?v=20260924_0945"></script>
+  <script src="work-report.js?v=20260924_0945"></script>
+  <script src="app.js?v=20260924_0945"></script>
 </body>
 </html>

@@ -399,8 +399,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const bZ3 = document.querySelector('.mode-btn[data-mode="zone-3"]');
 
     if (labels) {
-      if (bTour && labels["tour"]) bTour.querySelector('span').textContent = labels["tour"];
-      if (bOver && labels["overview"]) bOver.querySelector('span').textContent = labels["overview"];
+      if (bTour) {
+        if (labels["tour"]) bTour.querySelector('span').textContent = labels["tour"];
+        if (labels["tour-sub"]) bTour.querySelector('small').textContent = labels["tour-sub"];
+      }
+      if (bOver) {
+        if (labels["overview"]) bOver.querySelector('span').textContent = labels["overview"];
+        if (labels["overview-sub"]) bOver.querySelector('small').textContent = labels["overview-sub"];
+      }
       if (bZ1 && labels["zone-1"]) {
         bZ1.querySelector('span').textContent = labels["zone-1"];
         bZ1.querySelector('small').textContent = labels["zone-1-sub"] || '';
@@ -412,6 +418,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (bZ3 && labels["zone-3"]) {
         bZ3.querySelector('span').textContent = labels["zone-3"];
         bZ3.querySelector('small').textContent = labels["zone-3-sub"] || '';
+        if (projectId === 'doowoong') {
+          const icon = bZ3.querySelector('i');
+          if (icon) icon.className = 'fa-solid fa-circle-play text-red';
+        }
       }
     } else {
       // Default Cheonnaeri Labels
@@ -430,7 +440,53 @@ document.addEventListener('DOMContentLoaded', async () => {
         bZ3.querySelector('small').textContent = "하류 차단구역 43,167㎡";
       }
     }
+
+    // Toggle HUD Drone Video Button
+    const btnHudVideo = document.getElementById('btn-hud-drone-video');
+    if (btnHudVideo) {
+      btnHudVideo.style.display = (projectId === 'doowoong') ? 'inline-flex' : 'none';
+    }
   }
+
+  // Drone Video Modal Controls
+  const droneVideoModal = document.getElementById('modal-drone-video');
+  const droneVideoIframe = document.getElementById('drone-video-iframe');
+  const btnCloseDroneVideo = document.getElementById('btn-close-drone-video');
+  const btnHudDroneVideo = document.getElementById('btn-hud-drone-video');
+
+  window.openDroneVideoModal = function() {
+    if (!droneVideoModal) return;
+    droneVideoModal.classList.remove('hidden');
+    droneVideoModal.style.display = 'flex';
+    if (droneVideoIframe && !droneVideoIframe.src.includes('3x8ryFlD2fE')) {
+      droneVideoIframe.src = "https://www.youtube.com/embed/3x8ryFlD2fE?autoplay=1&mute=0&rel=0";
+    }
+  };
+
+  window.closeDroneVideoModal = function() {
+    if (!droneVideoModal) return;
+    droneVideoModal.classList.add('hidden');
+    droneVideoModal.style.display = 'none';
+    if (droneVideoIframe) {
+      droneVideoIframe.src = "";
+    }
+  };
+
+  if (btnCloseDroneVideo) {
+    btnCloseDroneVideo.addEventListener('click', window.closeDroneVideoModal);
+  }
+  if (droneVideoModal) {
+    const backdrop = droneVideoModal.querySelector('.modal-backdrop');
+    if (backdrop) backdrop.addEventListener('click', window.closeDroneVideoModal);
+  }
+  if (btnHudDroneVideo) {
+    btnHudDroneVideo.addEventListener('click', window.openDroneVideoModal);
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && droneVideoModal && droneVideoModal.style.display === 'flex') {
+      window.closeDroneVideoModal();
+    }
+  });
 
   // Map Loaded Event
   map.on('load', () => {
@@ -448,10 +504,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modeButtons = document.querySelectorAll('.mode-btn');
   modeButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      if (mode === 'zone-3' && currentProject && currentProject.id === 'doowoong') {
+        if (window.openDroneVideoModal) window.openDroneVideoModal();
+        return;
+      }
       modeButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const mode = btn.dataset.mode;
       mapCtrl.flyToPreset(mode);
     });
   });

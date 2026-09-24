@@ -47,7 +47,11 @@ class ZoneOverlayManager {
       source: 'cheonnaeri-zones',
       paint: {
         'fill-color': ['get', 'color'],
-        'fill-opacity': 0.35
+        'fill-opacity': [
+          'case',
+          ['boolean', ['get', 'hide_fill'], false], 0.0,
+          0.35
+        ]
       }
     });
 
@@ -60,7 +64,11 @@ class ZoneOverlayManager {
         'line-color': ['get', 'color'],
         'line-width': 3,
         'line-blur': 1,
-        'line-opacity': 0.9
+        'line-opacity': [
+          'case',
+          ['boolean', ['get', 'hide_outline'], false], 0.0,
+          0.9
+        ]
       }
     });
 
@@ -72,7 +80,11 @@ class ZoneOverlayManager {
       minzoom: 12,
       maxzoom: 24,
       layout: {
-        'text-field': ['concat', ['get', 'name'], '\n(', ['to-string', ['get', 'area_sqm']], '㎡)'],
+        'text-field': [
+          'case',
+          ['boolean', ['get', 'hide_label'], false], '',
+          ['concat', ['get', 'name'], '\n(', ['to-string', ['get', 'area_sqm']], '㎡)']
+        ],
         'text-size': 13,
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold', 'sans-serif'],
         'text-anchor': 'center',
@@ -142,10 +154,22 @@ class ZoneOverlayManager {
       const statusText = p.status_label || (hasWork ? '1차 작업 완료' : '작업 대기 (미착수)');
       const summaryText = p.work_summary || (hasWork ? `누적 ${Number(p.completed_area).toLocaleString()}㎡ 작업 (${p.removed_kg || 200}kg)` : '향후 회차 투입 예정');
 
+      const isDoowoong = this.mapCtrl && this.mapCtrl.activeProject && this.mapCtrl.activeProject.id === 'doowoong';
+      let actionBtnHtml = '';
+      if (isDoowoong) {
+        actionBtnHtml = `
+          <div style="margin-top: 8px;">
+            <button type="button" class="btn-card-drone-video" style="width: 100%; padding: 6px 10px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 6px; color: #fca5a5; font-size: 0.74rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s;">
+              <i class="fa-solid fa-circle-play text-red"></i> 두웅습지 4K 드론 항공영상 보기
+            </button>
+          </div>
+        `;
+      }
+
       card.innerHTML = `
         <div class="zone-card-header">
           <span class="zone-card-title">${p.name}</span>
-          <span class="zone-badge" style="color: ${hasWork ? '#38bdf8' : '#94a3b8'}; border: 1px solid ${hasWork ? '#38bdf840' : '#ffffff20'}; background: ${hasWork ? 'rgba(56, 189, 248, 0.1)' : 'rgba(255,255,255,0.05)'}">
+          <span class="zone-badge" style="color: ${hasWork ? '#10b981' : '#94a3b8'}; border: 1px solid ${hasWork ? '#10b98140' : '#ffffff20'}; background: ${hasWork ? 'rgba(16, 185, 129, 0.1)' : 'rgba(255,255,255,0.05)'}">
             ${statusText}
           </span>
         </div>
@@ -156,7 +180,16 @@ class ZoneOverlayManager {
         <div class="zone-card-meta" style="margin-top: 4px; font-size: 0.72rem; color: ${hasWork ? '#38bdf8' : 'var(--text-muted)'};">
           <span><i class="fa-solid fa-clipboard-check"></i> ${summaryText}</span>
         </div>
+        ${actionBtnHtml}
       `;
+
+      const videoBtn = card.querySelector('.btn-card-drone-video');
+      if (videoBtn) {
+        videoBtn.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          if (window.openDroneVideoModal) window.openDroneVideoModal();
+        });
+      }
 
       card.addEventListener('click', () => {
         document.querySelectorAll('.zone-card').forEach(c => c.classList.remove('active'));
