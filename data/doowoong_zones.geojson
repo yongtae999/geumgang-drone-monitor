@@ -15,12 +15,12 @@
         "density": "수면 피도 65%",
         "priority": "지하경(뿌리줄기) 집중 굴취",
         "color": "#38bdf8",
-        "completed_area": 18500,
+        "completed_area": 7500,
         "progress_pct": 100.0,
-        "status": "1차 집중 굴취 완료 (200kg 수거)",
-        "status_label": "1차 작업 완료",
-        "work_summary": "누적 18,500㎡ 수작업 굴취 (200kg)",
-        "removed_kg": 200
+        "status": "1~3차 집중 굴취 완료 (누적 1,100kg 수거)",
+        "status_label": "3차 굴취완료",
+        "work_summary": "누적 7,500㎡ 수작업 굴취 (1,100kg 수거 완료)",
+        "removed_kg": 1100
       },
       "geometry": {
         "type": "Polygon",
@@ -67,12 +67,12 @@
         "density": "포획통발 설치 예정",
         "priority": "성체·난괴 집중 수거 (금개구리 혼획방지)",
         "color": "#ef4444",
-        "completed_area": 0,
+        "completed_area": 5000,
         "progress_pct": 0.0,
-        "status": "작업 대기 (미실시)",
-        "status_label": "작업 대기 [미포획]",
-        "work_summary": "통발 설치 및 포획 대기 중 (미실시)",
-        "removed_kg": 0
+        "status": "2·3차 통발 가동 (황소개구리 5kg 포획)",
+        "status_label": "2·3차 포획완료",
+        "work_summary": "통발 15개소 가동 및 황소개구리 성체·올챙이 5kg 포획",
+        "removed_kg": 5
       },
       "geometry": {
         "type": "Polygon",

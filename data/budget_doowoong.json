@@ -1,0 +1,104 @@
+{
+  "project_id": "doowoong",
+  "project_name": "2026년 두웅습지 외래생물 실태조사 및 확산방지 용역",
+  "agency": "금강유역환경청",
+  "contractor": "(사)야생생물관리협회 대전·충남·세종지부",
+  "period": "2026.08.07 ~ 2026.11.30",
+  "as_of_date": "2026-09-23",
+  "total_budget": 19500000,
+  "spent_budget": 1049700,
+  "remaining_budget": 18450300,
+  "execution_rate_pct": 5.38,
+  "budget_summary_by_category": [
+    {
+      "category": "인건비",
+      "allocated": 16453191,
+      "spent": 0,
+      "remaining": 16453191,
+      "rate_pct": 0.0,
+      "note": "연구보조원·보조원·조사원·제거작업인부 (월말 일괄 정산 예정)"
+    },
+    {
+      "category": "경비",
+      "allocated": 1950000,
+      "spent": 1049700,
+      "remaining": 900300,
+      "rate_pct": 53.83,
+      "note": "회의비, 재료비, 홍보비, 안전보건관리비 집행"
+    },
+    {
+      "category": "일반관리비",
+      "allocated": 1096830,
+      "spent": 0,
+      "remaining": 1096830,
+      "rate_pct": 0.0,
+      "note": "(인건비+경비)의 6% 이내"
+    }
+  ],
+  "expenditures": [
+    {
+      "no": 1,
+      "date": "2026-09-01",
+      "item": "회의 및 사전교육",
+      "vendor": "화양반점",
+      "amount": 100000,
+      "note": "식사비(7명)"
+    },
+    {
+      "no": 2,
+      "date": "2026-09-02",
+      "item": "안전보건관리비",
+      "vendor": "KB손해보험",
+      "amount": 242200,
+      "note": "상해보험료(7명)"
+    },
+    {
+      "no": 3,
+      "date": "2026-09-07",
+      "item": "홍보비",
+      "vendor": "광고맨",
+      "amount": 60000,
+      "note": "현수막 2EA"
+    },
+    {
+      "no": 4,
+      "date": "2026-09-09",
+      "item": "재료비",
+      "vendor": "공주낚시할인마트",
+      "amount": 115000,
+      "note": "포획도구 등"
+    },
+    {
+      "no": 5,
+      "date": "2026-09-09",
+      "item": "재료비",
+      "vendor": "공주종합철물",
+      "amount": 265500,
+      "note": "마대 등"
+    },
+    {
+      "no": 6,
+      "date": "2026-09-14",
+      "item": "안전보건관리비",
+      "vendor": "우리약국",
+      "amount": 48000,
+      "note": "약품류"
+    },
+    {
+      "no": 7,
+      "date": "2026-09-16",
+      "item": "안전보건관리비",
+      "vendor": "공주낚시할인마트",
+      "amount": 150000,
+      "note": "구명조끼 3EA"
+    },
+    {
+      "no": 8,
+      "date": "2026-09-16",
+      "item": "재료비",
+      "vendor": "공주종합철물",
+      "amount": 69000,
+      "note": "갈퀴 등"
+    }
+  ]
+}

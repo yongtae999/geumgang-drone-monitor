@@ -7,15 +7,82 @@
     "location": "충청남도 태안군 원북면 신두해변길 291-30 (두웅습지보호지역)",
     "gps_coords": "N 36°50′10.8″  E 126°11′46.2″",
     "zone": "1구간(미국수련 제거구역)",
-    "area_sqm": 45000,
+    "area_sqm": 2500,
     "amount_kg": 200,
     "workers": 4,
     "hours": 6,
     "time_range": "07:00 ~ 12:50",
     "method": "뿌리 및 줄기 제거",
     "is_completed": true,
-    "stages": ["영양생장"],
-    "notes": "두웅습지 수면부 미국수련 및 마름 지하경(뿌리줄기) 집중 수작업 굴취·제거 200kg 수거 완료. 금개구리 서식지 보호 수칙 준수 (※ 황소개구리 포획은 추후 실시 예정).",
+    "stages": [
+      "영양생장"
+    ],
+    "section_breakdown": {
+      "water_lily_sqm": 2500,
+      "water_lily_kg": 200,
+      "water_lily_workers": 2,
+      "bullfrog_kg": 0,
+      "bullfrog_workers": 2
+    },
+    "notes": "두웅습지 수면부 미국수련 및 마름 지하경(뿌리줄기) 집중 수작업 굴취·제거 200kg 수거 완료. 금개구리 서식지 보호 수칙 준수 (※ 황소개구리 포획통발 15개소 설치 가동).",
     "representative_photo": "assets/photos/P20260911_113503328_EB292E1F-D772-4D19-95CD-38092BE2132E.JPG"
+  },
+  {
+    "id": 2,
+    "round": 2,
+    "work_date": "2026-09-22",
+    "target_plant": "황소개구리, 미국수련 (마름 등)",
+    "location": "충청남도 태안군 원북면 신두해변길 291-30 (두웅습지)",
+    "gps_coords": "N 36°50′11.2″  E 126°11′46.5″",
+    "zone": "1구간(미국수련 제거구역) 및 2구간(황소개구리 포획구역)",
+    "area_sqm": 2500,
+    "amount_kg": 503,
+    "workers": 5,
+    "hours": 6,
+    "time_range": "07:30 ~ 13:40",
+    "method": "통발 포획(황소개구리) 및 뿌리 및 줄기 뽑기(미국수련, 마름 등)",
+    "is_completed": true,
+    "stages": [
+      "영양생장",
+      "개화"
+    ],
+    "section_breakdown": {
+      "water_lily_sqm": 2500,
+      "water_lily_kg": 500,
+      "water_lily_workers": 3,
+      "bullfrog_kg": 3,
+      "bullfrog_workers": 2
+    },
+    "notes": "황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 작업 실시. 미국수련 및 마름 500kg 굴취 수거, 황소개구리 성체 및 올챙이 3kg 포획 완료. 말린 후 폐기 처리.",
+    "representative_photo": "assets/photos/P20260922_074630981_AF292795-6CEE-4406-BB1F-4D307594A026.JPG"
+  },
+  {
+    "id": 3,
+    "round": 3,
+    "work_date": "2026-09-23",
+    "target_plant": "황소개구리, 미국수련 (마름 등)",
+    "location": "충청남도 태안군 원북면 신두해변길 291-30 (두웅습지)",
+    "gps_coords": "N 36°50′11.5″  E 126°11′46.8″",
+    "zone": "1구간(미국수련 제거구역) 및 2구간(황소개구리 포획구역)",
+    "area_sqm": 2500,
+    "amount_kg": 402,
+    "workers": 3,
+    "hours": 6,
+    "time_range": "07:40 ~ 13:50",
+    "method": "통발 포획(황소개구리) 및 뿌리 및 줄기 뽑기(미국수련, 마름 등)",
+    "is_completed": true,
+    "stages": [
+      "영양생장",
+      "개화"
+    ],
+    "section_breakdown": {
+      "water_lily_sqm": 2500,
+      "water_lily_kg": 400,
+      "water_lily_workers": 2,
+      "bullfrog_kg": 2,
+      "bullfrog_workers": 1
+    },
+    "notes": "황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 작업 실시. 미국수련 및 마름 400kg 굴취 수거, 황소개구리 올챙이 및 성체 2kg 포획 완료. 말린 후 폐기 처리.",
+    "representative_photo": "assets/photos/P20260923_090117934_D0F51A16-DE76-42DF-B639-219FDB559A41.JPG"
   }
 ]
