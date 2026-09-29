@@ -143,6 +143,57 @@
   {
     "id": 7,
     "target_plant": "가시박, 환삼덩굴",
+    "location": "천내리 습지 2구간 (B구역 집중제거)",
+    "coordinates": "N 36°10′49.5″  E 127°57′86.1″",
+    "work_date": "2026-09-29",
+    "is_completed": true,
+    "method": "낫으로 베기, 예초기 사용",
+    "stages": [
+      "개화",
+      "결실"
+    ],
+    "width_m": 700,
+    "length_m": 60,
+    "area_sqm": 42000.0,
+    "hours": 6,
+    "amount_kg": 2000,
+    "workers": 5,
+    "section_breakdown": {
+      "zone": "zone-2",
+      "zone_name": "2구간(B구역)",
+      "section_desc": "B구간 끝 지점 ~ B구간 시작 방향 (하천수변 버드나무 군락 하부 가시박 대군락 2차 집중제거)",
+      "sickle_sqm": 12000,
+      "sickle_kg": 300,
+      "sickle_workers": 2,
+      "mower_sqm": 30000,
+      "mower_kg": 1700,
+      "mower_workers": 3,
+      "area_sqm": 42000,
+      "amount_kg": 2000
+    },
+    "notes": "B구간 끝 지점에서 B구간 시작 방향으로 진행함. 하천수변부 버드나무 군락 아래 가시박 대군락 및 환삼덩굴 2차 집중 제거. 예초기 및 낫베기 병행하여 2,000kg 수거 후 현장 바닥 말림.",
+    "representative_photo": "assets/photos/P20260929_063402242_427E7265-A004-4467-8DDB-26064E103B75.JPG",
+    "photos": [
+      {
+        "stage": "작업 전",
+        "name": "B구간 버드나무 하부 가시박·환삼덩굴 생육 현황",
+        "rel_url": "assets/photos/P20260929_063402242_427E7265-A004-4467-8DDB-26064E103B75.JPG"
+      },
+      {
+        "stage": "작업 중",
+        "name": "B구간 가시박 대군락 집중 예초 및 수작업 낫베기",
+        "rel_url": "assets/photos/P20260929_083329867_6F58DEF5-D1AF-4BA3-9C4A-400A0C74ABB1.JPG"
+      },
+      {
+        "stage": "작업 후",
+        "name": "7차 방제 완료 후 수변 개방 경관 (식생 말림)",
+        "rel_url": "assets/photos/P20260929_115755343_EA687044-3AC8-408E-8DD5-D129B1ABBFE4.JPG"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "target_plant": "가시박, 환삼덩굴",
     "location": "천내리 습지 일대",
     "work_date": "2026-10-15 (예정)",
     "is_completed": false,
@@ -150,15 +201,15 @@
     "stages": [
       "결실방지 집중 작업"
     ],
-    "width_m": 600,
+    "width_m": 500,
     "length_m": 60,
-    "area_sqm": 36000.0,
+    "area_sqm": 30000.0,
     "hours": 6,
-    "amount_kg": 2000,
+    "amount_kg": 2400,
     "workers": 5
   },
   {
-    "id": 8,
+    "id": 9,
     "target_plant": "가시박, 환삼덩굴",
     "location": "천내리 습지 일대",
     "work_date": "2026-11-10 (예정)",
@@ -167,11 +218,11 @@
     "stages": [
       "결실제거 및 잔재정리"
     ],
-    "width_m": 500,
+    "width_m": 800,
     "length_m": 60,
-    "area_sqm": 30000.0,
+    "area_sqm": 48000.0,
     "hours": 6,
-    "amount_kg": 2400,
+    "amount_kg": 2800,
     "workers": 5
   }
 ]

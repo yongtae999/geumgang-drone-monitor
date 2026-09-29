@@ -12,7 +12,7 @@ class WorkReportManager {
     this.speciesChart = null;
     this.methodChart = null;
     this.timelineInterval = null;
-    this.currentTimelineIdx = 5; // Default to 6th step (Sep 17)
+    this.currentTimelineIdx = 6; // Default to 7th step (Sep 29)
     this.attachedPhotos = { before: null, during: null, after: null };
   }
 
@@ -25,7 +25,7 @@ class WorkReportManager {
     if (isDoowoong) {
       this.currentTimelineIdx = 4; // Step 5 (09.23 3차)
     } else {
-      this.currentTimelineIdx = 5; // Step 6 (09.17 6차)
+      this.currentTimelineIdx = 6; // Step 7 (09.29 7차)
     }
 
     this.renderKPIs();
@@ -45,7 +45,7 @@ class WorkReportManager {
     if (isDoowoong) {
       this.currentTimelineIdx = 4; // Step 5 (09.23 3차)
     } else {
-      this.currentTimelineIdx = 5; // Step 6 (09.17 6차)
+      this.currentTimelineIdx = 6; // Step 7 (09.29 7차)
     }
 
     this.renderKPIs();
@@ -169,11 +169,11 @@ class WorkReportManager {
     if (ctx1) {
       if (this.speciesChart) this.speciesChart.destroy();
 
-      let chartLabels = ['가시박 (53%)', '환삼덩굴 (47%)'];
-      let chartData = [53, 47];
+      let chartLabels = ['가시박 (54%)', '환삼덩굴 (46%)'];
+      let chartData = [54, 46];
       let chartColors = ['#ef4444', '#f59e0b'];
-      let titleTxt = '현장 누적 제거 식생 비중 (6차 09.17 반영)';
-      let subTxt = '※ 6차: B구간~A구간 가시박 밑둥 집중 제거 (2,000kg)';
+      let titleTxt = '현장 누적 제거 식생 비중 (7차 09.29 반영)';
+      let subTxt = '※ 7차: B구간(2구간) 버드나무 하부 가시박 대군락 2차 집중제거 (2,000kg)';
 
       if (isDoowoong) {
         chartLabels = ['미국수련·마름 (1,100kg / 99.5%)', '황소개구리 (5kg / 0.5%)'];
@@ -231,7 +231,7 @@ class WorkReportManager {
       if (this.methodChart) this.methodChart.destroy();
 
       let methodLabels = ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
-      let methodData = [103800, 88200, 18000];
+      let methodData = [133800, 100200, 18000];
       let barTitle = '제거 방식별 누적 실적 (㎡)';
       let barColors = ['#38bdf8', '#34d399', '#a78bfa'];
       let methodSubTxt = '';
@@ -379,7 +379,6 @@ class WorkReportManager {
         { step: 5, date: '10.15 (4차)', label: '만경강 북안 잔재물 수거 (예정)', completed: false, focus: 'overview' },
         { step: 6, date: '11.10 (완료)', label: '사업 완료 검수 및 보고 (예정)', completed: false, focus: 'overview' }
       ];
-    } else {
       timelineData = [
         { step: 1, date: '07.24 (1차)', label: '발아기 (손 뿌리뽑기)', completed: true, focus: 'overview' },
         { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
@@ -387,8 +386,9 @@ class WorkReportManager {
         { step: 4, date: '08.27 (4차)', label: '개화전 집중 (환삼70%·가시30%)', completed: true, focus: 'zone-2' },
         { step: 5, date: '09.04 (5차)', label: '3구간 시작~중간 집중예초 (1,700kg)', completed: true, focus: 'zone-3' },
         { step: 6, date: '09.17 (6차)', label: '2구간(B)~1구간(A) 밑둥 집중제거 (2,000kg)', completed: true, focus: 'zone-2' },
-        { step: 7, date: '10.15 (7차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
-        { step: 8, date: '11.10 (8차)', label: '결실제거 및 완료 (예정)', completed: false, focus: 'overview' }
+        { step: 7, date: '09.29 (7차)', label: '2구간(B) 수변부 2차 집중제거 (2,000kg)', completed: true, focus: 'zone-2' },
+        { step: 8, date: '10.15 (8차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
+        { step: 9, date: '11.10 (완료)', label: '결실제거 및 사업완료 (예정)', completed: false, focus: 'overview' }
       ];
     }
 
@@ -540,8 +540,27 @@ class WorkReportManager {
     document.getElementById('form-kg').value = log.amount_kg || (isDoowoong ? 200 : 1700);
     document.getElementById('form-workers').value = log.workers || (isDoowoong ? 4 : 6);
     document.getElementById('form-hours').value = log.hours || 6;
+    if (log.coordinates && document.getElementById('form-coords')) {
+      document.getElementById('form-coords').value = log.coordinates;
+    }
     if (log.notes && document.getElementById('form-notes')) {
       document.getElementById('form-notes').value = log.notes;
+    }
+
+    // Set stage checkboxes
+    const stageCheckboxes = document.querySelectorAll('input[name="stage"]');
+    if (stageCheckboxes && stageCheckboxes.length) {
+      stageCheckboxes.forEach(cb => {
+        cb.checked = (log.stages && Array.isArray(log.stages)) ? log.stages.includes(cb.value) : false;
+      });
+    }
+
+    // Set method checkboxes
+    const methodCheckboxes = document.querySelectorAll('input[name="method"]');
+    if (methodCheckboxes && methodCheckboxes.length) {
+      methodCheckboxes.forEach(cb => {
+        cb.checked = (log.method && log.method.includes(cb.value));
+      });
     }
 
     // Reset attached photo slots
@@ -568,10 +587,11 @@ class WorkReportManager {
         else if (p.stage === '작업 후') stageKey = 'after';
 
         const box = document.getElementById(`box-img-${stageKey}`);
-        if (box && p.dataUrl) {
+        const imgSrc = p.dataUrl || p.rel_url || p.url;
+        if (box && imgSrc) {
           box.innerHTML = `
             <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px;">
-              <img src="${p.dataUrl}" style="width: 100%; height: 100%; object-fit: cover;">
+              <img src="${imgSrc}" style="width: 100%; height: 100%; object-fit: cover;">
               <span style="position: absolute; bottom: 4px; left: 4px; font-size: 0.65rem; background: rgba(0,0,0,0.75); color: #38bdf8; padding: 2px 6px; border-radius: 3px; max-width: 75%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${p.name || p.filename || '현장사진'}</span>
             </div>
           `;
@@ -620,14 +640,14 @@ class WorkReportManager {
       });
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
-      if (formLoc) formLoc.value = '충청남도 금산군 제원면 용화리 403-1 / 천내리습지 2·1구간';
-      if (formCoords) formCoords.value = 'N 36°10′67.6″  E 127°57′47.0″';
-      if (formDate) formDate.value = '2026-09-17';
-      if (formArea) formArea.value = 48000;
+      if (formLoc) formLoc.value = '충청남도 금산군 제원면 천내리습지 2구간 (B구역 집중제거)';
+      if (formCoords) formCoords.value = 'N 36°10′49.5″  E 127°57′86.1″';
+      if (formDate) formDate.value = '2026-09-29';
+      if (formArea) formArea.value = 42000;
       if (formKg) formKg.value = 2000;
       if (formWorkers) formWorkers.value = 5;
       if (formHours) formHours.value = 6;
-      if (formNotes) formNotes.value = 'B구간 중간 지점에서 A구간 시작방향으로 진행, 하천수변부 버드나무 군락 아래 가시박 및 환삼덩굴 집중 예초·낫베기 실시 (A구간 가시박 밑둥 집중 제거). 2,000kg 수거 완료 후 현장 바닥 말림.';
+      if (formNotes) formNotes.value = 'B구간 끝 지점에서 B구간 시작 방향으로 진행함. 하천수변부 버드나무 군락 아래 가시박 대군락 및 환삼덩굴 2차 집중 제거. 예초기 및 낫베기 병행하여 2,000kg 수거 후 현장 바닥 말림.';
       methodCheckboxes.forEach(cb => {
         cb.checked = (cb.value === '낫으로 베기' || cb.value === '예초기 사용');
       });
@@ -848,14 +868,14 @@ class WorkReportManager {
             <div style="font-size: 0.7rem; color: #7dd3fc; margin-top: 4px;">잔여율 67.1%</div>
           </div>
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 14px;">
-            <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">오늘(9/17) 6차 인건비</div>
+            <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">9월(5·6·7차) 작업자 인건비</div>
             <div style="font-size: 1.15rem; font-weight: 800; color: #f59e0b;">미집행 <small style="font-size: 0.75rem;">(월말 정산)</small></div>
-            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 엔진오일 1만원 지출 반영</div>
+            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 9월말 정산 예정 (경비 지출 반영)</div>
           </div>
         </div>
 
         <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px; margin-bottom: 18px; font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">
-          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「예산사용현황」</b> 별도 탭에 기록된 실 집행원장 기준입니다. 9월 17일(오늘) 6차 작업 인건비(5인)는 월말 일괄 정산 예정이므로 아직 집행액에 포함되지 않았으며, 오늘 지출된 예초기 엔진오일(10,000원) 재료비는 정상 반영되어 있습니다.
+          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「예산사용현황」</b> 별도 탭에 기록된 실 집행원장 기준입니다. 9월 4일(5차 6인), 9월 17일(6차 5인), 9월 29일(오늘 7차 5인) 작업자 인건비는 9월말 일괄 정산 예정이므로 아직 집행액에 포함되지 않았으며, 9월 17일까지 지출된 예초기 엔진오일(10,000원) 재료비 등 총 4,942,440원이 정상 반영되어 있습니다.
         </div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">
@@ -891,7 +911,7 @@ class WorkReportManager {
                 <td style="padding: 9px 12px; font-weight: 700; color: #10b981;">4,522,440</td>
                 <td style="padding: 9px 12px;">5,653,050</td>
                 <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #10b981;">44.4%</td>
-                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #34d399;">7월(904,488원) + 8월(3,617,952원) 지급완료 (9월 5·6차 인건비는 미집행)</td>
+                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #34d399;">7월(904,488원) + 8월(3,617,952원) 지급완료 (9월 5·6·7차 인건비는 9월말 정산 예정)</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">경비</td>
