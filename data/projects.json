@@ -116,7 +116,7 @@
       "total_target_area": 67050,
       "total_budget": 19500000,
       "target_workers": 58,
-      "spent_budget": 1049700
+      "spent_budget": 4667652
     },
     "flight_tour": [
       {
@@ -171,13 +171,13 @@
       "overview": "두웅습지 전체 부감",
       "overview-sub": "람사르보호지역 67,050㎡",
       "zone-1": "개방수면 (수련 굴취부)",
-      "zone-1-sub": "미국수련 1,100kg 굴취 수면",
+      "zone-1-sub": "미국수련 1,700kg 굴취 수면",
       "zone-2": "수변부 (황소개구리 통발)",
-      "zone-2-sub": "통발 15개소 포획 수변",
+      "zone-2-sub": "통발 포획 6kg (15개소)",
       "zone-3": "두웅습지 4K 드론영상 🎥",
       "zone-3-sub": "항공 실사 영상 재생"
     },
-    "spent_budget": 1049700,
+    "spent_budget": 4667652,
     "budget_file": "data/budget_doowoong.json"
   },
   {

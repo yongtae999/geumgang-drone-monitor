@@ -108,7 +108,7 @@ class WorkReportManager {
     } else if (isCheonnaeri) {
       spentBudget = 5325740; // 엑셀 '집행내역' 실집행액 (9/29 휘발유 2만, 상해보험료 36.33만 등 반영)
     } else if (isDoowoong) {
-      spentBudget = 1049700; // 엑셀 '집행내역' 실집행액 (1,049,700원, 인건비는 월말정산 미집행)
+      spentBudget = 4667652; // 엑셀 '집행내역' 실집행액 (4,667,652원, 9월 16인공 인건비 3,617,952원 정산 반영)
     } else {
       spentBudget = 0;
     }
@@ -176,11 +176,11 @@ class WorkReportManager {
       let subTxt = '※ 7차: B구간(2구간) 버드나무 하부 가시박 대군락 2차 집중제거 (2,000kg)';
 
       if (isDoowoong) {
-        chartLabels = ['미국수련·마름 (1,100kg / 99.5%)', '황소개구리 (5kg / 0.5%)'];
-        chartData = [1100, 5];
+        chartLabels = ['미국수련·마름 (1,700kg / 99.6%)', '황소개구리 (6kg / 0.4%)'];
+        chartData = [1700, 6];
         chartColors = ['#38bdf8', '#ef4444'];
-        titleTxt = '현장 제거 실적 비중 (3차 09.23 반영)';
-        subTxt = '※ 미국수련 1,100kg 굴취 + 황소개구리 통발 5kg(성체·올챙이) 포획';
+        titleTxt = '현장 제거 실적 비중 (4차 09.30 반영)';
+        subTxt = '※ 미국수련·마름 1,700kg 굴취 + 황소개구리 통발 6kg(성체·올챙이) 포획';
       } else if (isChunpo) {
         chartLabels = ['양미역취 (70%)', '가시박 (20%)', '환삼덩굴 (10%)'];
         chartData = [70, 20, 10];
@@ -237,11 +237,11 @@ class WorkReportManager {
       let methodSubTxt = '';
 
       if (isDoowoong) {
-        barTitle = '공정별 작업 실적 (㎡) - 3차 09.23 반영';
+        barTitle = '공정별 작업 실적 (㎡) - 4차 09.30 반영';
         methodLabels = ['뿌리 및 줄기 제거', '통발 포획'];
-        methodData = [7500, 5000];
+        methodData = [10000, 7500];
         barColors = ['#38bdf8', '#ef4444'];
-        methodSubTxt = '※ 수련 굴취 7,500㎡(1,100kg) / 통발 포획 5,000㎡(5kg) 완료';
+        methodSubTxt = '※ 수련 굴취 10,000㎡(1,700kg) / 통발 포획 7,500㎡(6kg) 완료';
       } else if (isChunpo) {
         barTitle = '공정별 작업 실적 (작업 대기 / 미실시)';
         methodData = [0, 0, 0];
@@ -365,10 +365,11 @@ class WorkReportManager {
         { step: 3, date: '09.11 (1차)', label: '1차 수련 200kg 굴취·통발 15개 가동', completed: true, focus: 'zone-1' },
         { step: 4, date: '09.22 (2차)', label: '2차 수련 500kg + 황소개구리 3kg 포획', completed: true, focus: 'zone-2' },
         { step: 5, date: '09.23 (3차)', label: '3차 수련 400kg + 황소개구리 2kg 포획', completed: true, focus: 'zone-2' },
-        { step: 6, date: '10.15 (4차)', label: '수생 잔재물 수거 및 정비 (예정)', completed: false, focus: 'zone-1' },
-        { step: 7, date: '10.30 (5차)', label: '서식처 2차 실태조사 (예정)', completed: false, focus: 'overview' },
-        { step: 8, date: '11.15 (6차)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
-        { step: 9, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
+        { step: 6, date: '09.30 (4차)', label: '4차 수련 600kg + 황소개구리 1kg (16인공 정산)', completed: true, focus: 'zone-1' },
+        { step: 7, date: '10.15 (5차)', label: '수생 잔재물 수거 및 정비 (예정)', completed: false, focus: 'zone-1' },
+        { step: 8, date: '10.30 (6차)', label: '서식처 2차 실태조사 (예정)', completed: false, focus: 'overview' },
+        { step: 9, date: '11.15 (7차)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
+        { step: 10, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
       ];
     } else if (isChunpo) {
       timelineData = [
@@ -540,8 +541,15 @@ class WorkReportManager {
     document.getElementById('form-kg').value = log.amount_kg || (isDoowoong ? 200 : 1700);
     document.getElementById('form-workers').value = log.workers || (isDoowoong ? 4 : 6);
     document.getElementById('form-hours').value = log.hours || 6;
-    if (log.coordinates && document.getElementById('form-coords')) {
-      document.getElementById('form-coords').value = log.coordinates;
+    const coordsVal = log.gps_coords || log.coordinates || (isDoowoong ? 'N 36°83′64.9″  E 126°19′62.7″' : 'N 36°10′49.5″  E 127°57′86.1″');
+    if (document.getElementById('form-coords')) {
+      document.getElementById('form-coords').value = coordsVal;
+    }
+    if (document.getElementById('form-weather')) {
+      document.getElementById('form-weather').value = log.weather || '맑음';
+    }
+    if (document.getElementById('form-soil')) {
+      document.getElementById('form-soil').value = log.soil || (isDoowoong ? '습윤' : '반건조');
     }
     if (log.notes && document.getElementById('form-notes')) {
       document.getElementById('form-notes').value = log.notes;
@@ -559,7 +567,14 @@ class WorkReportManager {
     const methodCheckboxes = document.querySelectorAll('input[name="method"]');
     if (methodCheckboxes && methodCheckboxes.length) {
       methodCheckboxes.forEach(cb => {
-        cb.checked = (log.method && log.method.includes(cb.value));
+        const m = log.method || '';
+        cb.checked = (
+          m.includes(cb.value) ||
+          (cb.value.includes('뿌리') && (m.includes('뿌리') || m.includes('굴취'))) ||
+          (cb.value.includes('통발') && m.includes('통발')) ||
+          (cb.value.includes('예초') && m.includes('예초')) ||
+          (cb.value.includes('낫') && m.includes('낫'))
+        );
       });
     }
 
@@ -627,14 +642,14 @@ class WorkReportManager {
 
     if (isDoowoong) {
       if (formPlant) formPlant.value = '황소개구리, 미국수련 (마름 등)';
-      if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두해변길 291-30 (두웅습지)';
+      if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)';
       if (formCoords) formCoords.value = 'N 36°83′64.9″  E 126°19′62.7″';
-      if (formDate) formDate.value = '2026-09-23';
+      if (formDate) formDate.value = '2026-09-30';
       if (formArea) formArea.value = 2500;
-      if (formKg) formKg.value = 402;
-      if (formWorkers) formWorkers.value = 3;
+      if (formKg) formKg.value = 601;
+      if (formWorkers) formWorkers.value = 4;
       if (formHours) formHours.value = 6;
-      if (formNotes) formNotes.value = '황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 작업 실시. 미국수련 및 마름 400kg 굴취 수거, 황소개구리 올챙이 및 성체 2kg 포획 완료. 말린 후 폐기 처리.';
+      if (formNotes) formNotes.value = '황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 집중 작업 실시. 미국수련 및 마름 600kg 굴취 수거, 황소개구리 1kg 통발 포획 완료. 수변 바닥 말린 후 폐기 처리.';
       methodCheckboxes.forEach(cb => {
         cb.checked = (cb.value === '뿌리 및 줄기 제거' || cb.value === '통발');
       });
@@ -680,23 +695,23 @@ class WorkReportManager {
           </div>
           <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #34d399; margin-bottom: 4px;">누적 실 집행액</div>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #10b981;">1,049,700 <small style="font-size: 0.8rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">집행률 <b>5.4%</b></div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #10b981;">4,667,652 <small style="font-size: 0.8rem;">원</small></div>
+            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">집행률 <b>23.9%</b></div>
           </div>
           <div style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #38bdf8; margin-bottom: 4px;">예산 집행 잔액</div>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #38bdf8;">18,450,300 <small style="font-size: 0.8rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #7dd3fc; margin-top: 4px;">잔여율 94.6%</div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #38bdf8;">14,832,348 <small style="font-size: 0.8rem;">원</small></div>
+            <div style="font-size: 0.7rem; color: #7dd3fc; margin-top: 4px;">잔여율 76.1%</div>
           </div>
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 14px;">
-            <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">1~3차 작업 인건비</div>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #f59e0b;">미집행 <small style="font-size: 0.75rem;">(월말 정산)</small></div>
-            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 사전집행 경비 1,049,700원 반영</div>
+            <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">9월(1~4차) 작업자 인건비</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #10b981;">3,617,952 <small style="font-size: 0.75rem;">원</small></div>
+            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 16인공 정산 완료 (경비 1,049,700원 포함)</div>
           </div>
         </div>
 
         <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px; margin-bottom: 18px; font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">
-          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「정산자료 / 집행내역」</b> 시트에 기록된 실 집행원장 기준입니다. 9월 11일(1차 4명), 9월 22일(2차 5명), 9월 23일(3차 3명) 방제 인건비는 월말 일괄 정산 예정이므로 아직 집행액에 포함되지 않았으며, 사전 교육 식사비(10만), 상해보험료(24.2만), 현수막(6만), 포획도구/마대/갈퀴(44.95만), 약품/구명조끼(19.8만) 등 총 1,049,700원 경비 지출이 정상 반영되어 있습니다.
+          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「정산자료 / 집행내역」</b> 시트에 기록된 실 집행원장(2026-09-30 16:55 작성) 기준입니다. 9월 11일(1차 4명), 9월 22일(2차 5명), 9월 23일(3차 3명), 9월 30일(4차 4명) 총 16인공의 작업자 인건비(3,617,952원)가 정산 반영되었으며, 사전 교육 식사비(10만), 상해보험료(24.22만), 현수막(6만), 포획도구/마대/갈퀴(44.95만), 약품/구명조끼(19.8만) 등 총 4,667,652원(23.9%)이 정상 반영되어 있습니다.
         </div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">
@@ -725,14 +740,14 @@ class WorkReportManager {
                 <td style="padding: 9px 12px; text-align: center;">0.0%</td>
                 <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #94a3b8;">연구보조원·보조원·책임·전문조사원 운영비</td>
               </tr>
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1; background: rgba(16, 185, 129, 0.05);">
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">인건비</td>
                 <td style="padding: 9px 12px; text-align: left;">제거작업인건비</td>
                 <td style="padding: 9px 12px;">13,115,076</td>
-                <td style="padding: 9px 12px; color: #94a3b8;">0</td>
-                <td style="padding: 9px 12px;">13,115,076</td>
-                <td style="padding: 9px 12px; text-align: center;">0.0%</td>
-                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #94a3b8;">특별인부 (식물 및 양서류 포획인력, 월말 일괄정산)</td>
+                <td style="padding: 9px 12px; font-weight: 700; color: #10b981;">3,617,952</td>
+                <td style="padding: 9px 12px;">9,497,124</td>
+                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #10b981;">27.6%</td>
+                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #34d399;">9월 1~4차(총 16인공) 지급 완료 (유은준 외 6명)</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #f8fafc; background: rgba(56, 189, 248, 0.05);">
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">경비</td>
@@ -755,9 +770,9 @@ class WorkReportManager {
               <tr style="background: rgba(30, 41, 59, 0.9); font-weight: 800; color: #f8fafc; font-size: 0.85rem;">
                 <td style="padding: 11px 12px; text-align: left;" colspan="2">합 계 (총계)</td>
                 <td style="padding: 11px 12px;">19,500,000</td>
-                <td style="padding: 11px 12px; color: #10b981;">1,049,700</td>
-                <td style="padding: 11px 12px; color: #38bdf8;">18,450,300</td>
-                <td style="padding: 11px 12px; text-align: center; color: #10b981;">5.38%</td>
+                <td style="padding: 11px 12px; color: #10b981;">4,667,652</td>
+                <td style="padding: 11px 12px; color: #38bdf8;">14,832,348</td>
+                <td style="padding: 11px 12px; text-align: center; color: #10b981;">23.9%</td>
                 <td style="padding: 11px 12px; text-align: left; font-size: 0.75rem; color: #94a3b8;">실집행 집계완료</td>
               </tr>
             </tbody>
@@ -765,7 +780,7 @@ class WorkReportManager {
         </div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">
-          <i class="fa-solid fa-receipt text-emerald"></i> 2. 일자별 세부 지출 집행 원장 (8건)
+          <i class="fa-solid fa-receipt text-emerald"></i> 2. 일자별 세부 지출 집행 원장 (9건)
         </h4>
         <div style="overflow-x: auto;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; background: rgba(15, 23, 42, 0.5); border-radius: 8px; overflow: hidden;">
@@ -843,6 +858,14 @@ class WorkReportManager {
                 <td style="padding: 8px 12px;">공주종합철물</td>
                 <td style="padding: 8px 12px; text-align: right; font-weight: 600;">69,000</td>
                 <td style="padding: 8px 12px; color: #94a3b8;">갈퀴 등</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #f8fafc; background: rgba(16, 185, 129, 0.08);">
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #10b981;">9</td>
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #10b981;">2026-10-01</td>
+                <td style="padding: 8px 12px; font-weight: 700; color: #10b981;">제거작업인건비</td>
+                <td style="padding: 8px 12px; color: #34d399; font-weight: 600;">유은준 외 6명</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #10b981;">3,617,952</td>
+                <td style="padding: 8px 12px; font-weight: 600; color: #34d399;">9월 11일, 9월 22일, 9월 23일, 9월 30일 (총 16인공 정산)</td>
               </tr>
             </tbody>
           </table>

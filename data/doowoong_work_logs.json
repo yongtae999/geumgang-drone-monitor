@@ -84,5 +84,55 @@
     },
     "notes": "황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 작업 실시. 미국수련 및 마름 400kg 굴취 수거, 황소개구리 올챙이 및 성체 2kg 포획 완료. 말린 후 폐기 처리.",
     "representative_photo": "assets/photos/P20260923_090117934_D0F51A16-DE76-42DF-B639-219FDB559A41.JPG"
+  },
+  {
+    "id": 4,
+    "round": 4,
+    "work_date": "2026-09-30",
+    "target_plant": "황소개구리, 미국수련 (마름 등)",
+    "location": "충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)",
+    "gps_coords": "N 36°50′11.8″  E 126°11′47.0″",
+    "zone": "1구간(미국수련 제거구역) 및 2구간(황소개구리 포획구역)",
+    "area_sqm": 2500,
+    "amount_kg": 601,
+    "workers": 4,
+    "hours": 6,
+    "time_range": "07:50 ~ 14:00",
+    "method": "통발 포획(황소개구리) 및 뿌리 및 줄기 뽑기(미국수련, 마름 등)",
+    "is_completed": true,
+    "stages": [
+      "영양생장",
+      "개화",
+      "결실"
+    ],
+    "section_breakdown": {
+      "water_lily_sqm": 2500,
+      "water_lily_kg": 600,
+      "water_lily_workers": 2,
+      "bullfrog_kg": 1,
+      "bullfrog_workers": 2
+    },
+    "notes": "황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 작업 실시. 미국수련 및 마름 600kg 굴취 수거, 황소개구리 1kg 통발 포획 완료. 수변 바닥 말린 후 폐기 처리.",
+    "representative_photo": "assets/photos/P20260930_085714800_F6636305-4A6A-4DCC-94A4-CFC8BAF344DD.JPG",
+    "photos": [
+      {
+        "stage": "작업 전",
+        "filename": "P20260930_090448862_57964593-DCEA-4BF4-A13C-996B7BC72004.JPG",
+        "rel_url": "assets/photos/P20260930_090448862_57964593-DCEA-4BF4-A13C-996B7BC72004.JPG",
+        "name": "수변부 작업 대상지 전경 및 수생식생 조사"
+      },
+      {
+        "stage": "작업 중",
+        "filename": "P20260930_085714800_F6636305-4A6A-4DCC-94A4-CFC8BAF344DD.JPG",
+        "rel_url": "assets/photos/P20260930_085714800_F6636305-4A6A-4DCC-94A4-CFC8BAF344DD.JPG",
+        "name": "미국수련 및 마름 수작업 뿌리·줄기 집중 굴취"
+      },
+      {
+        "stage": "작업 후",
+        "filename": "P20260930_134342437_920A2795-7177-45EF-ACF4-2205715F4A9A.JPG",
+        "rel_url": "assets/photos/P20260930_134342437_920A2795-7177-45EF-ACF4-2205715F4A9A.JPG",
+        "name": "4차 방제작업 완료 후 전경 및 현장정리 완료"
+      }
+    ]
   }
 ]

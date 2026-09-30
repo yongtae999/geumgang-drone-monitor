@@ -1,22 +1,22 @@
 {
   "project_id": "doowoong",
   "project_name": "2026년 두웅습지 외래생물 실태조사 및 확산방지 용역",
-  "agency": "금강유역환경청",
+  "agency": "금강유역환경청 자연환경과",
   "contractor": "(사)야생생물관리협회 대전·충남·세종지부",
   "period": "2026.08.07 ~ 2026.11.30",
-  "as_of_date": "2026-09-23",
+  "as_of_date": "2026-09-30",
   "total_budget": 19500000,
-  "spent_budget": 1049700,
-  "remaining_budget": 18450300,
-  "execution_rate_pct": 5.38,
+  "spent_budget": 4667652,
+  "remaining_budget": 14832348,
+  "execution_rate_pct": 23.94,
   "budget_summary_by_category": [
     {
       "category": "인건비",
       "allocated": 16453191,
-      "spent": 0,
-      "remaining": 16453191,
-      "rate_pct": 0.0,
-      "note": "연구보조원·보조원·조사원·제거작업인부 (월말 일괄 정산 예정)"
+      "spent": 3617952,
+      "remaining": 12835239,
+      "rate_pct": 21.99,
+      "note": "연구보조원·보조원·조사원·제거작업인부 (9월 4회차 16인공 정산 3,617,952원 완료)"
     },
     {
       "category": "경비",
@@ -24,7 +24,7 @@
       "spent": 1049700,
       "remaining": 900300,
       "rate_pct": 53.83,
-      "note": "회의비, 재료비, 홍보비, 안전보건관리비 집행"
+      "note": "회의비, 재료비, 홍보비, 안전보건관리비 집행 완료"
     },
     {
       "category": "일반관리비",
@@ -33,6 +33,113 @@
       "remaining": 1096830,
       "rate_pct": 0.0,
       "note": "(인건비+경비)의 6% 이내"
+    }
+  ],
+  "detailed_categories": [
+    {
+      "group": "인건비",
+      "item": "연구보조원",
+      "basis": "1,939,429원 / 월 * 1인 * 4월 * 10%",
+      "allocated": 775771,
+      "spent": 0,
+      "remaining": 775771,
+      "rate_pct": 0.0
+    },
+    {
+      "group": "인건비",
+      "item": "보조원",
+      "basis": "1,454,621원 / 월 * 1인 * 4월 * 10%",
+      "allocated": 581848,
+      "spent": 0,
+      "remaining": 581848,
+      "rate_pct": 0.0
+    },
+    {
+      "group": "인건비",
+      "item": "책임조사원 운영비",
+      "basis": "272,129/인 * 1인 * 4회(식물2회, 양서류 2회)",
+      "allocated": 1088516,
+      "spent": 0,
+      "remaining": 1088516,
+      "rate_pct": 0.0
+    },
+    {
+      "group": "인건비",
+      "item": "전문조사원 운영비",
+      "basis": "222,955/인 * 1인 * 4회",
+      "allocated": 891980,
+      "spent": 0,
+      "remaining": 891980,
+      "rate_pct": 0.0
+    },
+    {
+      "group": "인건비",
+      "item": "제거작업인건비",
+      "basis": "226,122원/인*3인*6일(식물) + 226,122원/인*2인*20일(양서류)",
+      "allocated": 13115076,
+      "spent": 3617952,
+      "remaining": 9497124,
+      "rate_pct": 27.59,
+      "note": "9월 4회차(9/11, 9/22, 9/23, 9/30 총 16인공) 지급 완료"
+    },
+    {
+      "group": "경비",
+      "item": "회의 및 사전교육",
+      "basis": "100,000원 * 2회",
+      "allocated": 200000,
+      "spent": 100000,
+      "remaining": 100000,
+      "rate_pct": 50.0,
+      "note": "7/10 사전교육 및 회의 식사비 지출"
+    },
+    {
+      "group": "경비",
+      "item": "재료비",
+      "basis": "포획통발, 투망, 수거망, 뜰채, 마대, 갈퀴 등",
+      "allocated": 800000,
+      "spent": 449500,
+      "remaining": 350500,
+      "rate_pct": 56.19,
+      "note": "포획도구 11.5만, 마대 26.55만, 갈퀴 6.9만"
+    },
+    {
+      "group": "경비",
+      "item": "홍보비",
+      "basis": "현수막 제작(300*80) 2개",
+      "allocated": 60000,
+      "spent": 60000,
+      "remaining": 0,
+      "rate_pct": 100.0,
+      "note": "현수막 2EA 제작 완료 (광고맨)"
+    },
+    {
+      "group": "경비",
+      "item": "결과보고서 제작",
+      "basis": "보고서 작성 및 인쇄",
+      "allocated": 200000,
+      "spent": 0,
+      "remaining": 200000,
+      "rate_pct": 0.0,
+      "note": "용역 완료 시점 정산 예정"
+    },
+    {
+      "group": "경비",
+      "item": "안전보건관리비",
+      "basis": "상해보험료 48,000원/인*5인, 개인보호장구, 약품구입 등",
+      "allocated": 690000,
+      "spent": 440200,
+      "remaining": 249800,
+      "rate_pct": 63.8,
+      "note": "KB손해보험 상해보험료 24.22만 + 약품류 4.8만 + 구명조끼 15만"
+    },
+    {
+      "group": "일반관리비",
+      "item": "일반관리비",
+      "basis": "(인건비 + 경비) * 6% 이내",
+      "allocated": 1096830,
+      "spent": 0,
+      "remaining": 1096830,
+      "rate_pct": 0.0
     }
   ],
   "expenditures": [
@@ -99,6 +206,14 @@
       "vendor": "공주종합철물",
       "amount": 69000,
       "note": "갈퀴 등"
+    },
+    {
+      "no": 9,
+      "date": "2026-10-01",
+      "item": "제거작업인건비",
+      "vendor": "유은준 외 6명",
+      "amount": 3617952,
+      "note": "9월 11일, 9월 22일, 9월 23일, 9월 30일 (총 16인공 정산)"
     }
   ]
 }
