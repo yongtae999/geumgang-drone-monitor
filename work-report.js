@@ -176,11 +176,11 @@ class WorkReportManager {
       let subTxt = '※ 7차: B구간(2구간) 버드나무 하부 가시박 대군락 2차 집중제거 (2,000kg)';
 
       if (isDoowoong) {
-        chartLabels = ['미국수련·마름 (2,700kg / 99.7%)', '황소개구리 (7kg / 0.3%)'];
-        chartData = [2700, 7];
+        chartLabels = ['미국수련·마름 (3,600kg / 99.8%)', '황소개구리 (8kg / 0.2%)'];
+        chartData = [3600, 8];
         chartColors = ['#38bdf8', '#ef4444'];
-        titleTxt = '현장 제거 실적 비중 (5차 10.07 반영)';
-        subTxt = '※ 미국수련·마름 2,700kg 굴취 + 황소개구리 통발 7kg(성체·올챙이) 포획';
+        titleTxt = '현장 제거 실적 비중 (6차 10.08 반영)';
+        subTxt = '※ 미국수련·마름 3,600kg 굴취 + 황소개구리 통발 8kg(성체·올챙이) 포획';
       } else if (isChunpo) {
         chartLabels = ['양미역취 (70%)', '가시박 (20%)', '환삼덩굴 (10%)'];
         chartData = [70, 20, 10];
@@ -237,11 +237,11 @@ class WorkReportManager {
       let methodSubTxt = '';
 
       if (isDoowoong) {
-        barTitle = '공정별 작업 실적 (㎡) - 5차 10.07 반영';
+        barTitle = '공정별 작업 실적 (㎡) - 6차 10.08 반영';
         methodLabels = ['뿌리 및 줄기 제거', '통발 포획'];
-        methodData = [12500, 10000];
+        methodData = [15000, 12500];
         barColors = ['#38bdf8', '#ef4444'];
-        methodSubTxt = '※ 수련 굴취 12,500㎡(2,700kg) / 통발 포획 10,000㎡(7kg) 완료';
+        methodSubTxt = '※ 수련 굴취 15,000㎡(3,600kg) / 통발 포획 12,500㎡(8kg) 완료';
       } else if (isChunpo) {
         barTitle = '공정별 작업 실적 (작업 대기 / 미실시)';
         methodData = [0, 0, 0];
@@ -367,9 +367,10 @@ class WorkReportManager {
         { step: 5, date: '09.23 (3차)', label: '3차 수련 400kg + 황소개구리 2kg 포획', completed: true, focus: 'zone-2' },
         { step: 6, date: '09.30 (4차)', label: '4차 수련 600kg + 황소개구리 1kg (16인공 정산)', completed: true, focus: 'zone-1' },
         { step: 7, date: '10.07 (5차)', label: '5차 수련 1,000kg + 황소개구리 1kg (6명)', completed: true, focus: 'zone-1' },
-        { step: 8, date: '10.20 (6차)', label: '서식처 2차 실태조사 및 잔재물 수거 (예정)', completed: false, focus: 'overview' },
-        { step: 9, date: '11.15 (7차)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
-        { step: 10, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
+        { step: 8, date: '10.08 (6차)', label: '6차 수련 900kg + 황소개구리 1kg (4명)', completed: true, focus: 'zone-1' },
+        { step: 9, date: '10.25 (7차)', label: '서식처 2차 실태조사 및 잔재물 수거 (예정)', completed: false, focus: 'overview' },
+        { step: 10, date: '11.15 (8차)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
+        { step: 11, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
       ];
     } else if (isChunpo) {
       timelineData = [
@@ -643,13 +644,13 @@ class WorkReportManager {
     if (isDoowoong) {
       if (formPlant) formPlant.value = '황소개구리, 미국수련 (마름 등)';
       if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)';
-      if (formCoords) formCoords.value = 'N 36°83′64.9″  E 126°19′62.7″';
-      if (formDate) formDate.value = '2026-10-07';
+      if (formCoords) formCoords.value = 'N 36°83′65.7″  E 126°19′63.3″';
+      if (formDate) formDate.value = '2026-10-08';
       if (formArea) formArea.value = 2500;
-      if (formKg) formKg.value = 1001;
-      if (formWorkers) formWorkers.value = 6;
+      if (formKg) formKg.value = 901;
+      if (formWorkers) formWorkers.value = 4;
       if (formHours) formHours.value = 6;
-      if (formNotes) formNotes.value = '황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 집중 수작업 제거 실시. 미국수련 및 마름 1,000kg 굴취 수거, 황소개구리 1kg 통발 포획 완료. 수변 바닥 말린 후 폐기 처리.';
+      if (formNotes) formNotes.value = '황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 집중 수작업 제거 실시. 미국수련 및 마름 900kg 굴취 수거, 황소개구리 1kg 통발 포획 완료. 수변 바닥 말린 후 폐기 처리.';
       methodCheckboxes.forEach(cb => {
         cb.checked = (cb.value === '뿌리 및 줄기 제거' || cb.value === '통발');
       });

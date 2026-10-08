@@ -109,7 +109,8 @@ class PhotoViewerManager {
       '2026-09-22': '9월 22일 (2차)',
       '2026-09-23': '9월 23일 (3차)',
       '2026-09-30': '9월 30일 (4차)',
-      '2026-10-07': '10월 7일 (5차)'
+      '2026-10-07': '10월 7일 (5차)',
+      '2026-10-08': '10월 8일 (6차)'
     };
 
     let html = `<button class="filter-pill ${this.activeFilter === 'all' ? 'active' : ''}" data-filter="all">전체</button>`;
