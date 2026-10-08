@@ -4,11 +4,11 @@
   "agency": "금강유역환경청 자연환경과",
   "contractor": "(사)야생생물관리협회 대전·충남·세종지부",
   "period": "2026.08.07 ~ 2026.11.30",
-  "as_of_date": "2026-09-30",
+  "as_of_date": "2026-10-08",
   "total_budget": 19500000,
-  "spent_budget": 4667652,
-  "remaining_budget": 14832348,
-  "execution_rate_pct": 23.94,
+  "spent_budget": 4696252,
+  "remaining_budget": 14803748,
+  "execution_rate_pct": 24.08,
   "budget_summary_by_category": [
     {
       "category": "인건비",
@@ -21,10 +21,10 @@
     {
       "category": "경비",
       "allocated": 1950000,
-      "spent": 1049700,
-      "remaining": 900300,
-      "rate_pct": 53.83,
-      "note": "회의비, 재료비, 홍보비, 안전보건관리비 집행 완료"
+      "spent": 1078300,
+      "remaining": 871700,
+      "rate_pct": 55.3,
+      "note": "회의비, 재료비, 홍보비, 안전보건관리비 집행 완료 (10/8 호미·장대낫 등 재료비 추가)"
     },
     {
       "category": "일반관리비",
@@ -97,10 +97,10 @@
       "item": "재료비",
       "basis": "포획통발, 투망, 수거망, 뜰채, 마대, 갈퀴 등",
       "allocated": 800000,
-      "spent": 449500,
-      "remaining": 350500,
-      "rate_pct": 56.19,
-      "note": "포획도구 11.5만, 마대 26.55만, 갈퀴 6.9만"
+      "spent": 478100,
+      "remaining": 321900,
+      "rate_pct": 59.76,
+      "note": "포획도구 11.5만, 마대 26.55만, 갈퀴 6.9만, 호미·장대낫 2.86만"
     },
     {
       "group": "경비",
@@ -214,6 +214,14 @@
       "vendor": "유은준 외 6명",
       "amount": 3617952,
       "note": "9월 11일, 9월 22일, 9월 23일, 9월 30일 (총 16인공 정산)"
+    },
+    {
+      "no": 10,
+      "date": "2026-10-08",
+      "item": "재료비",
+      "vendor": "소망상사",
+      "amount": 28600,
+      "note": "호미, 장대낫 등"
     }
   ]
 }

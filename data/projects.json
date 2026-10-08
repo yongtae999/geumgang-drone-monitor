@@ -116,7 +116,7 @@
       "total_target_area": 67050,
       "total_budget": 19500000,
       "target_workers": 58,
-      "spent_budget": 4667652
+      "spent_budget": 4696252
     },
     "flight_tour": [
       {
@@ -177,7 +177,7 @@
       "zone-3": "두웅습지 4K 드론영상 🎥",
       "zone-3-sub": "항공 실사 영상 재생"
     },
-    "spent_budget": 4667652,
+    "spent_budget": 4696252,
     "budget_file": "data/budget_doowoong.json"
   },
   {
