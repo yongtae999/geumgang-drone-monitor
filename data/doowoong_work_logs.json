@@ -234,5 +234,105 @@
         "name": "6차 방제작업 완료 후 두웅습지 수면부 및 현장정리 완료"
       }
     ]
+  },
+  {
+    "id": 7,
+    "round": 7,
+    "work_date": "2026-10-14",
+    "target_plant": "황소개구리, 미국수련 (마름 등)",
+    "location": "충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)",
+    "gps_coords": "N 36°83′66.7″  E 126°19′63.9″",
+    "zone": "1구간(미국수련 제거구역) 및 2구간(황소개구리 포획구역)",
+    "area_sqm": 2500,
+    "amount_kg": 1202,
+    "workers": 5,
+    "hours": 6,
+    "time_range": "07:30 ~ 14:00",
+    "method": "통발 포획(황소개구리) 및 뿌리 및 줄기 뽑기(미국수련, 마름 등)",
+    "is_completed": true,
+    "stages": [
+      "영양생장",
+      "개화",
+      "결실"
+    ],
+    "section_breakdown": {
+      "water_lily_sqm": 2500,
+      "water_lily_kg": 1200,
+      "water_lily_workers": 3,
+      "bullfrog_kg": 2,
+      "bullfrog_workers": 2
+    },
+    "notes": "황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 집중 수작업 제거 실시. 미국수련 및 마름 1,200kg 굴취 수거, 황소개구리 2kg 통발 포획 완료. 수변 바닥 말린 후 폐기 처리.",
+    "representative_photo": "assets/photos/P20261014_080609865_DFEBB901-2D63-4B64-B17A-0E20099A88A2.JPG",
+    "photos": [
+      {
+        "stage": "작업 전",
+        "filename": "P20261014_080939131_04EEED69-F4EB-4F24-B9DD-26799C5347B7.JPG",
+        "rel_url": "assets/photos/P20261014_080939131_04EEED69-F4EB-4F24-B9DD-26799C5347B7.JPG",
+        "name": "두웅습지 수변부 및 관찰데크 작업 전 실태조사"
+      },
+      {
+        "stage": "작업 중",
+        "filename": "P20261014_080609865_DFEBB901-2D63-4B64-B17A-0E20099A88A2.JPG",
+        "rel_url": "assets/photos/P20261014_080609865_DFEBB901-2D63-4B64-B17A-0E20099A88A2.JPG",
+        "name": "미국수련 및 마름 수작업 뿌리·줄기 집중 굴취 (1,200kg)"
+      },
+      {
+        "stage": "작업 후",
+        "filename": "P20261014_135820772_48872AA1-7DA4-408D-8BE1-2B5282F2BDDD.JPG",
+        "rel_url": "assets/photos/P20261014_135820772_48872AA1-7DA4-408D-8BE1-2B5282F2BDDD.JPG",
+        "name": "7차 방제작업 완료 후 두웅습지 수면부 및 현장정리 완료"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "round": 8,
+    "work_date": "2026-10-15",
+    "target_plant": "황소개구리, 미국수련 (마름 등)",
+    "location": "충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)",
+    "gps_coords": "N 36°83′66.5″  E 126°19′63.9″",
+    "zone": "1구간(미국수련 제거구역) 및 2구간(황소개구리 포획구역)",
+    "area_sqm": 2500,
+    "amount_kg": 901,
+    "workers": 4,
+    "hours": 6,
+    "time_range": "07:50 ~ 14:50",
+    "method": "통발 포획(황소개구리) 및 뿌리 및 줄기 뽑기(미국수련, 마름 등)",
+    "is_completed": true,
+    "stages": [
+      "영양생장",
+      "개화",
+      "결실"
+    ],
+    "section_breakdown": {
+      "water_lily_sqm": 2500,
+      "water_lily_kg": 900,
+      "water_lily_workers": 2,
+      "bullfrog_kg": 1,
+      "bullfrog_workers": 2
+    },
+    "notes": "황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 집중 수작업 제거 실시. 미국수련 및 마름 900kg 굴취 수거, 황소개구리 1kg 통발 포획 완료. 수변 바닥 말린 후 폐기 처리.",
+    "representative_photo": "assets/photos/P20261015_102548326_F0B04015-4DC5-4F5C-95DB-C807BDDBE089.JPG",
+    "photos": [
+      {
+        "stage": "작업 전",
+        "filename": "P20261015_090940960_FD19FA7A-AF3A-4734-A106-046AAE45855D.JPG",
+        "rel_url": "assets/photos/P20261015_090940960_FD19FA7A-AF3A-4734-A106-046AAE45855D.JPG",
+        "name": "두웅습지 수변부 및 관찰데크 작업 전 실태조사"
+      },
+      {
+        "stage": "작업 중",
+        "filename": "P20261015_102548326_F0B04015-4DC5-4F5C-95DB-C807BDDBE089.JPG",
+        "rel_url": "assets/photos/P20261015_102548326_F0B04015-4DC5-4F5C-95DB-C807BDDBE089.JPG",
+        "name": "미국수련 및 마름 수작업 뿌리·줄기 집중 굴취 (900kg)"
+      },
+      {
+        "stage": "작업 후",
+        "filename": "P20261015_125059495_4EC76228-F7D8-40C0-A2B5-2FBC347C60E1.JPG",
+        "rel_url": "assets/photos/P20261015_125059495_4EC76228-F7D8-40C0-A2B5-2FBC347C60E1.JPG",
+        "name": "8차 방제작업 완료 후 두웅습지 수면부 및 현장정리 완료"
+      }
+    ]
   }
 ]
