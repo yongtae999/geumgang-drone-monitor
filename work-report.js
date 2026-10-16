@@ -894,23 +894,23 @@ class WorkReportManager {
           </div>
           <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #34d399; margin-bottom: 4px;">누적 실 집행액</div>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #10b981;">5,325,740 <small style="font-size: 0.8rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">집행률 <b>35.5%</b></div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #10b981;">9,165,392 <small style="font-size: 0.8rem;">원</small></div>
+            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">집행률 <b>61.1%</b> (전표 14건 완료)</div>
           </div>
           <div style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #38bdf8; margin-bottom: 4px;">예산 집행 잔액</div>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #38bdf8;">9,674,260 <small style="font-size: 0.8rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #7dd3fc; margin-top: 4px;">잔여율 64.5%</div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #38bdf8;">5,834,608 <small style="font-size: 0.8rem;">원</small></div>
+            <div style="font-size: 0.7rem; color: #7dd3fc; margin-top: 4px;">잔여율 38.9%</div>
           </div>
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">9월(5·6·7차) 작업자 인건비</div>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #f59e0b;">미집행 <small style="font-size: 0.75rem;">(월말 정산)</small></div>
-            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 9/29 휘발유 2만 포함 경비 803,300원 반영</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #10b981;">3,617,952 <small style="font-size: 0.75rem;">원</small></div>
+            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">* 10/1 정산 지급 완료 (16인공)</div>
           </div>
         </div>
 
         <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px; margin-bottom: 18px; font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">
-          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「금강청 생태계교란식물퇴치사업용역 - 천내리(집행내역)」</b> 실 집행원장(2026-09-29 15:07 작성) 기준입니다. 9월 4일(5차 6인), 9월 17일(6차 5인), 9월 29일(오늘 7차 5인) 작업자 인건비는 9월말 일괄 정산 예정이므로 아직 집행액에 포함되지 않았으며, 오늘 지출된 7차 예초기 휘발유(20,000원)와 상해보험료(363,300원), 구급의약품(50,000원) 등 안전보건관리비 및 재료비 실집행액 총 5,325,740원(35.5%)이 정상 반영되어 있습니다.
+          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「금강청 생태계교란식물퇴치사업용역 - 천내리(집행내역)」</b> 및 일일작업일지 요약 '예산사용현황' 기준입니다. 9월 4일(5차 6인), 9월 17일(6차 5인), 9월 29일(7차 5인) 인건비 총 3,617,952원이 10월 1일 정산 집행 완료되었으며, 안전용품 방수앞치마(41,700원) 및 가시박 수거용 마대(180,000원) 등이 신규 반영되어 누적 실집행액 <b>9,165,392원 (61.1%)</b>이 정상 집계되어 있습니다.
         </div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">
@@ -943,10 +943,10 @@ class WorkReportManager {
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">인건비</td>
                 <td style="padding: 9px 12px; text-align: left;">작업자 인건비</td>
                 <td style="padding: 9px 12px;">10,175,490</td>
-                <td style="padding: 9px 12px; font-weight: 700; color: #10b981;">4,522,440</td>
-                <td style="padding: 9px 12px;">5,653,050</td>
-                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #10b981;">44.4%</td>
-                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #34d399;">7월(904,488원) + 8월(3,617,952원) 지급완료 (9월 5·6·7차 인건비는 9월말 정산 예정)</td>
+                <td style="padding: 9px 12px; font-weight: 700; color: #10b981;">8,140,392</td>
+                <td style="padding: 9px 12px;">2,035,098</td>
+                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #10b981;">80.0%</td>
+                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #34d399;">7월(904,488원) + 8월(3,617,952원) + 9월(3,617,952원) 지급완료</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">경비</td>
@@ -960,7 +960,7 @@ class WorkReportManager {
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">경비</td>
                 <td style="padding: 9px 12px; text-align: left;">회의 및 사전교육</td>
-                <td style="padding: 200000">200,000</td>
+                <td style="padding: 9px 12px;">200,000</td>
                 <td style="padding: 9px 12px; color: #38bdf8;">100,000</td>
                 <td style="padding: 9px 12px;">100,000</td>
                 <td style="padding: 9px 12px; text-align: center;">50.0%</td>
@@ -970,10 +970,10 @@ class WorkReportManager {
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">경비</td>
                 <td style="padding: 9px 12px; text-align: left;">재료비</td>
                 <td style="padding: 9px 12px;">450,000</td>
-                <td style="padding: 9px 12px; font-weight: 700; color: #38bdf8;">260,000</td>
-                <td style="padding: 9px 12px;">190,000</td>
-                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #38bdf8;">57.8%</td>
-                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #7dd3fc;">물품구입(19만) + 예초기 휘발유·오일 4회(7만)</td>
+                <td style="padding: 9px 12px; font-weight: 700; color: #38bdf8;">440,000</td>
+                <td style="padding: 9px 12px;">10,000</td>
+                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #38bdf8;">97.8%</td>
+                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #7dd3fc;">물품구입(19만)+유류대 4회(7만)+가시박 마대(18만)</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">경비</td>
@@ -997,10 +997,10 @@ class WorkReportManager {
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">경비</td>
                 <td style="padding: 9px 12px; text-align: left;">안전보건관리비</td>
                 <td style="padding: 9px 12px;">455,000</td>
-                <td style="padding: 9px 12px; font-weight: 700; color: #38bdf8;">413,300</td>
-                <td style="padding: 9px 12px;">41,700</td>
-                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #38bdf8;">90.8%</td>
-                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #7dd3fc;">KB손해보험 상해보험료(363,300원) + 구급약품류(50,000원)</td>
+                <td style="padding: 9px 12px; font-weight: 700; color: #38bdf8;">455,000</td>
+                <td style="padding: 9px 12px;">0</td>
+                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #38bdf8;">100.0%</td>
+                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #7dd3fc;">상해보험(363,300원)+약품(50,000원)+방수앞치마(41,700원)</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">일반관리비</td>
@@ -1014,17 +1014,17 @@ class WorkReportManager {
               <tr style="background: rgba(30, 41, 59, 0.9); font-weight: 800; color: #f8fafc; font-size: 0.85rem;">
                 <td style="padding: 11px 12px; text-align: left;" colspan="2">합 계 (총계)</td>
                 <td style="padding: 11px 12px;">15,000,000</td>
-                <td style="padding: 11px 12px; color: #10b981;">5,325,740</td>
-                <td style="padding: 11px 12px; color: #38bdf8;">9,674,260</td>
-                <td style="padding: 11px 12px; text-align: center; color: #10b981;">35.5%</td>
-                <td style="padding: 11px 12px; text-align: left; font-size: 0.75rem; color: #94a3b8;">실집행 집계완료</td>
+                <td style="padding: 11px 12px; color: #10b981;">9,165,392</td>
+                <td style="padding: 11px 12px; color: #38bdf8;">5,834,608</td>
+                <td style="padding: 11px 12px; text-align: center; color: #10b981;">61.1%</td>
+                <td style="padding: 11px 12px; text-align: left; font-size: 0.75rem; color: #34d399;">실집행 14건 집계완료</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">
-          <i class="fa-solid fa-receipt text-emerald"></i> 2. 일자별 세부 지출 집행 원장 (11건)
+          <i class="fa-solid fa-receipt text-emerald"></i> 2. 일자별 세부 지출 집행 원장 (14건)
         </h4>
         <div style="overflow-x: auto;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; background: rgba(15, 23, 42, 0.5); border-radius: 8px; overflow: hidden;">
@@ -1119,13 +1119,37 @@ class WorkReportManager {
                 <td style="padding: 8px 12px; text-align: right; font-weight: 600;">10,000</td>
                 <td style="padding: 8px 12px; color: #cbd5e1;">6차 예초기 오일</td>
               </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
+                <td style="padding: 8px 12px; text-align: center;">11</td>
+                <td style="padding: 8px 12px; text-align: center;">2026-09-29</td>
+                <td style="padding: 8px 12px;">재료비</td>
+                <td style="padding: 8px 12px; color: #94a3b8;">인삼랜드(하)주유소</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 600;">20,000</td>
+                <td style="padding: 8px 12px; color: #cbd5e1;">7차 예초기 휘발유</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #f8fafc; background: rgba(16, 185, 129, 0.08);">
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #10b981;">12</td>
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #10b981;">2026-10-01</td>
+                <td style="padding: 8px 12px; font-weight: 700; color: #10b981;">작업자 인건비</td>
+                <td style="padding: 8px 12px; color: #34d399; font-weight: 600;">유은준 외 5명</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #10b981;">3,617,952</td>
+                <td style="padding: 8px 12px; font-weight: 600; color: #34d399;">9월 작업자 인건비 (5·6·7차 16인공 정산)</td>
+              </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #f8fafc; background: rgba(56, 189, 248, 0.08);">
-                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">11</td>
-                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">2026-09-29</td>
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">13</td>
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">2026-10-02</td>
+                <td style="padding: 8px 12px; font-weight: 700; color: #38bdf8;">안전보건관리비</td>
+                <td style="padding: 8px 12px; color: #7dd3fc; font-weight: 600;">세이프티몰</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #38bdf8;">41,700</td>
+                <td style="padding: 8px 12px; font-weight: 600; color: #7dd3fc;">방수앞치마 등 안전용품</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #f8fafc; background: rgba(56, 189, 248, 0.08);">
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">14</td>
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">2026-10-12</td>
                 <td style="padding: 8px 12px; font-weight: 700; color: #38bdf8;">재료비</td>
-                <td style="padding: 8px 12px; color: #7dd3fc; font-weight: 600;">인삼랜드(하)주유소</td>
-                <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #38bdf8;">20,000</td>
-                <td style="padding: 8px 12px; font-weight: 600; color: #7dd3fc;">오늘(9/29) 7차 예초기 휘발유</td>
+                <td style="padding: 8px 12px; color: #7dd3fc; font-weight: 600;">금산마대포장</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #38bdf8;">180,000</td>
+                <td style="padding: 8px 12px; font-weight: 600; color: #7dd3fc;">가시박 수거용 마대 등</td>
               </tr>
             </tbody>
           </table>
