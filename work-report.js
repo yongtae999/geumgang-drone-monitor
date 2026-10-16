@@ -106,7 +106,7 @@ class WorkReportManager {
     if (this.kpis && this.kpis.spent_budget !== undefined) {
       spentBudget = this.kpis.spent_budget;
     } else if (isCheonnaeri) {
-      spentBudget = 5325740; // 엑셀 '집행내역' 실집행액 (9/29 휘발유 2만, 상해보험료 36.33만 등 반영)
+      spentBudget = 9165392; // 엑셀 '예산사용현황' 실집행액 (9,165,392원, 9월 인건비 3,617,952원, 안전용품 41,700원, 마대 180,000원 등 정산 반영)
     } else if (isDoowoong) {
       spentBudget = 4696252; // 엑셀 '집행내역' 실집행액 (4,696,252원, 10/8 재료비 호미·장대낫 28,600원 반영)
     } else {
@@ -169,11 +169,11 @@ class WorkReportManager {
     if (ctx1) {
       if (this.speciesChart) this.speciesChart.destroy();
 
-      let chartLabels = ['가시박 (54%)', '환삼덩굴 (46%)'];
-      let chartData = [54, 46];
+      let chartLabels = ['가시박 (56%)', '환삼덩굴 (44%)'];
+      let chartData = [56, 44];
       let chartColors = ['#ef4444', '#f59e0b'];
-      let titleTxt = '현장 누적 제거 식생 비중 (7차 09.29 반영)';
-      let subTxt = '※ 7차: B구간(2구간) 버드나무 하부 가시박 대군락 2차 집중제거 (2,000kg)';
+      let titleTxt = '현장 누적 제거 식생 비중 (8차 10.16 반영)';
+      let subTxt = '※ 8차: B구간(2구간) 버드나무 하부 가시박 군락지 집중제거 (2,200kg)';
 
       if (isDoowoong) {
         chartLabels = ['미국수련·마름 (5,700kg / 99.8%)', '황소개구리 (11kg / 0.2%)'];
@@ -231,7 +231,7 @@ class WorkReportManager {
       if (this.methodChart) this.methodChart.destroy();
 
       let methodLabels = ['예초기 사용', '낫으로 베기', '손 뿌리뽑기'];
-      let methodData = [133800, 100200, 18000];
+      let methodData = [159000, 111000, 18000];
       let barTitle = '제거 방식별 누적 실적 (㎡)';
       let barColors = ['#38bdf8', '#34d399', '#a78bfa'];
       let methodSubTxt = '';
@@ -391,8 +391,9 @@ class WorkReportManager {
         { step: 5, date: '09.04 (5차)', label: '3구간 시작~중간 집중예초 (1,700kg)', completed: true, focus: 'zone-3' },
         { step: 6, date: '09.17 (6차)', label: '2구간(B)~1구간(A) 밑둥 집중제거 (2,000kg)', completed: true, focus: 'zone-2' },
         { step: 7, date: '09.29 (7차)', label: '2구간(B) 수변부 2차 집중제거 (2,000kg)', completed: true, focus: 'zone-2' },
-        { step: 8, date: '10.15 (8차)', label: '결실방지 집중 (예정)', completed: false, focus: 'overview' },
-        { step: 9, date: '11.10 (완료)', label: '결실제거 및 사업완료 (예정)', completed: false, focus: 'overview' }
+        { step: 8, date: '10.16 (8차)', label: '2구간(B) 군락지 2차 집중제거 (2,200kg)', completed: true, focus: 'zone-2' },
+        { step: 9, date: '10.30 (9차)', label: '결실방지 잔여구역 집중제거 (예정)', completed: false, focus: 'overview' },
+        { step: 10, date: '11.15 (완료)', label: '결실제거 및 사업 종합검수 (예정)', completed: false, focus: 'overview' }
       ];
     }
 
@@ -658,14 +659,14 @@ class WorkReportManager {
       });
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
-      if (formLoc) formLoc.value = '충청남도 금산군 제원면 천내리습지 2구간 (B구역 집중제거)';
-      if (formCoords) formCoords.value = 'N 36°10′49.5″  E 127°57′86.1″';
-      if (formDate) formDate.value = '2026-09-29';
-      if (formArea) formArea.value = 42000;
-      if (formKg) formKg.value = 2000;
+      if (formLoc) formLoc.value = '충청남도 금산군 제원면 천내리습지 2구간 (B구간 군락지 2차 집중제거)';
+      if (formCoords) formCoords.value = 'N 36°10′48.0″  E 127°57′85.0″';
+      if (formDate) formDate.value = '2026-10-16';
+      if (formArea) formArea.value = 36000;
+      if (formKg) formKg.value = 2200;
       if (formWorkers) formWorkers.value = 5;
       if (formHours) formHours.value = 6;
-      if (formNotes) formNotes.value = 'B구간 끝 지점에서 B구간 시작 방향으로 진행함. 하천수변부 버드나무 군락 아래 가시박 대군락 및 환삼덩굴 2차 집중 제거. 예초기 및 낫베기 병행하여 2,000kg 수거 후 현장 바닥 말림.';
+      if (formNotes) formNotes.value = 'B구간 중간 지점에서 B구간 끝 방향으로 진행함. 하천수변부 버드나무 군락 아래 가시박 군락이 있고, 주변에 물웅덩이가 있음. 예초기 및 낫베기 병행하여 2,200kg 수거 후 현장 바닥 말림 (B구간 군락지 2차 집중 제거).';
       methodCheckboxes.forEach(cb => {
         cb.checked = (cb.value === '낫으로 베기' || cb.value === '예초기 사용');
       });
