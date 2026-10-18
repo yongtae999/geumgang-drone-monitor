@@ -12,7 +12,7 @@ class WorkReportManager {
     this.speciesChart = null;
     this.methodChart = null;
     this.timelineInterval = null;
-    this.currentTimelineIdx = 6; // Default to 7th step (Sep 29)
+    this.currentTimelineIdx = 7; // Default to 8th step (Oct 16, 8차)
     this.attachedPhotos = { before: null, during: null, after: null };
   }
 
@@ -22,10 +22,13 @@ class WorkReportManager {
     this.currentProject = currentProject || null;
 
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+    const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
     if (isDoowoong) {
-      this.currentTimelineIdx = 4; // Step 5 (09.23 3차)
+      this.currentTimelineIdx = 9; // Step 10 (10.15 8차)
+    } else if (isChunpo) {
+      this.currentTimelineIdx = 0; // Step 1 (준비)
     } else {
-      this.currentTimelineIdx = 6; // Step 7 (09.29 7차)
+      this.currentTimelineIdx = 7; // Step 8 (10.16 8차)
     }
 
     this.renderKPIs();
@@ -42,10 +45,13 @@ class WorkReportManager {
     if (currentProject) this.currentProject = currentProject;
 
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
+    const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
     if (isDoowoong) {
-      this.currentTimelineIdx = 4; // Step 5 (09.23 3차)
+      this.currentTimelineIdx = 9; // Step 10 (10.15 8차)
+    } else if (isChunpo) {
+      this.currentTimelineIdx = 0; // Step 1 (준비)
     } else {
-      this.currentTimelineIdx = 6; // Step 7 (09.29 7차)
+      this.currentTimelineIdx = 7; // Step 8 (10.16 8차)
     }
 
     this.renderKPIs();
@@ -383,6 +389,7 @@ class WorkReportManager {
         { step: 5, date: '10.15 (4차)', label: '만경강 북안 잔재물 수거 (예정)', completed: false, focus: 'overview' },
         { step: 6, date: '11.10 (완료)', label: '사업 완료 검수 및 보고 (예정)', completed: false, focus: 'overview' }
       ];
+    } else {
       timelineData = [
         { step: 1, date: '07.24 (1차)', label: '발아기 (손 뿌리뽑기)', completed: true, focus: 'overview' },
         { step: 2, date: '08.06 (2차)', label: '성장기 (예초·낫베기)', completed: true, focus: 'overview' },
@@ -545,7 +552,7 @@ class WorkReportManager {
     document.getElementById('form-kg').value = log.amount_kg || (isDoowoong ? 200 : 1700);
     document.getElementById('form-workers').value = log.workers || (isDoowoong ? 4 : 6);
     document.getElementById('form-hours').value = log.hours || 6;
-    const coordsVal = log.gps_coords || log.coordinates || (isDoowoong ? 'N 36°83′64.9″  E 126°19′62.7″' : 'N 36°10′49.5″  E 127°57′86.1″');
+    const coordsVal = log.gps_coords || log.coordinates || (isDoowoong ? 'N 36°50′11.1″  E 126°11′45.8″' : 'N 36°06′25.6″  E 127°34′26.9″');
     if (document.getElementById('form-coords')) {
       document.getElementById('form-coords').value = coordsVal;
     }
@@ -647,7 +654,7 @@ class WorkReportManager {
     if (isDoowoong) {
       if (formPlant) formPlant.value = '황소개구리, 미국수련 (마름 등)';
       if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)';
-      if (formCoords) formCoords.value = 'N 36°83′66.5″  E 126°19′63.9″';
+      if (formCoords) formCoords.value = 'N 36°50′11.1″  E 126°11′45.8″';
       if (formDate) formDate.value = '2026-10-15';
       if (formArea) formArea.value = 2500;
       if (formKg) formKg.value = 901;
@@ -660,7 +667,7 @@ class WorkReportManager {
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
       if (formLoc) formLoc.value = '충청남도 금산군 제원면 천내리습지 2구간 (B구간 군락지 2차 집중제거)';
-      if (formCoords) formCoords.value = 'N 36°10′48.0″  E 127°57′85.0″';
+      if (formCoords) formCoords.value = 'N 36°06′25.6″  E 127°34′26.9″';
       if (formDate) formDate.value = '2026-10-16';
       if (formArea) formArea.value = 36000;
       if (formKg) formKg.value = 2200;
@@ -710,12 +717,12 @@ class WorkReportManager {
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">9월(1~4차) 작업자 인건비</div>
             <div style="font-size: 1.15rem; font-weight: 800; color: #10b981;">3,617,952 <small style="font-size: 0.75rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 16인공 정산 완료 (경비 1,078,300원 포함)</div>
+            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 16인공 정산 완료 (10월 5~8차 19인공 월말 정산 예정)</div>
           </div>
         </div>
 
         <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px; margin-bottom: 18px; font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">
-          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「정산자료 / 집행내역」</b> 시트에 기록된 실 집행원장(2026-10-08 16:49 작성) 기준입니다. 9월 11일(1차 4명), 9월 22일(2차 5명), 9월 23일(3차 3명), 9월 30일(4차 4명) 총 16인공의 작업자 인건비(3,617,952원)가 정산 반영되었으며, 사전 교육 식사비(10만), 상해보험료(24.22만), 현수막(6만), 포획도구/마대/갈퀴/호미·장대낫(47.81만), 약품/구명조끼(19.8만) 등 총 4,696,252원(24.1%)이 정상 반영되어 있습니다.
+          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「정산자료 / 집행내역」</b> 시트에 기록된 실 집행원장(2026-10-08 16:49 작성) 기준입니다. 9월 11일(1차 4명), 9월 22일(2차 5명), 9월 23일(3차 3명), 9월 30일(4차 4명) 총 16인공의 작업자 인건비(3,617,952원)가 10/1 정산 반영되었으며, 사전 교육 식사비(10만), 상해보험료(24.22만), 현수막(6만), 포획도구/마대/갈퀴/호미·장대낫(47.81만), 약품/구명조끼(19.8만) 등 총 4,696,252원(24.1%)이 정상 반영되어 있습니다. <span style="color: #fbbf24; font-weight: 600;">(※ 10월 5~8차 [10/07·10/08·10/14·10/15, 총 19인공] 작업 인건비는 10월 말 일괄 정산 예정)</span>
         </div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">
@@ -905,12 +912,12 @@ class WorkReportManager {
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">9월(5·6·7차) 작업자 인건비</div>
             <div style="font-size: 1.15rem; font-weight: 800; color: #10b981;">3,617,952 <small style="font-size: 0.75rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">* 10/1 정산 지급 완료 (16인공)</div>
+            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">* 10/1 정산 완료 (10월 8차 5인공 월말 정산 예정)</div>
           </div>
         </div>
 
         <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px; margin-bottom: 18px; font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">
-          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「금강청 생태계교란식물퇴치사업용역 - 천내리(집행내역)」</b> 및 일일작업일지 요약 '예산사용현황' 기준입니다. 9월 4일(5차 6인), 9월 17일(6차 5인), 9월 29일(7차 5인) 인건비 총 3,617,952원이 10월 1일 정산 집행 완료되었으며, 안전용품 방수앞치마(41,700원) 및 가시박 수거용 마대(180,000원) 등이 신규 반영되어 누적 실집행액 <b>9,165,392원 (61.1%)</b>이 정상 집계되어 있습니다.
+          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「금강청 생태계교란식물퇴치사업용역 - 천내리(집행내역)」</b> 및 일일작업일지 요약 '예산사용현황' 기준입니다. 9월 4일(5차 6인), 9월 17일(6차 5인), 9월 29일(7차 5인) 인건비 총 3,617,952원이 10월 1일 정산 집행 완료되었으며, 안전용품 방수앞치마(41,700원) 및 가시박 수거용 마대(180,000원) 등이 신규 반영되어 누적 실집행액 <b>9,165,392원 (61.1%)</b>이 정상 집계되어 있습니다. <span style="color: #fbbf24; font-weight: 600;">(※ 10월 16일 [8차 5인공] 작업 인건비는 10월 말 일괄 정산 예정)</span>
         </div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">

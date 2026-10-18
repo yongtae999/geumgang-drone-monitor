@@ -117,7 +117,7 @@ class ZoneOverlayManager {
             <p><b>교란 생물:</b> ${props.target_species}</p>
             <p><b>식생 밀도:</b> <span class="badge-density">${props.density}</span></p>
             <p><b>작업 현황:</b> <b style="color: ${hasWork ? '#38bdf8' : '#94a3b8'};">${props.status_label || (hasWork ? '1차 작업 완료' : '작업 대기 (미실시)')}</b></p>
-            ${hasWork ? `<p><b>누적 실적:</b> 1차 실적 ${Number(props.completed_area).toLocaleString()}㎡ (수거 ${props.removed_kg || 200}kg)</p>` : '<p><b>작업 계획:</b> 향후 회차 투입 예정</p>'}
+            ${hasWork ? `<p><b>누적 실적:</b> 누적 작업 ${Number(props.completed_area).toLocaleString()}㎡ (수거 ${Number(props.removed_kg || 200).toLocaleString()}kg)</p>` : '<p><b>작업 계획:</b> 향후 회차 투입 예정</p>'}
           </div>
         </div>
       `;
