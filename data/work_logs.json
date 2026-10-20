@@ -246,18 +246,53 @@
   {
     "id": 9,
     "target_plant": "가시박, 환삼덩굴",
-    "location": "천내리 습지 일대",
-    "work_date": "2026-11-10 (예정)",
-    "is_completed": false,
+    "location": "천내리 습지 2·3구간 (B·C구간 군락지 2차 집중제거 및 가시박 밑둥 제거)",
+    "work_date": "2026-10-20",
+    "is_completed": true,
     "method": "낫으로 베기, 예초기 사용",
     "stages": [
-      "결실제거 및 잔재정리"
+      "결실",
+      "고사"
     ],
-    "width_m": 800,
+    "width_m": 700,
     "length_m": 60,
-    "area_sqm": 48000.0,
+    "area_sqm": 42000.0,
     "hours": 6,
-    "amount_kg": 2800,
-    "workers": 5
+    "amount_kg": 2000,
+    "workers": 4,
+    "coordinates": "N 36°10′32.6″  E 127°58′27.0″",
+    "time_range": "07:00 ~ 14:10",
+    "section_breakdown": {
+      "zone": "zone-2, zone-3",
+      "zone_name": "2·3구간(B·C구역)",
+      "section_desc": "C구간 중간 지점에서 B구간 시작 방향 (하천수변 버드나무 군락 아래 가시박 군락 2차 집중제거 및 밑둥 제거)",
+      "sickle_sqm": 16800,
+      "sickle_kg": 600,
+      "sickle_workers": 2,
+      "mower_sqm": 25200,
+      "mower_kg": 1400,
+      "mower_workers": 2,
+      "area_sqm": 42000,
+      "amount_kg": 2000
+    },
+    "notes": "C구간 중간 지점에서 B구간 시작 방향으로 진행함. 하천수변부 버드나무 군락 아래 가시박 군락이 있고, 주변에 물웅덩이가 있음. 예초기 및 낫베기 병행하여 2,000kg 수거 후 현장 바닥 말림 처리 (B, C구간 군락지 2차 집중 제거 및 가시박 밑둥 제거). 금일로 천내리습지 2026년 전체 제거사업 전 회차 최종 완료.",
+    "representative_photo": "assets/photos/P20261020_134005850_D1DBEF65-5F17-4E16-BFEF-F99807BF95BC.JPG",
+    "photos": [
+      {
+        "stage": "작업 전",
+        "name": "환삼덩굴·가시박 제거 작업 전",
+        "rel_url": "assets/photos/P20261020_070508903_1CAD4BC7-30E4-443B-89F6-00D940D219F5.JPG"
+      },
+      {
+        "stage": "작업 중",
+        "name": "B·C구간 가시박 및 환삼덩굴 집중 제거 중",
+        "rel_url": "assets/photos/P20261020_104020169_60909744-B04B-4C60-9EED-8E0BF47C5E72.JPG"
+      },
+      {
+        "stage": "작업 후",
+        "name": "제거 완료 현수막 및 작업 참여자 전원 단체사진",
+        "rel_url": "assets/photos/P20261020_134005850_D1DBEF65-5F17-4E16-BFEF-F99807BF95BC.JPG"
+      }
+    ]
   }
 ]
