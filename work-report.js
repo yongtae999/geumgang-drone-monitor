@@ -24,7 +24,7 @@ class WorkReportManager {
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
     const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
     if (isDoowoong) {
-      this.currentTimelineIdx = 9; // Step 10 (10.15 8차)
+      this.currentTimelineIdx = 11; // Step 12 (10.22 10차)
     } else if (isChunpo) {
       this.currentTimelineIdx = 0; // Step 1 (준비)
     } else {
@@ -47,7 +47,7 @@ class WorkReportManager {
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
     const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
     if (isDoowoong) {
-      this.currentTimelineIdx = 9; // Step 10 (10.15 8차)
+      this.currentTimelineIdx = 11; // Step 12 (10.22 10차)
     } else if (isChunpo) {
       this.currentTimelineIdx = 0; // Step 1 (준비)
     } else {
@@ -184,11 +184,11 @@ class WorkReportManager {
       let subTxt = '※ 1~9차 누적 13,330kg 제거 완료 (B·C구간 2차 집중제거 및 밑둥제거 완수)';
 
       if (isDoowoong) {
-        chartLabels = ['미국수련·마름 (5,700kg / 99.8%)', '황소개구리 (11kg / 0.2%)'];
-        chartData = [5700, 11];
+        chartLabels = ['미국수련·마름 (8,000kg / 99.8%)', '황소개구리 (12kg / 0.2%)'];
+        chartData = [8000, 12];
         chartColors = ['#38bdf8', '#ef4444'];
-        titleTxt = '현장 제거 실적 비중 (8차 10.15 반영)';
-        subTxt = '※ 미국수련·마름 5,700kg 굴취 + 황소개구리 통발 11kg(성체·올챙이) 포획';
+        titleTxt = '현장 제거 실적 비중 (10차 10.22 반영)';
+        subTxt = '※ 미국수련·마름 8,000kg 굴취 + 황소개구리 통발 12kg(성체·올챙이) 포획';
       } else if (isChunpo) {
         chartLabels = ['양미역취 (70%)', '가시박 (20%)', '환삼덩굴 (10%)'];
         chartData = [70, 20, 10];
@@ -245,11 +245,11 @@ class WorkReportManager {
       let methodSubTxt = '';
 
       if (isDoowoong) {
-        barTitle = '공정별 작업 실적 (㎡) - 8차 10.15 반영';
+        barTitle = '공정별 작업 실적 (㎡) - 10차 10.22 반영';
         methodLabels = ['뿌리 및 줄기 제거', '통발 포획'];
-        methodData = [20000, 17500];
+        methodData = [24000, 21500];
         barColors = ['#38bdf8', '#ef4444'];
-        methodSubTxt = '※ 수련 굴취 20,000㎡(5,700kg) / 통발 포획 17,500㎡(11kg) 완료';
+        methodSubTxt = '※ 수련 굴취 24,000㎡(8,000kg) / 통발 포획 21,500㎡(12kg) 완료';
       } else if (isChunpo) {
         barTitle = '공정별 작업 실적 (작업 대기 / 미실시)';
         methodData = [0, 0, 0];
@@ -378,9 +378,11 @@ class WorkReportManager {
         { step: 8, date: '10.08 (6차)', label: '6차 수련 900kg + 황소개구리 1kg (4명)', completed: true, focus: 'zone-1' },
         { step: 9, date: '10.14 (7차)', label: '7차 수련 1,200kg + 황소개구리 2kg (5명)', completed: true, focus: 'zone-1' },
         { step: 10, date: '10.15 (8차)', label: '8차 수련 900kg + 황소개구리 1kg (4명)', completed: true, focus: 'zone-1' },
-        { step: 11, date: '10.30 (9차)', label: '서식처 2차 실태조사 및 잔재물 수거 (예정)', completed: false, focus: 'overview' },
-        { step: 12, date: '11.15 (10차)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
-        { step: 13, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
+        { step: 11, date: '10.21 (9차)', label: '9차 수련 1,300kg + 황소개구리 1kg (6명)', completed: true, focus: 'zone-1' },
+        { step: 12, date: '10.22 (10차)', label: '10차 수련 1,000kg 장대낫 절단 (4명)', completed: true, focus: 'zone-1' },
+        { step: 13, date: '10.30 (조사)', label: '서식처 2차 실태조사 및 잔재물 수거 (예정)', completed: false, focus: 'overview' },
+        { step: 14, date: '11.15 (퇴치)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
+        { step: 15, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
       ];
     } else if (isChunpo) {
       timelineData = [
@@ -656,15 +658,21 @@ class WorkReportManager {
     if (isDoowoong) {
       if (formPlant) formPlant.value = '황소개구리, 미국수련 (마름 등)';
       if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)';
-      if (formCoords) formCoords.value = 'N 36°50′11.1″  E 126°11′45.8″';
-      if (formDate) formDate.value = '2026-10-15';
-      if (formArea) formArea.value = 2500;
-      if (formKg) formKg.value = 901;
+      if (formCoords) formCoords.value = 'N 36°83′67.1″  E 126°19′64.0″';
+      if (formDate) formDate.value = '2026-10-22';
+      if (formArea) formArea.value = 2000;
+      if (formKg) formKg.value = 1000;
       if (formWorkers) formWorkers.value = 4;
       if (formHours) formHours.value = 6;
-      if (formNotes) formNotes.value = '황소개구리 출몰 예상지역 통발사용 및 미국수련·마름 확산지역 중심 집중 수작업 제거 실시. 미국수련 및 마름 900kg 굴취 수거, 황소개구리 1kg 통발 포획 완료. 수변 바닥 말린 후 폐기 처리.';
+      const formSoil = document.getElementById('form-soil');
+      if (formSoil) formSoil.value = '습윤';
+      if (formNotes) formNotes.value = '미국수련은 장대 낫 사용하여 줄기 밑부분 제거 후 수거(1,000kg). 황소개구리 미 포획. 수변 바닥 말린 후 폐기 처리.';
       methodCheckboxes.forEach(cb => {
         cb.checked = (cb.value === '뿌리 및 줄기 제거' || cb.value === '통발');
+      });
+      const stageCheckboxes = document.querySelectorAll('input[name="stage"]');
+      stageCheckboxes.forEach(cb => {
+        cb.checked = (cb.value === '개화' || cb.value === '결실');
       });
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
@@ -708,23 +716,23 @@ class WorkReportManager {
           </div>
           <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #34d399; margin-bottom: 4px;">누적 실 집행액</div>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #10b981;">4,696,252 <small style="font-size: 0.8rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">집행률 <b>24.1%</b></div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #10b981;">5,237,952 <small style="font-size: 0.8rem;">원</small></div>
+            <div style="font-size: 0.7rem; color: #34d399; margin-top: 4px;">집행률 <b>26.9%</b> (전표 15건 완료)</div>
           </div>
           <div style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #38bdf8; margin-bottom: 4px;">예산 집행 잔액</div>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #38bdf8;">14,803,748 <small style="font-size: 0.8rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #7dd3fc; margin-top: 4px;">잔여율 75.9%</div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: #38bdf8;">14,262,048 <small style="font-size: 0.8rem;">원</small></div>
+            <div style="font-size: 0.7rem; color: #7dd3fc; margin-top: 4px;">잔여율 73.1%</div>
           </div>
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">9월(1~4차) 작업자 인건비</div>
             <div style="font-size: 1.15rem; font-weight: 800; color: #10b981;">3,617,952 <small style="font-size: 0.75rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 16인공 정산 완료 (10월 5~8차 19인공 월말 정산 예정)</div>
+            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 16인공 정산 완료 (10월 5~10차 29인공 월말 정산 예정)</div>
           </div>
         </div>
 
         <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px; margin-bottom: 18px; font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">
-          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「금강청 생태계교란식물퇴치사업용역 - 천내리(집행내역)」</b> 및 일일작업일지 요약 '예산사용현황' 기준입니다. 10월 20일(9차) 예초기 유류대(10,000원) 집행으로 재료비(450,000원) 전액 100% 집행 완료되었으며, 안전용품 방수앞치마(41,700원), 마대(180,000원), 9월 인건비(3,617,952원) 등 총 15건 실집행액 <b>9,175,392원 (61.2%)</b>이 최종 집계되었습니다. <span style="color: #34d399; font-weight: 700;">(※ 금일 9회차로 2026년 천내리 제거작업 전 일정 최종 완수)</span></div>
+          ℹ️ <b>예산 기준 안내</b>: 제출자료 엑셀 파일의 <b>「금강청 외래생물 실태조사 및 확산방지용역 - 두웅습지(집행내역)」</b> 및 비목별 산출내역 기준입니다. 10월 20일 기준 재료비(포획도구, 마대 등 800,000원, <b>100% 집행완료</b>), 안전보건관리비(보험료, 구명조끼, 방수앞치마 등 660,000원, <b>95.7%</b>), 9월 작업자 인건비(3,617,952원) 등 총 15건 실집행액 <b>5,237,952원 (26.9%)</b>이 집계되었습니다.</div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">
           <i class="fa-solid fa-list-check text-cyan"></i> 1. 비목별 예산 집행 현황
@@ -765,10 +773,10 @@ class WorkReportManager {
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">경비</td>
                 <td style="padding: 9px 12px; text-align: left;">경비 소계</td>
                 <td style="padding: 9px 12px;">1,950,000</td>
-                <td style="padding: 9px 12px; font-weight: 700; color: #38bdf8;">1,078,300</td>
-                <td style="padding: 9px 12px;">871,700</td>
-                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #38bdf8;">55.3%</td>
-                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #7dd3fc;">회의비(10만), 재료비(47.81만), 홍보비(6만), 안전보건(44.02만)</td>
+                <td style="padding: 9px 12px; font-weight: 700; color: #38bdf8;">1,620,000</td>
+                <td style="padding: 9px 12px;">330,000</td>
+                <td style="padding: 9px 12px; text-align: center; font-weight: 700; color: #38bdf8;">83.1%</td>
+                <td style="padding: 9px 12px; text-align: left; font-size: 0.72rem; color: #7dd3fc;">회의비(10만), 재료비(80만 전액), 홍보비(6만), 안전보건(66만)</td>
               </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
                 <td style="padding: 9px 12px; text-align: left; font-weight: 600;">일반관리비</td>
@@ -782,17 +790,17 @@ class WorkReportManager {
               <tr style="background: rgba(30, 41, 59, 0.9); font-weight: 800; color: #f8fafc; font-size: 0.85rem;">
                 <td style="padding: 11px 12px; text-align: left;" colspan="2">합 계 (총계)</td>
                 <td style="padding: 11px 12px;">19,500,000</td>
-                <td style="padding: 11px 12px; color: #10b981;">4,696,252</td>
-                <td style="padding: 11px 12px; color: #38bdf8;">14,803,748</td>
-                <td style="padding: 11px 12px; text-align: center; color: #10b981;">24.1%</td>
-                <td style="padding: 11px 12px; text-align: left; font-size: 0.75rem; color: #94a3b8;">실집행 집계완료</td>
+                <td style="padding: 11px 12px; color: #10b981;">5,237,952</td>
+                <td style="padding: 11px 12px; color: #38bdf8;">14,262,048</td>
+                <td style="padding: 11px 12px; text-align: center; color: #10b981;">26.9%</td>
+                <td style="padding: 11px 12px; text-align: left; font-size: 0.75rem; color: #94a3b8;">실집행 15건 집계완료</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <h4 style="font-size: 0.95rem; color: #f8fafc; margin-bottom: 10px; font-weight: 700;">
-          <i class="fa-solid fa-receipt text-emerald"></i> 2. 일자별 세부 지출 집행 원장 (10건)
+          <i class="fa-solid fa-receipt text-emerald"></i> 2. 일자별 세부 지출 집행 원장 (15건)
         </h4>
         <div style="overflow-x: auto;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; background: rgba(15, 23, 42, 0.5); border-radius: 8px; overflow: hidden;">
@@ -879,17 +887,56 @@ class WorkReportManager {
                 <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #10b981;">3,617,952</td>
                 <td style="padding: 8px 12px; font-weight: 600; color: #34d399;">9월 11일, 9월 22일, 9월 23일, 9월 30일 (총 16인공 정산)</td>
               </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
+                <td style="padding: 8px 12px; text-align: center;">10</td>
+                <td style="padding: 8px 12px; text-align: center;">2026-10-08</td>
+                <td style="padding: 8px 12px;">재료비</td>
+                <td style="padding: 8px 12px;">소망상사</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 600;">28,600</td>
+                <td style="padding: 8px 12px; color: #94a3b8;">호미, 장대낫 등</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
+                <td style="padding: 8px 12px; text-align: center;">11</td>
+                <td style="padding: 8px 12px; text-align: center;">2026-10-12</td>
+                <td style="padding: 8px 12px;">안전보건관리비</td>
+                <td style="padding: 8px 12px;">공주낚시할인마트</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 600;">144,000</td>
+                <td style="padding: 8px 12px; color: #94a3b8;">구명조끼 3EA</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
+                <td style="padding: 8px 12px; text-align: center;">12</td>
+                <td style="padding: 8px 12px; text-align: center;">2026-10-12</td>
+                <td style="padding: 8px 12px;">재료비</td>
+                <td style="padding: 8px 12px;">공주낚시할인마트</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 600;">64,000</td>
+                <td style="padding: 8px 12px; color: #94a3b8;">포획도구 등</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1;">
+                <td style="padding: 8px 12px; text-align: center;">13</td>
+                <td style="padding: 8px 12px; text-align: center;">2026-10-12</td>
+                <td style="padding: 8px 12px;">재료비</td>
+                <td style="padding: 8px 12px;">공주종합철물</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 600;">108,000</td>
+                <td style="padding: 8px 12px; color: #94a3b8;">마대 등</td>
+              </tr>
               <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #f8fafc; background: rgba(56, 189, 248, 0.08);">
-                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">10</td>
-                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">2026-10-08</td>
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">14</td>
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #38bdf8;">2026-10-20</td>
                 <td style="padding: 8px 12px; font-weight: 700; color: #38bdf8;">재료비</td>
-                <td style="padding: 8px 12px; color: #7dd3fc; font-weight: 600;">소망상사</td>
-                <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #38bdf8;">28,600</td>
-                <td style="padding: 8px 12px; color: #cbd5e1;">호미, 장대낫 등</td>
+                <td style="padding: 8px 12px; color: #7dd3fc; font-weight: 600;">공주종합철물</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #38bdf8;">149,900</td>
+                <td style="padding: 8px 12px; color: #cbd5e1;">마대 등 (재료비 80만 전액 100% 집행달성)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #f8fafc; background: rgba(16, 185, 129, 0.08);">
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #10b981;">15</td>
+                <td style="padding: 8px 12px; text-align: center; font-weight: 700; color: #10b981;">2026-10-20</td>
+                <td style="padding: 8px 12px; font-weight: 700; color: #10b981;">안전보건관리비</td>
+                <td style="padding: 8px 12px; color: #34d399; font-weight: 600;">공주종합철물</td>
+                <td style="padding: 8px 12px; text-align: right; font-weight: 700; color: #10b981;">75,800</td>
+                <td style="padding: 8px 12px; color: #cbd5e1;">방수앞치마 등 (안전보건비 95.7% 집행)</td>
               </tr>
             </tbody>
-          </table>
-        </div>
+          </table>        </div>
       `;
     } else {
       if (titleElem) titleElem.textContent = '2026년 천내리습지 생태계 교란식물 제거 용역 예산 사용현황';
