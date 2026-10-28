@@ -436,5 +436,56 @@
         "name": "10차 작업 완료 후 마대 적치 및 바닥 말림 완료"
       }
     ]
+  },
+  {
+    "id": 11,
+    "round": 11,
+    "work_date": "2026-10-28",
+    "target_plant": "황소개구리, 미국수련 (마름 등)",
+    "location": "충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)",
+    "gps_coords": "N 36°83′68.1″  E 126°19′74.0″",
+    "zone": "1구역(미국수련·마름) 및 2구역(황소개구리 통발)",
+    "area_sqm": 2000,
+    "amount_kg": 1100,
+    "workers": 4,
+    "hours": 6,
+    "time_range": "07:50 ~ 14:50",
+    "method": "통발 포획(황소개구리) 및 뿌리 및 줄기 뽑기(미국수련, 마름 등)",
+    "is_completed": true,
+    "stages": [
+      "개화",
+      "결실"
+    ],
+    "section_breakdown": {
+      "water_lily_sqm": 2000,
+      "water_lily_kg": 1100,
+      "water_lily_workers": 4,
+      "bullfrog_kg": 0,
+      "bullfrog_workers": 0
+    },
+    "weather": "맑음",
+    "soil": "습윤",
+    "notes": "미국수련은 장대 낫 사용하여 줄기 밑부분 제거 후 수거(1,100kg), 통발 설치 완료(황소개구리 미포획). 수변 바닥 말린 후 폐기 처리.",
+    "representative_photo": "assets/photos/P20261028_080659115_825DC12F-74CD-41C9-A281-35D0BD5E88A4.JPG",
+    "photos": [
+      {
+        "stage": "작업 전",
+        "filename": "P20261028_080020425_CDDC97F8-4D1D-4DCF-987F-30268922986C.JPG",
+        "rel_url": "assets/photos/P20261028_080020425_CDDC97F8-4D1D-4DCF-987F-30268922986C.JPG",
+        "name": "두웅습지 11차 작업 대상지 전경 (개방수면 수련 군락)"
+      },
+      {
+        "stage": "작업 중",
+        "filename": "P20261028_080659115_825DC12F-74CD-41C9-A281-35D0BD5E88A4.JPG",
+        "rel_url": "assets/photos/P20261028_080659115_825DC12F-74CD-41C9-A281-35D0BD5E88A4.JPG",
+        "name": "미국수련 및 마름 장대 낫 절단 수거 (1,100kg)"
+      },
+      {
+        "stage": "작업 후",
+        "filename": "P20261028_143921901_11984463-C4BE-4C75-8A0C-64F55EC6E53B.JPG",
+        "rel_url": "assets/photos/P20261028_143921901_11984463-C4BE-4C75-8A0C-64F55EC6E53B.JPG",
+        "name": "11차 작업 완료 후 마대 적치 및 바닥 말림 완료"
+      }
+    ]
   }
 ]
