@@ -24,7 +24,7 @@ class WorkReportManager {
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
     const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
     if (isDoowoong) {
-      this.currentTimelineIdx = 12; // Step 13 (10.28 11차)
+      this.currentTimelineIdx = 13; // Step 14 (10.29 12차)
     } else if (isChunpo) {
       this.currentTimelineIdx = 0; // Step 1 (준비)
     } else {
@@ -47,7 +47,7 @@ class WorkReportManager {
     const isDoowoong = this.kpis && this.kpis.total_target_area === 67050;
     const isChunpo = this.kpis && this.kpis.total_target_area === 115000;
     if (isDoowoong) {
-      this.currentTimelineIdx = 12; // Step 13 (10.28 11차)
+      this.currentTimelineIdx = 13; // Step 14 (10.29 12차)
     } else if (isChunpo) {
       this.currentTimelineIdx = 0; // Step 1 (준비)
     } else {
@@ -184,11 +184,11 @@ class WorkReportManager {
       let subTxt = '※ 1~9차 누적 13,330kg 제거 완료 (B·C구간 2차 집중제거 및 밑둥제거 완수)';
 
       if (isDoowoong) {
-        chartLabels = ['미국수련·마름 (9,100kg / 99.9%)', '황소개구리 (12kg / 0.1%)'];
-        chartData = [9100, 12];
+        chartLabels = ['미국수련·마름 (10,100kg / 99.9%)', '황소개구리 (12kg / 0.1%)'];
+        chartData = [10100, 12];
         chartColors = ['#38bdf8', '#ef4444'];
-        titleTxt = '현장 제거 실적 비중 (11차 10.28 반영)';
-        subTxt = '※ 미국수련·마름 9,100kg 굴취 + 황소개구리 통발 12kg(성체·올챙이) 포획';
+        titleTxt = '현장 제거 실적 비중 (12차 10.29 반영)';
+        subTxt = '※ 미국수련·마름 10,100kg 굴취 + 황소개구리 통발 12kg(성체·올챙이) 포획';
       } else if (isChunpo) {
         chartLabels = ['양미역취 (70%)', '가시박 (20%)', '환삼덩굴 (10%)'];
         chartData = [70, 20, 10];
@@ -245,11 +245,11 @@ class WorkReportManager {
       let methodSubTxt = '';
 
       if (isDoowoong) {
-        barTitle = '공정별 작업 실적 (㎡) - 11차 10.28 반영';
+        barTitle = '공정별 작업 실적 (㎡) - 12차 10.29 반영';
         methodLabels = ['뿌리 및 줄기 제거', '통발 포획'];
-        methodData = [26000, 23500];
+        methodData = [28000, 25500];
         barColors = ['#38bdf8', '#ef4444'];
-        methodSubTxt = '※ 수련 굴취 26,000㎡(9,100kg) / 통발 포획 23,500㎡(12kg) 완료';
+        methodSubTxt = '※ 수련 굴취 28,000㎡(10,100kg) / 통발 포획 25,500㎡(12kg) 완료';
       } else if (isChunpo) {
         barTitle = '공정별 작업 실적 (작업 대기 / 미실시)';
         methodData = [0, 0, 0];
@@ -381,9 +381,10 @@ class WorkReportManager {
         { step: 11, date: '10.21 (9차)', label: '9차 수련 1,300kg + 황소개구리 1kg (6명)', completed: true, focus: 'zone-1' },
         { step: 12, date: '10.22 (10차)', label: '10차 수련 1,000kg 장대낫 절단 (4명)', completed: true, focus: 'zone-1' },
         { step: 13, date: '10.28 (11차)', label: '11차 수련 1,100kg 장대낫 절단·통발설치 (4명)', completed: true, focus: 'zone-1' },
-        { step: 14, date: '10.30 (조사)', label: '서식처 2차 실태조사 및 잔재물 수거 (예정)', completed: false, focus: 'overview' },
-        { step: 15, date: '11.15 (퇴치)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
-        { step: 16, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
+        { step: 14, date: '10.29 (12차)', label: '12차 수련 1,000kg 장대낫 절단·통발수거 (4명)', completed: true, focus: 'zone-1' },
+        { step: 15, date: '10.30 (조사)', label: '서식처 2차 실태조사 및 잔재물 수거 (예정)', completed: false, focus: 'overview' },
+        { step: 16, date: '11.15 (퇴치)', label: '동면전 집중 포획퇴치 (예정)', completed: false, focus: 'zone-2' },
+        { step: 17, date: '11.30 (완료)', label: '사업 종합 성과보고 (예정)', completed: false, focus: 'overview' }
       ];
     } else if (isChunpo) {
       timelineData = [
@@ -659,15 +660,17 @@ class WorkReportManager {
     if (isDoowoong) {
       if (formPlant) formPlant.value = '황소개구리, 미국수련 (마름 등)';
       if (formLoc) formLoc.value = '충청남도 태안군 원북면 신두리해변길 291-30 (두웅습지)';
-      if (formCoords) formCoords.value = 'N 36°83′68.1″  E 126°19′74.0″';
-      if (formDate) formDate.value = '2026-10-28';
+      if (formCoords) formCoords.value = 'N 36°83′63.5″  E 126°19′69.2″';
+      if (formDate) formDate.value = '2026-10-29';
       if (formArea) formArea.value = 2000;
-      if (formKg) formKg.value = 1100;
+      if (formKg) formKg.value = 1000;
       if (formWorkers) formWorkers.value = 4;
       if (formHours) formHours.value = 6;
       const formSoil = document.getElementById('form-soil');
       if (formSoil) formSoil.value = '습윤';
-      if (formNotes) formNotes.value = '미국수련은 장대 낫 사용하여 줄기 밑부분 제거 후 수거(1,100kg), 통발 설치 완료(황소개구리 미포획). 수변 바닥 말린 후 폐기 처리.';
+      const formWeather = document.getElementById('form-weather');
+      if (formWeather) formWeather.value = '흐림';
+      if (formNotes) formNotes.value = '미국수련은 장대 낫 사용하여 줄기 밑부분 제거 후 수거(1,000kg), 통발 수거 완료(황소개구리 미포획). 수변 바닥 말린 후 폐기 처리.';
       methodCheckboxes.forEach(cb => {
         cb.checked = (cb.value === '뿌리 및 줄기 제거' || cb.value === '통발');
       });
@@ -728,7 +731,7 @@ class WorkReportManager {
           <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 14px;">
             <div style="font-size: 0.75rem; color: #fbbf24; margin-bottom: 4px;">9월(1~4차) 작업자 인건비</div>
             <div style="font-size: 1.15rem; font-weight: 800; color: #10b981;">3,617,952 <small style="font-size: 0.75rem;">원</small></div>
-            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 16인공 정산 완료 (10월 5~11차 33인공 월말 정산 예정)</div>
+            <div style="font-size: 0.7rem; color: #fbbf24; margin-top: 4px;">* 16인공 정산 완료 (10월 5~12차 37인공 월말 정산 예정)</div>
           </div>
         </div>
 
