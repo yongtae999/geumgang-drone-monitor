@@ -676,7 +676,7 @@ class WorkReportManager {
       });
       const stageCheckboxes = document.querySelectorAll('input[name="stage"]');
       stageCheckboxes.forEach(cb => {
-        cb.checked = (cb.value === '개화' || cb.value === '결실');
+        cb.checked = (cb.value === '결실');
       });
     } else {
       if (formPlant) formPlant.value = '가시박, 환삼덩굴';
